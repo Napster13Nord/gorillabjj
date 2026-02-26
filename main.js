@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const center = box.getCenter(new THREE.Vector3());
 
                 const maxDim = Math.max(size.x, size.y, size.z);
-                const targetSize = 3.2; // desired visible size
+                const targetSize = 1.4; // smaller, sleek size
                 const scale = targetSize / maxDim;
                 gorillaModel.scale.setScalar(scale);
 
@@ -178,17 +178,22 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.environment = envMap;
         pmremGenerator.dispose();
 
-        // ── Mouse tracking for parallax effect ──
-        let mouseX = 0, mouseY = 0;
-        let targetMouseX = 0, targetMouseY = 0;
+        // ── Mouse tracking — gorilla looks at cursor ──
+        let currentRotY = 0, currentRotX = 0;
+        let targetRotY = 0, targetRotX = 0;
+        const MAX_ROT_Y = Math.PI * 0.2;  // ±35° so it never shows its back
+        const MAX_ROT_X = Math.PI * 0.1;  // ±18° vertical tilt
+        const DAMP = 0.06; // smooth damping
 
         document.addEventListener('mousemove', (e) => {
-            targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-            targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            // Map mouse position to rotation targets
+            targetRotY = ((e.clientX / window.innerWidth) - 0.5) * 2 * MAX_ROT_Y;
+            targetRotX = ((e.clientY / window.innerHeight) - 0.5) * 2 * -MAX_ROT_X;
         });
 
         // ── Animation Loop ──
         const clock = new THREE.Clock();
+        let baseY = 0.6; // Moved up slightly from 0.3
 
         function animate() {
             requestAnimationFrame(animate);
@@ -196,17 +201,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const delta = clock.getDelta();
             const elapsed = clock.getElapsedTime();
 
-            // Smooth mouse follow
-            mouseX += (targetMouseX - mouseX) * 0.05;
-            mouseY += (targetMouseY - mouseY) * 0.05;
+            // Smooth damped rotation toward mouse (no auto-rotate)
+            currentRotY += (targetRotY - currentRotY) * DAMP;
+            currentRotX += (targetRotX - currentRotX) * DAMP;
 
-            // Auto-rotate model slowly + mouse parallax
             if (gorillaModel) {
-                gorillaModel.rotation.y = elapsed * 0.15 + mouseX * 0.3;
-                gorillaModel.rotation.x = mouseY * -0.1;
+                gorillaModel.rotation.y = currentRotY;
+                gorillaModel.rotation.x = currentRotX;
 
                 // Subtle floating animation
-                gorillaModel.position.y = 0.3 + Math.sin(elapsed * 0.8) * 0.08;
+                gorillaModel.position.y = baseY + Math.sin(elapsed * 0.8) * 0.04;
             }
 
             // Animate accent light orbit
