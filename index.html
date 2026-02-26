@@ -14,7 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
 
-    <!-- Three.js (removed — using logo image instead) -->
+    <!-- Three.js + GLTFLoader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
 
     <!-- GSAP + ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -83,8 +86,8 @@
        HERO
   ═══════════════════════════════════════════ -->
     <section id="hero" class="hero">
-        <div class="hero__logo-bg">
-            <img src="gorilla-logo.png" alt="" class="hero__logo-img" />
+        <div class="hero__3d-container" id="hero-3d-container">
+            <canvas id="gorilla-canvas" class="hero__3d-canvas"></canvas>
         </div>
         <canvas id="smoke-canvas" class="hero__smoke"></canvas>
 

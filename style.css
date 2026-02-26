@@ -363,36 +363,19 @@ a:hover {
   background: radial-gradient(ellipse at 50% 40%, #1a1507 0%, var(--bg) 70%);
 }
 
-.hero__logo-bg {
+.hero__3d-container {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   pointer-events: none;
 }
 
-.hero__logo-img {
-  width: min(70vw, 520px);
-  height: auto;
-  opacity: .18;
-  filter: drop-shadow(0 0 80px rgba(212, 160, 23, .25));
-  animation: logo-float 6s ease-in-out infinite;
-}
-
-@keyframes logo-float {
-
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
-
-  50% {
-    transform: translateY(-12px) scale(1.02);
-  }
+.hero__3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .hero__smoke {

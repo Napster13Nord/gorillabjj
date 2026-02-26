@@ -16,7 +16,230 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 800);
     });
 
-    /* ─── THREE.JS REMOVED — using logo image background instead ─── */
+    /* ─── THREE.JS 3D GORILLA MODEL ──────────── */
+    function init3DGorilla() {
+        if (typeof THREE === 'undefined') return;
+
+        const canvas = document.getElementById('gorilla-canvas');
+        const container = document.getElementById('hero-3d-container');
+        if (!canvas || !container) return;
+
+        // ── Renderer ──
+        const renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            alpha: true,
+            antialias: true,
+            powerPreference: 'high-performance'
+        });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        // ── Scene ──
+        const scene = new THREE.Scene();
+
+        // ── Camera ──
+        const camera = new THREE.PerspectiveCamera(
+            40,
+            container.clientWidth / container.clientHeight,
+            0.1,
+            100
+        );
+        camera.position.set(0, 1.2, 4.5);
+        camera.lookAt(0, 0.8, 0);
+
+        // ── Cinematic Lighting (sleek gold/dark) ──
+
+        // Ambient — very subtle dark fill
+        const ambient = new THREE.AmbientLight(0x111111, 0.5);
+        scene.add(ambient);
+
+        // Key light — warm gold from top-right
+        const keyLight = new THREE.DirectionalLight(0xD4A017, 2.5);
+        keyLight.position.set(3, 5, 2);
+        keyLight.castShadow = true;
+        keyLight.shadow.mapSize.width = 1024;
+        keyLight.shadow.mapSize.height = 1024;
+        scene.add(keyLight);
+
+        // Rim light — strong gold/amber from behind-left for edge glow
+        const rimLight = new THREE.DirectionalLight(0xF0C44A, 2.0);
+        rimLight.position.set(-3, 3, -3);
+        scene.add(rimLight);
+
+        // Cool fill light from below-right for depth
+        const fillLight = new THREE.DirectionalLight(0x1a1a3a, 0.8);
+        fillLight.position.set(2, -1, 2);
+        scene.add(fillLight);
+
+        // Accent point light — gold glow emanating near the model
+        const accentLight = new THREE.PointLight(0xD4A017, 1.5, 10);
+        accentLight.position.set(0, 2, 2);
+        scene.add(accentLight);
+
+        // Secondary rim — subtle cool blue from the right for sleek contrast
+        const coolRim = new THREE.DirectionalLight(0x334466, 0.6);
+        coolRim.position.set(4, 1, -1);
+        scene.add(coolRim);
+
+        // ── Load GLB Model ──
+        let gorillaModel = null;
+        let mixer = null;
+
+        const gltfLoader = new THREE.GLTFLoader();
+        gltfLoader.load(
+            'c30d42aa9f8d4e23b8a0ee3ec41807c0.glb',
+            (gltf) => {
+                gorillaModel = gltf.scene;
+
+                // Auto-scale and center the model
+                const box = new THREE.Box3().setFromObject(gorillaModel);
+                const size = box.getSize(new THREE.Vector3());
+                const center = box.getCenter(new THREE.Vector3());
+
+                const maxDim = Math.max(size.x, size.y, size.z);
+                const targetSize = 3.2; // desired visible size
+                const scale = targetSize / maxDim;
+                gorillaModel.scale.setScalar(scale);
+
+                // Re-center after scaling
+                box.setFromObject(gorillaModel);
+                box.getCenter(center);
+                gorillaModel.position.sub(center);
+                gorillaModel.position.y += 0.3; // slight lift
+
+                // Apply sleek material enhancements
+                gorillaModel.traverse((child) => {
+                    if (child.isMesh) {
+                        child.castShadow = true;
+                        child.receiveShadow = true;
+
+                        if (child.material) {
+                            // Enhance material for sleek look
+                            child.material.metalness = 0.15;
+                            child.material.roughness = 0.55;
+                            child.material.envMapIntensity = 1.5;
+                            child.material.needsUpdate = true;
+                        }
+                    }
+                });
+
+                scene.add(gorillaModel);
+
+                // Handle animations if model has them
+                if (gltf.animations && gltf.animations.length > 0) {
+                    mixer = new THREE.AnimationMixer(gorillaModel);
+                    const action = mixer.clipAction(gltf.animations[0]);
+                    action.play();
+                }
+
+                // Initial reveal animation with GSAP
+                gorillaModel.scale.setScalar(0);
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(gorillaModel.scale, {
+                        x: scale,
+                        y: scale,
+                        z: scale,
+                        duration: 1.8,
+                        ease: 'elastic.out(1, 0.6)',
+                        delay: 0.3
+                    });
+                } else {
+                    gorillaModel.scale.setScalar(scale);
+                }
+            },
+            (progress) => {
+                // Loading progress (optional)
+            },
+            (error) => {
+                console.warn('Error loading GLB model:', error);
+            }
+        );
+
+        // ── Environment map for reflections ──
+        const pmremGenerator = new THREE.PMREMGenerator(renderer);
+        const envScene = new THREE.Scene();
+        // Create a subtle gradient environment
+        const envGeo = new THREE.SphereGeometry(5, 32, 32);
+        const envMat = new THREE.MeshBasicMaterial({
+            color: 0x0a0a0a,
+            side: THREE.BackSide
+        });
+        envScene.add(new THREE.Mesh(envGeo, envMat));
+        // Add gold point for reflection
+        const envLight = new THREE.PointLight(0xD4A017, 2, 10);
+        envLight.position.set(2, 3, 2);
+        envScene.add(envLight);
+        const envMap = pmremGenerator.fromScene(envScene).texture;
+        scene.environment = envMap;
+        pmremGenerator.dispose();
+
+        // ── Mouse tracking for parallax effect ──
+        let mouseX = 0, mouseY = 0;
+        let targetMouseX = 0, targetMouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        // ── Animation Loop ──
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const delta = clock.getDelta();
+            const elapsed = clock.getElapsedTime();
+
+            // Smooth mouse follow
+            mouseX += (targetMouseX - mouseX) * 0.05;
+            mouseY += (targetMouseY - mouseY) * 0.05;
+
+            // Auto-rotate model slowly + mouse parallax
+            if (gorillaModel) {
+                gorillaModel.rotation.y = elapsed * 0.15 + mouseX * 0.3;
+                gorillaModel.rotation.x = mouseY * -0.1;
+
+                // Subtle floating animation
+                gorillaModel.position.y = 0.3 + Math.sin(elapsed * 0.8) * 0.08;
+            }
+
+            // Animate accent light orbit
+            accentLight.position.x = Math.sin(elapsed * 0.5) * 3;
+            accentLight.position.z = Math.cos(elapsed * 0.5) * 3;
+            accentLight.intensity = 1.5 + Math.sin(elapsed * 1.2) * 0.3;
+
+            // Update animation mixer
+            if (mixer) mixer.update(delta);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // ── Resize Handler ──
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    }
+
+    // Wait for Three.js to load then init
+    function waitForThree(callback, retries = 30) {
+        if (typeof THREE !== 'undefined' && typeof THREE.GLTFLoader !== 'undefined') {
+            callback();
+        } else if (retries > 0) {
+            setTimeout(() => waitForThree(callback, retries - 1), 150);
+        }
+    }
+
+    waitForThree(init3DGorilla);
 
     /* ─── SMOKE / FOG CANVAS EFFECT ──────────── */
     const smokeCanvas = document.getElementById('smoke-canvas');
