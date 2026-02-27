@@ -906,10 +906,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 float pulse = 0.5 + 0.5 * sin(t * 0.8);
                 float coreRadius = 0.28 + pulse * 0.03;
-                float core = smoothstep(coreRadius + 0.12, 0.0, len);
+                float core = smoothstep(coreRadius + 0.15, 0.0, len);
                 core *= (0.85 + 0.15 * pulse);
 
-                float halo = pow(max(0.0, 1.0 - len * 1.05), 3.5);
+                // Stronger atmospheric halo
+                float halo = pow(max(0.0, 1.0 - len * 0.95), 1.5);
                 halo *= (0.7 + 0.3 * pulse);
 
                 float n1 = snoise3(vec3(uv * 2.5, t * 0.4)) * 0.5 + 0.5;
@@ -918,49 +919,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 float surfaceMask = smoothstep(coreRadius + 0.05, coreRadius - 0.05, len);
 
                 float rings = 0.0;
-                float r1 = ring(len, 0.36, 0.006) * 0.9;
-                float r2 = (ringCount >= 2.0) ? ring(len, 0.50, 0.005) * 0.65 : 0.0;
-                float r3 = (ringCount >= 3.0) ? ring(len, 0.64, 0.004) * 0.45 : 0.0;
+                // Wider, punchier rings
+                float r1 = ring(len, 0.36, 0.012) * 1.0;
+                float r2 = (ringCount >= 2.0) ? ring(len, 0.50, 0.01) * 0.8 : 0.0;
+                float r3 = (ringCount >= 3.0) ? ring(len, 0.64, 0.008) * 0.6 : 0.0;
 
                 float s1 = pow(max(0.0, sin(ang - t * 2.5)), 8.0);
                 float s2 = pow(max(0.0, sin(ang * 1.0 + t * 1.8 + 2.1)), 8.0);
                 float s3 = pow(max(0.0, sin(ang * 1.0 - t * 0.9 + 4.5)), 8.0);
 
-                rings += r1 * (0.25 + s1 * 0.75);
-                rings += r2 * (0.25 + s2 * 0.75);
-                rings += r3 * (0.25 + s3 * 0.75);
+                rings += r1 * (0.3 + s1 * 0.7);
+                rings += r2 * (0.3 + s2 * 0.7);
+                rings += r3 * (0.3 + s3 * 0.7);
 
                 float sparks = 0.0;
-                sparks += orbitalSpark(uv, 0.36, 1.8,  0.00, 0.018) * 1.5;
-                sparks += orbitalSpark(uv, 0.36, 1.8,  PI,   0.015) * 1.2;
-                sparks += orbitalSpark(uv, 0.50, -1.2, 1.05, 0.016) * 1.3;
-                sparks += orbitalSpark(uv, 0.50, -1.2, 3.80, 0.013) * 1.0;
-                sparks += orbitalSpark(uv, 0.64,  0.7, 0.52, 0.015) * 0.9;
-                sparks += orbitalSpark(uv, 0.64,  0.7, 2.61, 0.012) * 0.8;
+                sparks += orbitalSpark(uv, 0.36, 1.8,  0.00, 0.02) * 2.0;
+                sparks += orbitalSpark(uv, 0.36, 1.8,  PI,   0.018) * 1.5;
+                sparks += orbitalSpark(uv, 0.50, -1.2, 1.05, 0.018) * 1.6;
+                sparks += orbitalSpark(uv, 0.50, -1.2, 3.80, 0.015) * 1.2;
+                sparks += orbitalSpark(uv, 0.64,  0.7, 0.52, 0.016) * 1.1;
+                sparks += orbitalSpark(uv, 0.64,  0.7, 2.61, 0.013) * 0.9;
                 sparks += orbitalSpark(uv, 0.64,  0.7, 4.71, 0.012) * 0.7;
 
                 float rays = 0.0;
                 for (float i = 0.0; i < 6.0; i++) {
                     float rayAng = i * TAU / 6.0 + t * 0.15;
                     float diff = abs(mod(ang - rayAng + PI, TAU) - PI);
-                    rays += smoothstep(0.18, 0.0, diff) * smoothstep(0.75, 0.3, len) * 0.4;
+                    rays += smoothstep(0.2, 0.0, diff) * smoothstep(0.8, 0.2, len) * 0.5;
                 }
                 rays *= (0.5 + 0.5 * sin(t * 0.6));
 
                 vec3 col = vec3(0.0);
-                col += goldDeep * halo * 1.8;
-                col += mix(goldMid, goldWhite, noiseTex * surfaceMask + (1.0 - surfaceMask) * 0.3) * core * 2.2;
-                col += goldBright * rings * 2.5;
-                col += goldWhite * sparks * 3.0;
-                col += goldMid * rays * 1.2;
+                col += goldDeep * halo * 2.5; 
+                col += mix(goldMid, goldWhite, noiseTex * surfaceMask + (1.0 - surfaceMask) * 0.3) * core * 2.5;
+                col += goldBright * rings * 3.5;
+                col += goldWhite * sparks * 3.5;
+                col += goldMid * rays * 1.5;
 
                 col *= glowIntensity;
-                col = clamp(col, 0.0, 1.0);
-
+                
+                // Bloom-like effect by overdriving colors slightly
                 float alpha = max(max(col.r, col.g), col.b);
-                alpha = clamp(alpha * 1.3, 0.0, 1.0);
+                alpha = smoothstep(0.0, 0.9, alpha);
+                alpha = clamp(alpha * 1.5, 0.0, 1.1);
 
-                return vec4(col * alpha, alpha);
+                return vec4(col, alpha);
             }
 
             void main() {
@@ -1039,7 +1042,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gl.uniform1f(uHover, currentHover);
             gl.uniform1f(uHoverInt, 0.3);
             gl.uniform1f(uPulse, 1.0);
-            gl.uniform1f(uGlow, 1.0);
+            gl.uniform1f(uGlow, 3.5);
             gl.uniform1f(uRing, 3.0);
 
             gl.bindBuffer(gl.ARRAY_BUFFER, posBuf); gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
