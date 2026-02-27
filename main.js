@@ -976,16 +976,38 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         let frame = 0;
-        const speed = 0.5;
-        const intervalMs = (speed * 1000) / clipPaths.length;
+        let glitchInterval;
 
-        setInterval(() => {
-            frame = (frame + 1) % clipPaths.length;
-            const afterIndex = frame;
-            const beforeIndex = (frame + 10) % clipPaths.length;
-            afterLayer.style.clipPath = clipPaths[afterIndex];
-            beforeLayer.style.clipPath = clipPaths[beforeIndex];
-        }, intervalMs);
+        function doGlitchBurst() {
+            const speed = 0.4 + Math.random() * 0.4; // random slicing speed
+            const intervalMs = (speed * 1000) / clipPaths.length;
+            const burstDuration = 150 + Math.random() * 350; // fast burst: 150-500ms
+
+            // Turn overlays ON
+            beforeLayer.style.opacity = '1';
+            afterLayer.style.opacity = '1';
+
+            // Start rapid cycling
+            glitchInterval = setInterval(() => {
+                frame = (frame + 1) % clipPaths.length;
+                afterLayer.style.clipPath = clipPaths[frame];
+                beforeLayer.style.clipPath = clipPaths[(frame + 10) % clipPaths.length];
+            }, intervalMs);
+
+            // Turn OFF after burst
+            setTimeout(() => {
+                clearInterval(glitchInterval);
+                beforeLayer.style.opacity = '0';
+                afterLayer.style.opacity = '0';
+
+                // Sleep for 3 to 6 seconds before next burst
+                const nextBurstDelay = 3000 + Math.random() * 3000;
+                setTimeout(doGlitchBurst, nextBurstDelay);
+            }, burstDuration);
+        }
+
+        // Start first burst quickly
+        setTimeout(doGlitchBurst, 1500);
     })();
 
 });
