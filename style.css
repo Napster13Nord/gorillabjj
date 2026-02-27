@@ -417,25 +417,42 @@ a:hover {
 
 .hero__title-line {
   font-family: var(--font-display);
-  line-height: 1;
-  letter-spacing: .08em;
+  line-height: 0.95;
+  letter-spacing: .04em;
   opacity: 0;
   transform: translateY(40px);
+  text-transform: uppercase;
 }
 
 .hero__title-line--1 {
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
-  color: var(--text);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  background: linear-gradient(180deg, #FFFFFF 0%, #A0A5AA 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
 }
 
 .hero__title-line--2 {
-  font-size: clamp(1.6rem, 4vw, 3.5rem);
-  color: var(--text-muted);
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  background: linear-gradient(180deg, #B5B5B5 0%, #6E6E6E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: -0.2rem;
 }
 
 .hero__title-line--3 {
-  font-size: clamp(3.5rem, 10vw, 8rem);
-  text-shadow: 0 0 60px rgba(212, 160, 23, .3), 0 0 120px rgba(212, 160, 23, .1);
+  font-size: clamp(4.5rem, 11vw, 9.5rem);
+  background: linear-gradient(135deg, #F0C44A 0%, #D4A017 50%, #8A6100 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  /* override old text-shadow as we use background-clip */
+  filter: drop-shadow(0 10px 30px rgba(212, 160, 23, 0.4)) drop-shadow(0 0 80px rgba(212, 160, 23, 0.15));
+  margin-top: -0.5rem;
+  letter-spacing: 0.02em;
 }
 
 .hero__subtitle {
