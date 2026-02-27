@@ -199,7 +199,7 @@ a:hover {
 }
 
 .navbar__logo-img {
-  height: 48px;
+  height: 65px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 4px rgba(212, 160, 23, 0.2));
@@ -1260,55 +1260,32 @@ a:hover {
 
 .footer__inner {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 2rem 0;
-  gap: 2rem;
-  flex-wrap: wrap;
+  padding: 3rem 0 2rem;
+  gap: 1.5rem;
 }
 
 .footer__brand {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .footer__logo-img {
-  height: 55px;
+  height: 100px;
   width: auto;
   object-fit: contain;
 }
 
-.footer__address {
-  font-size: .85rem;
-  color: var(--text-muted);
-  text-align: right;
-  line-height: 1.4;
-}
-
-.footer__address p {
-  margin: 0;
+.footer__bottom {
+  text-align: center;
 }
 
 .footer__copy {
-  font-size: .78rem;
+  font-size: .85rem;
   color: var(--text-muted);
-}
-
-.footer__links {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.footer__links a {
-  font-size: .78rem;
-  color: var(--text-muted);
-}
-
-.footer__links a:hover {
-  color: var(--gold);
 }
 
 /* ─── ANIMATIONS (GSAP will enhance these) ─────── */
@@ -1402,22 +1379,6 @@ a:hover {
 
   .contact__form {
     grid-template-columns: 1fr;
-  }
-
-  .footer__inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-  }
-
-  .footer__address {
-    text-align: center;
-  }
-
-  .footer__links {
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
   }
 }
 
