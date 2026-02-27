@@ -909,8 +909,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 float core = smoothstep(coreRadius + 0.15, 0.0, len);
                 core *= (0.85 + 0.15 * pulse);
 
-                // Stronger atmospheric halo
-                float halo = pow(max(0.0, 1.0 - len * 0.95), 1.5);
+                // Restored halo falloff for a cleaner look
+                float halo = pow(max(0.0, 1.0 - len * 1.0), 2.8);
                 halo *= (0.7 + 0.3 * pulse);
 
                 float n1 = snoise3(vec3(uv * 2.5, t * 0.4)) * 0.5 + 0.5;
@@ -919,10 +919,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 float surfaceMask = smoothstep(coreRadius + 0.05, coreRadius - 0.05, len);
 
                 float rings = 0.0;
-                // Wider, punchier rings
-                float r1 = ring(len, 0.36, 0.012) * 1.0;
-                float r2 = (ringCount >= 2.0) ? ring(len, 0.50, 0.01) * 0.8 : 0.0;
-                float r3 = (ringCount >= 3.0) ? ring(len, 0.64, 0.008) * 0.6 : 0.0;
+                // Slightly Narrrowed rings for precision
+                float r1 = ring(len, 0.36, 0.010) * 1.0;
+                float r2 = (ringCount >= 2.0) ? ring(len, 0.50, 0.008) * 0.8 : 0.0;
+                float r3 = (ringCount >= 3.0) ? ring(len, 0.64, 0.007) * 0.6 : 0.0;
 
                 float s1 = pow(max(0.0, sin(ang - t * 2.5)), 8.0);
                 float s2 = pow(max(0.0, sin(ang * 1.0 + t * 1.8 + 2.1)), 8.0);
@@ -960,8 +960,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Bloom-like effect by overdriving colors slightly
                 float alpha = max(max(col.r, col.g), col.b);
-                alpha = smoothstep(0.0, 0.9, alpha);
-                alpha = clamp(alpha * 1.5, 0.0, 1.1);
+                alpha = smoothstep(0.0, 0.85, alpha);
+                alpha = clamp(alpha * 1.3, 0.0, 1.0);
 
                 return vec4(col, alpha);
             }
@@ -1042,7 +1042,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gl.uniform1f(uHover, currentHover);
             gl.uniform1f(uHoverInt, 0.3);
             gl.uniform1f(uPulse, 1.0);
-            gl.uniform1f(uGlow, 3.5);
+            gl.uniform1f(uGlow, 2.2);
             gl.uniform1f(uRing, 3.0);
 
             gl.bindBuffer(gl.ARRAY_BUFFER, posBuf); gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);

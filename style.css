@@ -416,8 +416,8 @@ a:hover {
 
 @media (min-width: 1440px) {
   .hero__orb-canvas {
-    width: 600%;
-    height: 600%;
+    width: 450%;
+    height: 450%;
     opacity: 0.9;
   }
 }
