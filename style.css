@@ -414,6 +414,13 @@ a:hover {
   opacity: 0.7;
 }
 
+@media (min-width: 1920px) {
+  .hero__orb-canvas {
+    width: 320%;
+    height: 320%;
+  }
+}
+
 .hero__smoke {
   position: absolute;
   inset: 0;
@@ -1597,6 +1604,32 @@ a:hover {
     min-height: 380px;
     height: 48vh;
     margin-top: -8rem;
+  }
+
+  .hero__scroll-indicator {
+    bottom: 0.8rem;
+  }
+
+  /* Gallery Mobile Spacing Fix */
+  .section {
+    padding: 3rem 0;
+  }
+
+  .depth-carousel {
+    min-height: 400px;
+  }
+
+  .depth-carousel__stage {
+    min-height: 250px;
+  }
+
+  .depth-carousel__card {
+    width: 280px;
+    height: 157px;
+  }
+
+  .depth-carousel__controls {
+    margin-top: 0;
   }
 
   .about__grid {
