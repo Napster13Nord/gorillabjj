@@ -673,5 +673,145 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         });
     }
+    /* ─── DEPTHDECK COVERFLOW CAROUSEL ─────────────── */
+    (function initDepthCarousel() {
+        const cards = document.querySelectorAll('.depth-carousel__card');
+        const dotsContainer = document.getElementById('carousel-dots');
+        const prevBtn = document.getElementById('carousel-prev');
+        const nextBtn = document.getElementById('carousel-next');
+        if (!cards.length || !dotsContainer) return;
+
+        const totalCards = cards.length;
+        let activeIndex = 0;
+        let autoPlayTimer = null;
+        let isAutoPlaying = true;
+
+        // Responsive config
+        function getConfig() {
+            const w = window.innerWidth;
+            if (w < 480) return {
+                cardWidth: Math.min(w * 0.55, 180),
+                cardHeight: 270,
+                spacing: 35,
+                verticalOffset: 8,
+                scaleStep: 0.14,
+                rotationDeg: -8,
+                perspective: 800,
+                brightnessStep: 0.15
+            };
+            if (w < 900) return {
+                cardWidth: Math.min(w * 0.35, 250),
+                cardHeight: 375,
+                spacing: 70,
+                verticalOffset: 15,
+                scaleStep: 0.12,
+                rotationDeg: -12,
+                perspective: 1200,
+                brightnessStep: 0.1
+            };
+            return {
+                cardWidth: 280,
+                cardHeight: 420,
+                spacing: 130,
+                verticalOffset: 25,
+                scaleStep: 0.1,
+                rotationDeg: -15,
+                perspective: 1500,
+                brightnessStep: 0.1
+            };
+        }
+
+        // Build dots
+        for (let i = 0; i < totalCards; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'depth-carousel__dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => { stopAutoPlay(); goTo(i); });
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateDots() {
+            dotsContainer.querySelectorAll('.depth-carousel__dot').forEach((d, i) => {
+                d.classList.toggle('active', i === activeIndex);
+            });
+        }
+
+        function layoutCards() {
+            const cfg = getConfig();
+            const stage = document.getElementById('carousel-stage');
+            if (stage) {
+                stage.style.perspective = cfg.perspective + 'px';
+                stage.style.minHeight = cfg.cardHeight + 80 + 'px';
+            }
+
+            cards.forEach((card, index) => {
+                const half = Math.floor(totalCards / 2);
+                let rel = ((index - activeIndex + totalCards) % totalCards) - half;
+                if (rel > totalCards / 2) rel -= totalCards;
+                if (rel < -totalCards / 2) rel += totalCards;
+
+                const absPos = Math.abs(rel);
+                const x = rel * cfg.spacing;
+                const y = absPos * cfg.verticalOffset;
+                const scale = Math.max(0.4, 1 - absPos * cfg.scaleStep);
+                const rotY = rel * cfg.rotationDeg;
+                const brightness = Math.max(0.3, 1 - absPos * cfg.brightnessStep);
+                const zIndex = 200 - absPos * 10;
+                const isCenter = rel === 0;
+
+                card.style.width = cfg.cardWidth + 'px';
+                card.style.height = cfg.cardHeight + 'px';
+                card.style.transform = `translateX(${x}px) translateY(${y}px) scale(${scale}) rotateY(${rotY}deg)`;
+                card.style.setProperty('--card-transform', `translateX(${x}px) translateY(${y}px) scale(${scale}) rotateY(${rotY}deg)`);
+                card.style.filter = `brightness(${brightness})`;
+                card.style.zIndex = zIndex;
+                card.style.opacity = absPos > 3 ? '0' : '1';
+                card.classList.toggle('active', isCenter);
+
+                // Click handler for side cards
+                card.onclick = () => {
+                    if (rel === 0) return;
+                    stopAutoPlay();
+                    goTo((activeIndex + rel + totalCards) % totalCards);
+                };
+            });
+        }
+
+        function goTo(index) {
+            activeIndex = index;
+            layoutCards();
+            updateDots();
+        }
+
+        function goNext() { goTo((activeIndex + 1) % totalCards); }
+        function goPrev() { goTo((activeIndex - 1 + totalCards) % totalCards); }
+
+        function stopAutoPlay() {
+            isAutoPlaying = false;
+            if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; }
+        }
+
+        function startAutoPlay() {
+            if (!isAutoPlaying) return;
+            autoPlayTimer = setInterval(goNext, 4000);
+        }
+
+        // Arrow buttons
+        if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoPlay(); goPrev(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoPlay(); goNext(); });
+
+        // Keyboard navigation
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') { stopAutoPlay(); goPrev(); }
+            if (e.key === 'ArrowRight') { stopAutoPlay(); goNext(); }
+        });
+
+        // Responsive resize
+        window.addEventListener('resize', () => layoutCards());
+
+        // Init
+        layoutCards();
+        startAutoPlay();
+    })();
 
 });

@@ -1252,6 +1252,131 @@ a:hover {
   background: rgba(212, 160, 23, .06);
 }
 
+/* ─── GALLERY / DEPTH CAROUSEL ──────────────────── */
+.gallery {
+  padding-bottom: 2rem;
+  overflow: hidden;
+}
+
+.depth-carousel {
+  position: relative;
+  width: 100%;
+  min-height: 550px;
+  user-select: none;
+}
+
+.depth-carousel__stage {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1500px;
+  transform-style: preserve-3d;
+}
+
+.depth-carousel__card {
+  position: absolute;
+  width: 280px;
+  height: 420px;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.5s ease,
+    filter 0.5s ease,
+    box-shadow 0.5s ease;
+  background: #000;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+  will-change: transform;
+}
+
+.depth-carousel__card:hover {
+  transform: var(--card-transform) translateY(-15px) !important;
+}
+
+.depth-carousel__card.active {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.depth-carousel__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  display: block;
+}
+
+.depth-carousel__card:hover img {
+  transform: scale(1.05);
+}
+
+/* Controls */
+.depth-carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 100;
+}
+
+.depth-carousel__btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.depth-carousel__btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #000;
+  transform: scale(1.08);
+}
+
+.depth-carousel__btn:active {
+  transform: scale(0.92);
+}
+
+.depth-carousel__dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.depth-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.depth-carousel__dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.depth-carousel__dot.active {
+  width: 24px;
+  background: var(--gold);
+}
+
 /* ─── FOOTER ───────────────────────────────────── */
 .footer {
   border-top: 1px solid var(--border);
