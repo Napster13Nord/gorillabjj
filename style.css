@@ -59,6 +59,7 @@ html {
   scroll-padding-top: var(--nav-h);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -417,11 +418,12 @@ a:hover {
 
 .hero__title-line {
   font-family: var(--font-display);
-  line-height: 0.95;
+  line-height: 1.05;
   letter-spacing: .04em;
   opacity: 0;
   transform: translateY(40px);
   text-transform: uppercase;
+  max-width: 100%;
 }
 
 .hero__title-line--1 {
@@ -439,7 +441,7 @@ a:hover {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: -0.2rem;
+  margin-top: 0.3rem;
 }
 
 .hero__title-line--3 {
@@ -451,18 +453,20 @@ a:hover {
   text-shadow: none;
   /* override old text-shadow as we use background-clip */
   filter: drop-shadow(0 10px 30px rgba(212, 160, 23, 0.4)) drop-shadow(0 0 80px rgba(212, 160, 23, 0.15));
-  margin-top: -0.5rem;
+  margin-top: 0.2rem;
   letter-spacing: 0.02em;
 }
 
 .hero__subtitle {
-  font-size: clamp(.85rem, 1.5vw, 1.1rem);
+  font-size: clamp(.75rem, 2.5vw, 1.1rem);
   color: var(--text-muted);
-  letter-spacing: .2em;
+  letter-spacing: .12em;
   text-transform: uppercase;
   margin-top: 1.2rem;
   opacity: 0;
   transform: translateY(20px);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .hero__cta-group {
