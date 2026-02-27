@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const center = box.getCenter(new THREE.Vector3());
 
                 const maxDim = Math.max(size.x, size.y, size.z);
-                const targetSize = 1.4; // smaller, sleek size
+                const targetSize = 1.7; // increased size slightly
                 const scale = targetSize / maxDim;
                 gorillaModel.scale.setScalar(scale);
 
@@ -187,8 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.addEventListener('mousemove', (e) => {
             // Map mouse position to rotation targets
+            // targetRotY: mouse right -> look right
             targetRotY = ((e.clientX / window.innerWidth) - 0.5) * 2 * MAX_ROT_Y;
-            targetRotX = ((e.clientY / window.innerHeight) - 0.5) * 2 * -MAX_ROT_X;
+            // targetRotX: mouse down -> look down
+            targetRotX = ((e.clientY / window.innerHeight) - 0.5) * 2 * MAX_ROT_X;
         });
 
         // ── Animation Loop ──
