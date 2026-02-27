@@ -1482,6 +1482,40 @@ a:hover {
 }
 
 /* ─── RESPONSIVE ───────────────────────────────── */
+/* 4K and Ultra-wide (2560px+) */
+@media (min-width: 2560px) {
+  .hero__title-line--1 {
+    font-size: 8.5rem;
+  }
+
+  .hero__title-line--2 {
+    font-size: 5rem;
+  }
+
+  .hero__title-line--3,
+  .glitch-text,
+  .glitch-layer {
+    font-size: 13rem;
+  }
+}
+
+/* 2K and large desktops (1440px+) */
+@media (min-width: 1440px) and (max-width: 2559px) {
+  .hero__title-line--1 {
+    font-size: 7.5rem;
+  }
+
+  .hero__title-line--2 {
+    font-size: 4.5rem;
+  }
+
+  .hero__title-line--3,
+  .glitch-text,
+  .glitch-layer {
+    font-size: 11rem;
+  }
+}
+
 /* Short desktop screens (1024x600, etc) */
 @media (max-height: 700px) and (min-width: 769px) {
   .navbar {
