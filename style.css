@@ -1573,10 +1573,17 @@ a:hover {
     display: flex;
   }
 
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-bottom: 4rem;
+  }
+
   .hero__grid {
     grid-template-columns: 1fr;
     text-align: center;
-    padding-top: calc(var(--nav-h) + 0.5rem);
+    padding-top: calc(var(--nav-h) + 1rem);
     gap: 0;
   }
 
@@ -1602,13 +1609,13 @@ a:hover {
 
   .hero__3d-container {
     order: 2;
-    min-height: 380px;
-    height: 48vh;
-    margin-top: -3rem;
+    min-height: 350px;
+    height: 45vh;
+    margin-top: -2rem;
   }
 
   .hero__scroll-indicator {
-    bottom: 0.8rem;
+    bottom: 1.2rem;
   }
 
   /* Gallery Mobile Spacing Fix */
