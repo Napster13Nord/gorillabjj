@@ -399,8 +399,8 @@ a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 110%;
-  height: 110%;
+  width: 180%;
+  height: 180%;
   z-index: 1;
   pointer-events: none;
   opacity: 0.7;
@@ -447,13 +447,19 @@ a:hover {
 }
 
 .glitch::before {
-  color: #ff6b35;
+  -webkit-text-fill-color: #ff6b35;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
   z-index: -1;
   animation: glitch-before 4s infinite linear alternate-reverse;
 }
 
 .glitch::after {
-  color: #00d4ff;
+  -webkit-text-fill-color: #00d4ff;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
   z-index: -2;
   animation: glitch-after 4s infinite linear alternate-reverse;
 }
