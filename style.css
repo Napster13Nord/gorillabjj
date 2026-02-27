@@ -199,21 +199,15 @@ a:hover {
 }
 
 .navbar__logo-img {
-  width: 38px;
-  height: 38px;
+  height: 48px;
+  width: auto;
   object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(212, 160, 23, 0.2));
 }
 
-.navbar__logo-text {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  letter-spacing: .12em;
-  color: var(--text);
-  filter: drop-shadow(0 0 6px rgba(212, 160, 23, .3));
-}
-
-.navbar__logo:hover .navbar__logo-text {
-  color: var(--text);
+.navbar__logo:hover .navbar__logo-img {
+  filter: drop-shadow(0 0 8px rgba(212, 160, 23, 0.5));
+  transition: filter 0.3s ease;
 }
 
 .navbar__links {
@@ -1276,15 +1270,11 @@ a:hover {
 .footer__brand {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  letter-spacing: .12em;
 }
 
 .footer__logo-img {
-  width: 45px;
-  height: 45px;
+  height: 55px;
+  width: auto;
   object-fit: contain;
 }
 
