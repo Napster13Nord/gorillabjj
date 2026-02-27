@@ -963,6 +963,7 @@ document.addEventListener('DOMContentLoaded', () => {
     (function initGlitch() {
         const beforeLayer = document.querySelector('.glitch-layer--before');
         const afterLayer = document.querySelector('.glitch-layer--after');
+        const glitchWrap = document.querySelector('.glitch-wrap');
         if (!beforeLayer || !afterLayer) return;
 
         const clipPaths = [
@@ -976,38 +977,82 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         let frame = 0;
-        let glitchInterval;
+        let hoverInterval = null;
+        let nextBurstTimeout = null;
+        let isHovering = false;
 
-        function doGlitchBurst() {
-            const speed = 0.4 + Math.random() * 0.4; // random slicing speed
+        function startContinuousGlitch() {
+            if (hoverInterval) return;
+            const speed = 0.5;
             const intervalMs = (speed * 1000) / clipPaths.length;
-            const burstDuration = 150 + Math.random() * 350; // fast burst: 150-500ms
 
-            // Turn overlays ON
             beforeLayer.style.opacity = '1';
             afterLayer.style.opacity = '1';
 
-            // Start rapid cycling
-            glitchInterval = setInterval(() => {
+            hoverInterval = setInterval(() => {
+                frame = (frame + 1) % clipPaths.length;
+                afterLayer.style.clipPath = clipPaths[frame];
+                beforeLayer.style.clipPath = clipPaths[(frame + 10) % clipPaths.length];
+            }, intervalMs);
+        }
+
+        function stopContinuousGlitch() {
+            if (hoverInterval) {
+                clearInterval(hoverInterval);
+                hoverInterval = null;
+            }
+            beforeLayer.style.opacity = '0';
+            afterLayer.style.opacity = '0';
+        }
+
+        function doGlitchBurst() {
+            if (isHovering) return; // Don't run random bursts while hovering
+
+            const speed = 0.4 + Math.random() * 0.4;
+            const intervalMs = (speed * 1000) / clipPaths.length;
+            const burstDuration = 150 + Math.random() * 350;
+
+            beforeLayer.style.opacity = '1';
+            afterLayer.style.opacity = '1';
+
+            let burstInterval = setInterval(() => {
                 frame = (frame + 1) % clipPaths.length;
                 afterLayer.style.clipPath = clipPaths[frame];
                 beforeLayer.style.clipPath = clipPaths[(frame + 10) % clipPaths.length];
             }, intervalMs);
 
-            // Turn OFF after burst
             setTimeout(() => {
-                clearInterval(glitchInterval);
-                beforeLayer.style.opacity = '0';
-                afterLayer.style.opacity = '0';
-
-                // Sleep for 3 to 6 seconds before next burst
-                const nextBurstDelay = 3000 + Math.random() * 3000;
-                setTimeout(doGlitchBurst, nextBurstDelay);
+                clearInterval(burstInterval);
+                if (!isHovering) {
+                    beforeLayer.style.opacity = '0';
+                    afterLayer.style.opacity = '0';
+                    // Schedule next burst
+                    const nextBurstDelay = 3000 + Math.random() * 3000;
+                    nextBurstTimeout = setTimeout(doGlitchBurst, nextBurstDelay);
+                }
             }, burstDuration);
         }
 
+        if (glitchWrap) {
+            // Optional: make it feel interactive
+            glitchWrap.style.cursor = 'crosshair';
+
+            glitchWrap.addEventListener('mouseenter', () => {
+                isHovering = true;
+                clearTimeout(nextBurstTimeout);
+                startContinuousGlitch();
+            });
+
+            glitchWrap.addEventListener('mouseleave', () => {
+                isHovering = false;
+                stopContinuousGlitch();
+                // Resume random bursts shortly after leaving
+                nextBurstTimeout = setTimeout(doGlitchBurst, 2000);
+            });
+        }
+
         // Start first burst quickly
-        setTimeout(doGlitchBurst, 1500);
+        nextBurstTimeout = setTimeout(doGlitchBurst, 1500);
     })();
 
 });
