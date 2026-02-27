@@ -686,13 +686,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let autoPlayTimer = null;
         let isAutoPlaying = true;
 
-        // Responsive config
+        // Responsive config (16:9 landscape cards)
         function getConfig() {
             const w = window.innerWidth;
             if (w < 480) return {
-                cardWidth: Math.min(w * 0.55, 180),
-                cardHeight: 270,
-                spacing: 35,
+                cardWidth: Math.min(w * 0.7, 280),
+                cardHeight: Math.min(w * 0.7, 280) * 9 / 16,
+                spacing: 45,
                 verticalOffset: 8,
                 scaleStep: 0.14,
                 rotationDeg: -8,
@@ -700,20 +700,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 brightnessStep: 0.15
             };
             if (w < 900) return {
-                cardWidth: Math.min(w * 0.35, 250),
-                cardHeight: 375,
-                spacing: 70,
-                verticalOffset: 15,
+                cardWidth: Math.min(w * 0.45, 360),
+                cardHeight: Math.min(w * 0.45, 360) * 9 / 16,
+                spacing: 80,
+                verticalOffset: 12,
                 scaleStep: 0.12,
                 rotationDeg: -12,
                 perspective: 1200,
                 brightnessStep: 0.1
             };
             return {
-                cardWidth: 280,
-                cardHeight: 420,
-                spacing: 130,
-                verticalOffset: 25,
+                cardWidth: 420,
+                cardHeight: 236,
+                spacing: 160,
+                verticalOffset: 20,
                 scaleStep: 0.1,
                 rotationDeg: -15,
                 perspective: 1500,

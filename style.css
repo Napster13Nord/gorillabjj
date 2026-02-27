@@ -1268,7 +1268,7 @@ a:hover {
 .depth-carousel__stage {
   position: relative;
   width: 100%;
-  min-height: 500px;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1278,9 +1278,9 @@ a:hover {
 
 .depth-carousel__card {
   position: absolute;
-  width: 280px;
-  height: 420px;
-  border-radius: 24px;
+  width: 420px;
+  height: 236px;
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
   backface-visibility: hidden;
