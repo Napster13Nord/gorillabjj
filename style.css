@@ -194,21 +194,26 @@ a:hover {
 .navbar__logo {
   display: flex;
   align-items: center;
-  gap: .5rem;
-  color: var(--text);
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  letter-spacing: .12em;
+  gap: 0.8rem;
   text-decoration: none;
 }
 
-.navbar__logo:hover {
-  color: var(--text);
+.navbar__logo-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
 }
 
-.navbar__logo-icon {
+.navbar__logo-text {
+  font-family: var(--font-display);
   font-size: 1.6rem;
+  letter-spacing: .12em;
+  color: var(--text);
   filter: drop-shadow(0 0 6px rgba(212, 160, 23, .3));
+}
+
+.navbar__logo:hover .navbar__logo-text {
+  color: var(--text);
 }
 
 .navbar__links {
@@ -1261,16 +1266,37 @@ a:hover {
 
 .footer__inner {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  gap: 2rem;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   font-family: var(--font-display);
   font-size: 1.1rem;
   letter-spacing: .12em;
+}
+
+.footer__logo-img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.footer__address {
+  font-size: .85rem;
+  color: var(--text-muted);
+  text-align: right;
+  line-height: 1.4;
+}
+
+.footer__address p {
+  margin: 0;
 }
 
 .footer__copy {
@@ -1280,7 +1306,10 @@ a:hover {
 
 .footer__links {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .footer__links a {
@@ -1388,6 +1417,17 @@ a:hover {
   .footer__inner {
     flex-direction: column;
     text-align: center;
+    gap: 1.5rem;
+  }
+
+  .footer__address {
+    text-align: center;
+  }
+
+  .footer__links {
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
 
