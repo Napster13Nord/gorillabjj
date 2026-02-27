@@ -1562,7 +1562,7 @@ a:hover {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
 
   .navbar__links,
   .navbar__cta {
@@ -1604,7 +1604,7 @@ a:hover {
     order: 2;
     min-height: 380px;
     height: 48vh;
-    margin-top: -8rem;
+    margin-top: -3rem;
   }
 
   .hero__scroll-indicator {
