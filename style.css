@@ -1482,6 +1482,48 @@ a:hover {
 }
 
 /* ─── RESPONSIVE ───────────────────────────────── */
+/* Short desktop screens (1024x600, etc) */
+@media (max-height: 700px) and (min-width: 769px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .hero {
+    padding-top: 80px;
+    min-height: 100vh;
+  }
+
+  .hero__title-line--1 {
+    font-size: clamp(2rem, 6vh, 4rem);
+  }
+
+  .hero__title-line--2 {
+    font-size: clamp(1.4rem, 4vh, 2.5rem);
+  }
+
+  .hero__title-line--3,
+  .glitch-text,
+  .glitch-layer {
+    font-size: clamp(3rem, 10vh, 6rem);
+  }
+
+  .hero__subtitle {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .hero__cta-group {
+    margin-top: 1.5rem;
+  }
+
+  .hero__3d-container {
+    width: 100%;
+    min-width: unset;
+    height: 60vh;
+    min-height: 350px;
+  }
+}
+
 @media (max-width: 1024px) {
   .techniques__grid {
     grid-template-columns: repeat(2, 1fr);
