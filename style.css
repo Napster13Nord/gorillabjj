@@ -720,17 +720,12 @@ a:hover {
   align-items: start;
 }
 
-.about__lead {
-  font-size: 1.15rem;
+.about__lead,
+.about__text p {
+  font-size: 1.1rem;
   line-height: 1.8;
   color: var(--text);
-  margin-bottom: 1rem;
-}
-
-.about__text p {
-  color: var(--text-muted);
-  margin-bottom: .8rem;
-  line-height: 1.7;
+  margin-bottom: 1.2rem;
 }
 
 .about__stats {
