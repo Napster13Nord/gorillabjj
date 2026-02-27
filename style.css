@@ -445,7 +445,7 @@ a:hover {
 
 .glitch-text {
   position: relative;
-  font-size: clamp(3rem, min(10vw, 15vh), 9.5rem);
+  font-size: clamp(3rem, min(8vw, 12vh), 7.8rem);
   font-family: var(--font-display);
   line-height: 1.05;
   letter-spacing: 0.02em;
@@ -459,7 +459,7 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  font-size: clamp(3rem, min(10vw, 15vh), 9.5rem);
+  font-size: clamp(3rem, min(8vw, 12vh), 7.8rem);
   font-family: var(--font-display);
   overflow: hidden;
   clip-path: inset(0 0 100% 0);
@@ -490,7 +490,7 @@ a:hover {
 }
 
 .hero__title-line--1 {
-  font-size: clamp(2rem, min(8vw, 12vh), 6.5rem);
+  font-size: clamp(2rem, min(6vw, 9vh), 5.5rem);
   background: linear-gradient(180deg, #FFFFFF 0%, #A0A5AA 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -499,7 +499,7 @@ a:hover {
 }
 
 .hero__title-line--2 {
-  font-size: clamp(1.4rem, min(5vw, 8vh), 4rem);
+  font-size: clamp(1.4rem, min(4vw, 6vh), 3.5rem);
   background: linear-gradient(180deg, #B5B5B5 0%, #6E6E6E 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -508,7 +508,7 @@ a:hover {
 }
 
 .hero__title-line--3 {
-  font-size: clamp(3rem, min(10vw, 15vh), 9.5rem);
+  font-size: clamp(3rem, min(8vw, 12vh), 7.8rem);
   margin-top: 0.2rem;
   letter-spacing: 0.02em;
 }
@@ -1492,29 +1492,16 @@ a:hover {
 /* ─── RESPONSIVE ───────────────────────────────── */
 /* 4K and Ultra-wide (2560px+) */
 @media (min-width: 2560px) {
+  .hero__grid {
+    max-width: 1800px;
+  }
+
   .hero__title-line--1 {
-    font-size: 8.5rem;
+    font-size: 8rem;
   }
 
   .hero__title-line--2 {
     font-size: 5rem;
-  }
-
-  .hero__title-line--3,
-  .glitch-text,
-  .glitch-layer {
-    font-size: 13rem;
-  }
-}
-
-/* 2K and large desktops (1440px+) */
-@media (min-width: 1440px) and (max-width: 2559px) {
-  .hero__title-line--1 {
-    font-size: 7.5rem;
-  }
-
-  .hero__title-line--2 {
-    font-size: 4.5rem;
   }
 
   .hero__title-line--3,
