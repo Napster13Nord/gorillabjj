@@ -622,10 +622,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ─── CONTACT FORM ──────────────────────────── */
+    /* ─── CONTACT FORM (FORMSPREE INTEGRATION) ──── */
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const submitBtn = document.getElementById('form-submit');
@@ -634,18 +634,35 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
             submitBtn.querySelector('span:first-child').textContent = 'SENDING...';
 
-            // Simulate send
-            setTimeout(() => {
-                submitBtn.querySelector('span:first-child').textContent = '✓ MESSAGE SENT';
-                submitBtn.style.background = 'linear-gradient(135deg, #27ae60, #1e8449)';
+            const formData = new FormData(contactForm);
 
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: contactForm.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    submitBtn.querySelector('span:first-child').textContent = '✓ MESSAGE SENT';
+                    submitBtn.style.background = 'linear-gradient(135deg, #27ae60, #1e8449)';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Formspree returned error');
+                }
+            } catch (error) {
+                console.error("Form submission error:", error);
+                submitBtn.querySelector('span:first-child').textContent = '❌ ERROR: TRY AGAIN';
+                submitBtn.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
+            } finally {
                 setTimeout(() => {
                     submitBtn.disabled = false;
                     submitBtn.querySelector('span:first-child').textContent = originalText;
                     submitBtn.style.background = '';
-                    contactForm.reset();
-                }, 3000);
-            }, 1500);
+                }, 4000);
+            }
         });
     }
 
