@@ -399,8 +399,8 @@ a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 180%;
-  height: 180%;
+  width: 250%;
+  height: 250%;
   z-index: 1;
   pointer-events: none;
   opacity: 0.7;
@@ -429,132 +429,39 @@ a:hover {
   align-items: flex-start;
 }
 
-/* ─── GLITCH EFFECT ────────────────────────────── */
-.glitch {
+/* ─── GLITCH EFFECT (JS-driven) ─────────────────── */
+.glitch-wrap {
   position: relative;
   display: inline-block;
 }
 
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
+.glitch-text {
+  position: relative;
+  color: #D4A017;
+  filter: drop-shadow(0 10px 30px rgba(212, 160, 23, 0.4)) drop-shadow(0 0 80px rgba(212, 160, 23, 0.15));
+}
+
+.glitch-layer {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  clip-path: inset(0 0 100% 0);
+  transition: opacity 0.1s;
 }
 
-.glitch::before {
-  -webkit-text-fill-color: #ff6b35;
-  background: none;
-  -webkit-background-clip: unset;
-  background-clip: unset;
-  z-index: -1;
-  animation: glitch-before 4s infinite linear alternate-reverse;
+.glitch-layer--before {
+  left: -6px;
+  color: #D4A017;
+  text-shadow: 5px 0 cyan;
 }
 
-.glitch::after {
-  -webkit-text-fill-color: #00d4ff;
-  background: none;
-  -webkit-background-clip: unset;
-  background-clip: unset;
-  z-index: -2;
-  animation: glitch-after 4s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-before {
-
-  0%,
-  85% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-  }
-
-  86% {
-    clip-path: inset(20% 0 60% 0);
-    transform: translate(-4px, -2px);
-  }
-
-  88% {
-    clip-path: inset(50% 0 20% 0);
-    transform: translate(4px, 2px);
-  }
-
-  90% {
-    clip-path: inset(10% 0 70% 0);
-    transform: translate(-3px, 1px);
-  }
-
-  92% {
-    clip-path: inset(60% 0 10% 0);
-    transform: translate(5px, -1px);
-  }
-
-  94% {
-    clip-path: inset(30% 0 40% 0);
-    transform: translate(-2px, 3px);
-  }
-
-  96% {
-    clip-path: inset(70% 0 5% 0);
-    transform: translate(3px, -2px);
-  }
-
-  98% {
-    clip-path: inset(0 0 85% 0);
-    transform: translate(-5px, 1px);
-  }
-
-  100% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-  }
-}
-
-@keyframes glitch-after {
-
-  0%,
-  85% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-  }
-
-  87% {
-    clip-path: inset(40% 0 30% 0);
-    transform: translate(4px, 1px);
-  }
-
-  89% {
-    clip-path: inset(15% 0 55% 0);
-    transform: translate(-3px, -2px);
-  }
-
-  91% {
-    clip-path: inset(65% 0 15% 0);
-    transform: translate(5px, 2px);
-  }
-
-  93% {
-    clip-path: inset(5% 0 75% 0);
-    transform: translate(-4px, -1px);
-  }
-
-  95% {
-    clip-path: inset(45% 0 25% 0);
-    transform: translate(2px, 3px);
-  }
-
-  97% {
-    clip-path: inset(80% 0 0% 0);
-    transform: translate(-3px, -2px);
-  }
-
-  100% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-  }
+.glitch-layer--after {
+  left: 6px;
+  color: #D4A017;
+  text-shadow: -5px 0 red;
 }
 
 .hero__title-line {
@@ -587,13 +494,6 @@ a:hover {
 
 .hero__title-line--3 {
   font-size: clamp(3rem, 13vw, 9.5rem);
-  background: linear-gradient(135deg, #F0C44A 0%, #D4A017 50%, #8A6100 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: none;
-  /* override old text-shadow as we use background-clip */
-  filter: drop-shadow(0 10px 30px rgba(212, 160, 23, 0.4)) drop-shadow(0 0 80px rgba(212, 160, 23, 0.15));
   margin-top: 0.2rem;
   letter-spacing: 0.02em;
 }

@@ -959,4 +959,33 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(render);
     })();
 
+    /* ─── GLITCH TEXT EFFECT (JS-driven) ────────────── */
+    (function initGlitch() {
+        const beforeLayer = document.querySelector('.glitch-layer--before');
+        const afterLayer = document.querySelector('.glitch-layer--after');
+        if (!beforeLayer || !afterLayer) return;
+
+        const clipPaths = [
+            'inset(10% 0 85% 0)', 'inset(45% 0 40% 0)', 'inset(80% 0 5% 0)',
+            'inset(10% 0 60% 0)', 'inset(70% 0 20% 0)', 'inset(25% 0 50% 0)',
+            'inset(55% 0 35% 0)', 'inset(5% 0 75% 0)', 'inset(90% 0 2% 0)',
+            'inset(30% 0 55% 0)', 'inset(15% 0 70% 0)', 'inset(65% 0 25% 0)',
+            'inset(40% 0 45% 0)', 'inset(85% 0 10% 0)', 'inset(20% 0 65% 0)',
+            'inset(50% 0 30% 0)', 'inset(75% 0 15% 0)', 'inset(35% 0 52% 0)',
+            'inset(60% 0 28% 0)', 'inset(8% 0 82% 0)'
+        ];
+
+        let frame = 0;
+        const speed = 0.5;
+        const intervalMs = (speed * 1000) / clipPaths.length;
+
+        setInterval(() => {
+            frame = (frame + 1) % clipPaths.length;
+            const afterIndex = frame;
+            const beforeIndex = (frame + 10) % clipPaths.length;
+            afterLayer.style.clipPath = clipPaths[afterIndex];
+            beforeLayer.style.clipPath = clipPaths[beforeIndex];
+        }, intervalMs);
+    })();
+
 });
