@@ -437,6 +437,10 @@ a:hover {
 
 .glitch-text {
   position: relative;
+  font-size: clamp(3rem, min(10vw, 15vh), 9.5rem);
+  font-family: var(--font-display);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
   color: #D4A017;
   filter: drop-shadow(0 10px 30px rgba(212, 160, 23, 0.4)) drop-shadow(0 0 80px rgba(212, 160, 23, 0.15));
 }
@@ -447,6 +451,8 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
+  font-size: clamp(3rem, min(10vw, 15vh), 9.5rem);
+  font-family: var(--font-display);
   overflow: hidden;
   clip-path: inset(0 0 100% 0);
   opacity: 0;
@@ -476,7 +482,7 @@ a:hover {
 }
 
 .hero__title-line--1 {
-  font-size: clamp(2rem, 10vw, 6.5rem);
+  font-size: clamp(2rem, min(8vw, 12vh), 6.5rem);
   background: linear-gradient(180deg, #FFFFFF 0%, #A0A5AA 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -485,7 +491,7 @@ a:hover {
 }
 
 .hero__title-line--2 {
-  font-size: clamp(1.4rem, 6vw, 4rem);
+  font-size: clamp(1.4rem, min(5vw, 8vh), 4rem);
   background: linear-gradient(180deg, #B5B5B5 0%, #6E6E6E 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -494,7 +500,7 @@ a:hover {
 }
 
 .hero__title-line--3 {
-  font-size: clamp(3rem, 13vw, 9.5rem);
+  font-size: clamp(3rem, min(10vw, 15vh), 9.5rem);
   margin-top: 0.2rem;
   letter-spacing: 0.02em;
 }
