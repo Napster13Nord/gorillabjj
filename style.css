@@ -425,7 +425,7 @@ a:hover {
 }
 
 .hero__title-line--1 {
-  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-size: clamp(2rem, 10vw, 6.5rem);
   background: linear-gradient(180deg, #FFFFFF 0%, #A0A5AA 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -434,7 +434,7 @@ a:hover {
 }
 
 .hero__title-line--2 {
-  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-size: clamp(1.4rem, 6vw, 4rem);
   background: linear-gradient(180deg, #B5B5B5 0%, #6E6E6E 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -443,7 +443,7 @@ a:hover {
 }
 
 .hero__title-line--3 {
-  font-size: clamp(4.5rem, 11vw, 9.5rem);
+  font-size: clamp(3rem, 15vw, 9.5rem);
   background: linear-gradient(135deg, #F0C44A 0%, #D4A017 50%, #8A6100 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1329,7 +1329,8 @@ a:hover {
   .hero__grid {
     grid-template-columns: 1fr;
     text-align: center;
-    padding-top: calc(var(--nav-h) + 2rem);
+    padding-top: calc(var(--nav-h) + 3rem);
+    gap: 0;
   }
 
   .hero__content {
@@ -1343,12 +1344,20 @@ a:hover {
 
   .hero__cta-group {
     justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .hero__cta-group .btn {
+    width: 100%;
   }
 
   .hero__3d-container {
     order: 2;
-    min-height: 250px;
-    height: 40vh;
+    min-height: 380px;
+    height: 50vh;
+    margin-top: -2rem;
   }
 
   .about__grid {
