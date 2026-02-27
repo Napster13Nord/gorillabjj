@@ -23,12 +23,13 @@
   --teal: #1abc9c;
   --cyan: #00bcd4;
 
-  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-display: 'Oswald', sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
-  --glass-bg: rgba(10, 10, 10, .72);
+  --glass-bg: rgba(9, 10, 15, 0.85);
+  /* Slightly darker glass for header */
   --glass-blur: 16px;
-  --glass-border: rgba(212, 160, 23, .12);
+  --glass-border: rgba(255, 255, 255, 0.05);
 
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -40,9 +41,10 @@
   --shadow-lg: 0 16px 64px rgba(0, 0, 0, .6);
   --shadow-gold: 0 0 30px rgba(212, 160, 23, .15);
 
-  --transition: .35s cubic-bezier(.22, 1, .36, 1);
+  --transition: .4s cubic-bezier(0.165, 0.84, 0.44, 1);
   --container: 1200px;
-  --nav-h: 72px;
+  --nav-h: 120px;
+  --nav-h-scrolled: 80px;
 }
 
 /* ─── RESET & BASE ─────────────────────────────── */
@@ -171,10 +173,11 @@ a:hover {
   width: 100%;
   height: var(--nav-h);
   z-index: 1000;
-  transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+  transition: height var(--transition), background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
 }
 
 .navbar.scrolled {
+  height: var(--nav-h-scrolled);
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -199,10 +202,15 @@ a:hover {
 }
 
 .navbar__logo-img {
-  height: 65px;
+  height: 100px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 4px rgba(212, 160, 23, 0.2));
+  transition: height var(--transition), filter 0.3s ease;
+}
+
+.navbar.scrolled .navbar__logo-img {
+  height: 60px;
 }
 
 .navbar__logo:hover .navbar__logo-img {
