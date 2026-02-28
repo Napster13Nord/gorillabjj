@@ -4,26 +4,96 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gorilla Jiu Jitsu — Premium BJJ Training in Raasepori, Finland</title>
-    <meta name="description"
-        content="Gorilla Jiu Jitsu — elite Brazilian Jiu Jitsu training in Raasepori, Finland. Build strength, skill, and an unbreakable mindset on the mat." />
 
-    <!-- Fonts -->
+    <!-- ═══ Primary SEO ═══ -->
+    <title>Gorilla BJJ — Brazilian Jiu Jitsu Classes in Raasepori, Finland</title>
+    <meta name="description"
+        content="Gorilla Jiu Jitsu — elite Brazilian Jiu Jitsu training in Raasepori, Finland. Gi, No-Gi, Kids BJJ & competition team. Book your free trial class today." />
+    <link rel="canonical" href="https://www.gorillajiujitsu.org/" />
+
+    <!-- ═══ Favicon ═══ -->
+    <link rel="icon" type="image/png" href="gorilla-logo.png" />
+    <link rel="apple-touch-icon" href="gorilla-logo.png" />
+
+    <!-- ═══ Open Graph / Facebook ═══ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.gorillajiujitsu.org/" />
+    <meta property="og:title" content="Gorilla BJJ — Brazilian Jiu Jitsu in Raasepori, Finland" />
+    <meta property="og:description"
+        content="Elite BJJ training for all levels. Gi, No-Gi, Kids & competition. Free trial class available." />
+    <meta property="og:image" content="https://www.gorillajiujitsu.org/gorilla-logo.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Gorilla Jiu Jitsu" />
+
+    <!-- ═══ Twitter Card ═══ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gorilla BJJ — Brazilian Jiu Jitsu in Raasepori, Finland" />
+    <meta name="twitter:description"
+        content="Elite BJJ training for all levels. Gi, No-Gi, Kids & competition. Free trial class available." />
+    <meta name="twitter:image" content="https://www.gorillajiujitsu.org/gorilla-logo.png" />
+
+    <!-- ═══ LocalBusiness Structured Data ═══ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": "Gorilla Jiu Jitsu",
+      "description": "Elite Brazilian Jiu Jitsu academy in Raasepori, Finland offering Gi, No-Gi, competition team, and kids BJJ classes.",
+      "url": "https://www.gorillajiujitsu.org/",
+      "telephone": "+358405012801",
+      "image": "https://www.gorillajiujitsu.org/gorilla-logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Metallduksgatan 34",
+        "addressLocality": "Raseborg",
+        "postalCode": "10600",
+        "addressCountry": "FI"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 60.0049,
+        "longitude": 23.4338
+      },
+      "openingHoursSpecification": [
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Wednesday"],"opens":"17:00","closes":"20:30"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Wednesday"],"opens":"18:00","closes":"20:30"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Thursday"],"opens":"18:30","closes":"20:30"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"12:00","closes":"14:30"}
+      ],
+      "sameAs": [
+        "https://www.instagram.com/gorillajiujitsuraasepori/",
+        "https://www.facebook.com/Gorilla.Jiu.jitsu.Raasepori"
+      ]
+    }
+    </script>
+
+    <!-- ═══ Fonts — preconnect then async load ═══ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" />
+    </noscript>
 
-    <!-- Three.js + GLTFLoader -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
+    <!-- ═══ CDN preconnects ═══ -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
-    <!-- GSAP + ScrollTrigger -->
+    <!-- ═══ Three.js + GLTFLoader (low priority — loaded after paint) ═══ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer fetchpriority="low"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" defer
+        fetchpriority="low"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer
+        fetchpriority="low"></script>
+
+    <!-- ═══ GSAP + ScrollTrigger ═══ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
-    <!-- Stylesheet -->
+    <!-- ═══ Stylesheet ═══ -->
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -45,7 +115,8 @@
     <header id="navbar" class="navbar">
         <div class="navbar__container">
             <a href="#hero" class="navbar__logo" aria-label="Gorilla Jiu Jitsu Home">
-                <img src="Logo-transparent.png" alt="Gorilla Jiu Jitsu Logo" class="navbar__logo-img">
+                <img src="Logo-transparent.png" alt="Gorilla Jiu Jitsu Logo" class="navbar__logo-img" loading="eager"
+                    fetchpriority="high">
             </a>
 
             <nav class="navbar__links" id="nav-links" aria-label="Main navigation">
@@ -189,22 +260,28 @@
         <div class="depth-carousel" id="depth-carousel">
             <div class="depth-carousel__stage" id="carousel-stage">
                 <div class="depth-carousel__card" data-index="0">
-                    <img src="Gallery (1).webp" alt="Gorilla Jiu Jitsu Training" draggable="false">
+                    <img src="Gallery (1).webp" alt="Gorilla Jiu Jitsu training session on the mats" draggable="false"
+                        loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="1">
-                    <img src="Gallery (2).webp" alt="Gorilla Jiu Jitsu Sparring" draggable="false">
+                    <img src="Gallery (2).webp" alt="Gorilla Jiu Jitsu sparring practice" draggable="false"
+                        loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="2">
-                    <img src="Gallery (3).webp" alt="Gorilla Jiu Jitsu Team" draggable="false">
+                    <img src="Gallery (3).webp" alt="Gorilla Jiu Jitsu BJJ team Raasepori" draggable="false"
+                        loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="3">
-                    <img src="Gallery (4).webp" alt="Gorilla Jiu Jitsu Competition" draggable="false">
+                    <img src="Gallery (4).webp" alt="Gorilla Jiu Jitsu competition training" draggable="false"
+                        loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="4">
-                    <img src="Gallery (5).webp" alt="Gorilla Jiu Jitsu Academy" draggable="false">
+                    <img src="Gallery (5).webp" alt="Gorilla Jiu Jitsu academy Raseborg" draggable="false"
+                        loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="5">
-                    <img src="Gallery (6).webp" alt="Gorilla Jiu Jitsu Gym" draggable="false">
+                    <img src="Gallery (6).webp" alt="Gorilla Jiu Jitsu gym facility Finland" draggable="false"
+                        loading="lazy" decoding="async">
                 </div>
             </div>
 
@@ -573,7 +650,8 @@
     <footer class="footer">
         <div class="container footer__inner">
             <div class="footer__brand">
-                <img src="Logo-transparent.png" alt="Gorilla Jiu Jitsu Logo" class="footer__logo-img">
+                <img src="Logo-transparent.png" alt="Gorilla Jiu Jitsu Logo" class="footer__logo-img" loading="lazy"
+                    decoding="async">
             </div>
 
             <div class="footer__bottom">

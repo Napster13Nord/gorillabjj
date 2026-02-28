@@ -678,6 +678,10 @@ a:hover {
 .section {
   padding: clamp(4rem, 10vw, 8rem) 0;
   position: relative;
+  /* Skip rendering off-screen sections until near scroll \u2014 huge mobile perf win */
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+  /* estimated height so scroll bar stays accurate */
 }
 
 .section__header {

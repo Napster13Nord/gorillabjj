@@ -7,12 +7,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
+    /* ─── MOBILE DETECTION ─────────────────────── */
+    const isMobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
+
     /* ─── LOADER ──────────────────────────────── */
     const loader = document.getElementById('loader');
     window.addEventListener('load', () => {
         setTimeout(() => {
             loader.classList.add('hidden');
             animateHero();
+            // ← GLB only loads AFTER first paint (biggest LCP fix)
+            waitForThree(init3DGorilla);
         }, 800);
     });
 
@@ -28,15 +33,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const renderer = new THREE.WebGLRenderer({
             canvas: canvas,
             alpha: true,
-            antialias: true,
+            antialias: !isMobile, // skip AA on mobile to save GPU
             powerPreference: 'high-performance'
         });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        // Cap pixel ratio: 1.5 on mobile, 2 on desktop
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
         renderer.setSize(container.clientWidth, container.clientHeight);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         renderer.toneMappingExposure = 1.2;
         renderer.outputEncoding = THREE.sRGBEncoding;
-        renderer.shadowMap.enabled = true;
+        // Disable shadows on mobile — big GPU budget saving
+        renderer.shadowMap.enabled = !isMobile;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
         // ── Scene ──
@@ -245,7 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    waitForThree(init3DGorilla);
+    // Note: waitForThree(init3DGorilla) is now called inside the loader callback above
+    // so the GLB only loads AFTER first paint
 
     /* ─── SMOKE / FOG CANVAS EFFECT ──────────── */
     const smokeCanvas = document.getElementById('smoke-canvas');
@@ -312,10 +320,12 @@ document.addEventListener('DOMContentLoaded', () => {
         smokeParticles.forEach(p => { p.update(); p.draw(); });
     }
 
-    initSmoke();
-    animateSmoke();
-
-    window.addEventListener('resize', initSmoke);
+    // Skip smoke entirely on mobile — saves meaningful CPU
+    if (!isMobile) {
+        initSmoke();
+        animateSmoke();
+        window.addEventListener('resize', initSmoke);
+    }
 
     /* ─── HERO ANIMATIONS ───────────────────────── */
     function animateHero() {
@@ -414,34 +424,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ─── NAVBAR SCROLL BEHAVIOR ────────────────── */
     const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
+    // Cache section/link lists once so scroll handler
+    // doesn't re-query the DOM on every event
+    const _sections = Array.from(document.querySelectorAll('.section, .hero'));
+    const _navLinks = Array.from(document.querySelectorAll('.navbar__link'));
+    let _scrollRAF = false;
 
     window.addEventListener('scroll', () => {
-        const scroll = window.scrollY;
+        if (_scrollRAF) return; // throttle to one update per animation frame
+        _scrollRAF = true;
+        requestAnimationFrame(() => {
+            const scroll = window.scrollY;
 
-        if (scroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        // Active section highlight
-        const sections = document.querySelectorAll('.section, .hero');
-        const navLinks = document.querySelectorAll('.navbar__link');
-
-        sections.forEach(section => {
-            const top = section.offsetTop - 120;
-            const bottom = top + section.offsetHeight;
-
-            if (scroll >= top && scroll < bottom) {
-                const id = section.id;
-                navLinks.forEach(link => {
-                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-                });
+            if (scroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-        });
 
-        lastScroll = scroll;
+            // Active section highlight
+            _sections.forEach(section => {
+                const top = section.offsetTop - 120;
+                const bottom = top + section.offsetHeight;
+                if (scroll >= top && scroll < bottom) {
+                    const id = section.id;
+                    _navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                    });
+                }
+            });
+            _scrollRAF = false;
+        });
     }, { passive: true });
 
     /* ─── MOBILE MENU ───────────────────────────── */
@@ -806,8 +819,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowRight') { stopAutoPlay(); goNext(); }
         });
 
-        // Responsive resize
-        window.addEventListener('resize', () => layoutCards());
+        // Responsive resize — debounced
+        let _carouselResizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(_carouselResizeTimer);
+            _carouselResizeTimer = setTimeout(layoutCards, 100);
+        });
 
         // Init
         layoutCards();
@@ -1021,17 +1038,29 @@ document.addEventListener('DOMContentLoaded', () => {
         container.addEventListener('mouseleave', () => targetHover = 0);
 
         function resize() {
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            // Cap DPR at 1.5 on mobile for the orb canvas
+            const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
             const w = canvas.parentElement.clientWidth, h = canvas.parentElement.clientHeight;
             canvas.width = w * dpr; canvas.height = h * dpr;
             canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
             gl.viewport(0, 0, canvas.width, canvas.height);
         }
-        window.addEventListener('resize', resize);
+        let _orbResizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(_orbResizeTimer);
+            _orbResizeTimer = setTimeout(resize, 100);
+        });
         resize();
+
+        // On mobile: render orb at ~30fps instead of 60fps to save GPU/battery
+        const ORB_FRAME_SKIP = isMobile ? 2 : 1;
+        let _orbFrame = 0;
 
         function render(t) {
             requestAnimationFrame(render);
+            _orbFrame++;
+            if (_orbFrame % ORB_FRAME_SKIP !== 0) return; // skip frames on mobile
+
             currentHover += (targetHover - currentHover) * 0.08;
 
             gl.clear(gl.COLOR_BUFFER_BIT);
@@ -1043,7 +1072,8 @@ document.addEventListener('DOMContentLoaded', () => {
             gl.uniform1f(uHoverInt, 0.3);
             gl.uniform1f(uPulse, 1.0);
             gl.uniform1f(uGlow, 2.2);
-            gl.uniform1f(uRing, 3.0);
+            // Reduce ring count on mobile for simpler shader
+            gl.uniform1f(uRing, isMobile ? 1.0 : 3.0);
 
             gl.bindBuffer(gl.ARRAY_BUFFER, posBuf); gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
             gl.bindBuffer(gl.ARRAY_BUFFER, uvBuf); gl.enableVertexAttribArray(aUv); gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 0, 0);
