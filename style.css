@@ -1679,15 +1679,3 @@ a:hover {
     font-size: .95rem;
   }
 }
-
-/* ─── ELFSIGHT BRANDING HIDE ───────────────────── */
-a[href*="elfsight.com"],
-[class*="eapps-link"],
-[class*="eapps-widget-footer"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  height: 0 !important;
-  overflow: hidden !important;
-}

@@ -609,6 +609,50 @@
 
     <!-- Main JS -->
     <script src="main.js" defer></script>
+
+    <!-- Hide Elfsight free branding badge -->
+    <script>
+        (function () {
+            function hideElfsightBranding() {
+                // The widget host element
+                var host = document.querySelector('.elfsight-app-d02d8c41-1090-4844-a8f1-62ba571a7d6b');
+                if (!host) return;
+
+                // Try shadow root first (newer Elfsight)
+                var root = host.shadowRoot;
+                if (root) {
+                    var footer = root.querySelector('[class*="widget-footer"], [class*="eapps-link"], a[href*="elfsight.com"]');
+                    if (footer) { footer.style.cssText = 'display:none!important'; }
+                }
+
+                // Also scan all iframes the widget may have injected
+                var iframes = document.querySelectorAll('iframe');
+                iframes.forEach(function (f) {
+                    try {
+                        var doc = f.contentDocument || f.contentWindow.document;
+                        var el = doc.querySelector('[class*="widget-footer"], [class*="eapps-link"], a[href*="elfsight.com"]');
+                        if (el) { el.style.cssText = 'display:none!important'; }
+                    } catch (e) { /* cross-origin — skip */ }
+                });
+
+                // Also try direct children of the widget div (plain DOM fallback)
+                var direct = host.querySelectorAll('[class*="widget-footer"], [class*="eapps-link"], a[href*="elfsight.com"]');
+                direct.forEach(function (el) { el.style.cssText = 'display:none!important'; });
+            }
+
+            // Poll until found, then keep watching
+            var attempts = 0;
+            var iv = setInterval(function () {
+                hideElfsightBranding();
+                attempts++;
+                if (attempts > 40) clearInterval(iv); // stop after 20 s
+            }, 500);
+
+            // Also re-run on any DOM mutation in case widget re-renders
+            var mo = new MutationObserver(hideElfsightBranding);
+            mo.observe(document.body, { childList: true, subtree: true });
+        })();
+    </script>
 </body>
 
 </html>
