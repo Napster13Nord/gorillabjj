@@ -91,7 +91,7 @@ const GJJ_I18N = {
   /* ─── SWEDISH ──────────────────────────────────── */
   sv: {
     nav: { about: 'Om oss', techniques: 'Vad Vi Lär', whyUs: 'Varför Träna', schedule: 'Schema', contact: 'Kontakt', join: 'GÅ MED NU', testimonials: 'Omdömen' },
-    hero: { line1: 'SLÄPP LÖS', line2: 'DIN INRE', subtitle: 'Elitiansk Brazilian Jiu Jitsu i Raseborg, Finland', cta1: 'BÖRJA DIN RESA', cta2: 'LÄS MER', scroll: 'SCROLLA' },
+    hero: { line1: 'SLÄPP LÖS', line2: 'DIN INRE', subtitle: 'Elit Brazilian Jiu Jitsu i Raseborg, Finland', cta1: 'BÖRJA DIN RESA', cta2: 'LÄS MER', scroll: 'SCROLLA' },
     about: {
       tag: 'VÅR HISTORIA',
       title: 'Om <span class="gold">Gorilla Jiu Jitsu</span>',
