@@ -676,9 +676,9 @@ a:hover {
 
 /* ─── SECTION SHARED ───────────────────────────── */
 .section {
-  padding: clamp(4rem, 10vw, 8rem) 0;
+  padding: clamp(3rem, 8vw, 8rem) 0;
   position: relative;
-  /* Skip rendering off-screen sections until near scroll \u2014 huge mobile perf win */
+  /* Skip rendering off-screen sections until near scroll — huge mobile perf win */
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
   /* estimated height so scroll bar stays accurate */
@@ -1732,5 +1732,18 @@ a:hover {
 @media (max-width: 600px) {
   .mobile-menu__link {
     font-size: 1.4rem;
+  }
+}
+
+/* ─── FIX GALLERY SPACING ON MOBILE ─────────────── */
+/* The depth-carousel has large min-heights set for desktop.
+   On mobile these create a huge blank gap — override to auto. */
+@media (max-width: 768px) {
+  .depth-carousel {
+    min-height: 0;
+  }
+
+  .depth-carousel__stage {
+    min-height: 0;
   }
 }
