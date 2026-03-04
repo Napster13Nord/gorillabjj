@@ -127,17 +127,23 @@
             </a>
 
             <nav class="navbar__links" id="nav-links" aria-label="Main navigation">
-                <a href="#about" class="navbar__link">About</a>
-                <a href="#techniques" class="navbar__link">What We Teach</a>
-                <a href="#why-us" class="navbar__link">Why Train With Us</a>
-                <a href="#schedule" class="navbar__link">Schedule</a>
-                <a href="#contact" class="navbar__link">Contact</a>
+                <a href="#about" class="navbar__link" data-i18n="nav.about">About</a>
+                <a href="#techniques" class="navbar__link" data-i18n="nav.techniques">What We Teach</a>
+                <a href="#why-us" class="navbar__link" data-i18n="nav.whyUs">Why Train With Us</a>
+                <a href="#schedule" class="navbar__link" data-i18n="nav.schedule">Schedule</a>
+                <a href="#contact" class="navbar__link" data-i18n="nav.contact">Contact</a>
             </nav>
 
             <button class="navbar__cta" id="nav-cta">
-                <span>JOIN NOW</span>
+                <span data-i18n="nav.join">JOIN NOW</span>
                 <span class="btn-ripple"></span>
             </button>
+
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn active" data-lang="en" aria-label="English">🇬🇧</button>
+                <button class="lang-btn" data-lang="fi" aria-label="Suomi">🇫🇮</button>
+                <button class="lang-btn" data-lang="sv" aria-label="Svenska">🇸🇪</button>
+            </div>
 
             <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -148,14 +154,19 @@
     <!-- Mobile menu overlay -->
     <div class="mobile-menu" id="mobile-menu">
         <nav class="mobile-menu__links">
-            <a href="#about" class="mobile-menu__link">About</a>
-            <a href="#techniques" class="mobile-menu__link">What We Teach</a>
-            <a href="#why-us" class="mobile-menu__link">Why Train With Us</a>
-            <a href="#schedule" class="mobile-menu__link">Schedule</a>
-            <a href="#testimonials" class="mobile-menu__link">Testimonials</a>
-            <a href="#contact" class="mobile-menu__link">Contact</a>
-            <a href="#contact" class="mobile-menu__cta">JOIN NOW</a>
+            <a href="#about" class="mobile-menu__link" data-i18n="nav.about">About</a>
+            <a href="#techniques" class="mobile-menu__link" data-i18n="nav.techniques">What We Teach</a>
+            <a href="#why-us" class="mobile-menu__link" data-i18n="nav.whyUs">Why Train With Us</a>
+            <a href="#schedule" class="mobile-menu__link" data-i18n="nav.schedule">Schedule</a>
+            <a href="#testimonials" class="mobile-menu__link" data-i18n="testimonials.tag">Testimonials</a>
+            <a href="#contact" class="mobile-menu__link" data-i18n="nav.contact">Contact</a>
+            <a href="#contact" class="mobile-menu__cta" data-i18n="nav.join">JOIN NOW</a>
         </nav>
+        <div class="lang-switcher lang-switcher--mobile">
+            <button class="lang-btn active" data-lang="en" aria-label="English">🇬🇧</button>
+            <button class="lang-btn" data-lang="fi" aria-label="Suomi">🇫🇮</button>
+            <button class="lang-btn" data-lang="sv" aria-label="Svenska">🇸🇪</button>
+        </div>
     </div>
 
     <!-- ═══════════════════════════════════════════
@@ -167,21 +178,21 @@
         <div class="hero__grid">
             <div class="hero__content">
                 <h1 class="hero__title">
-                    <span class="hero__title-line hero__title-line--1">UNLEASH</span>
-                    <span class="hero__title-line hero__title-line--2">YOUR INNER</span>
+                    <span class="hero__title-line hero__title-line--1" data-i18n="hero.line1">UNLEASH</span>
+                    <span class="hero__title-line hero__title-line--2" data-i18n="hero.line2">YOUR INNER</span>
                     <span class="hero__title-line hero__title-line--3 glitch-wrap" id="glitch-wrap">
                         <span class="glitch-text">GORILLA</span>
                         <span class="glitch-layer glitch-layer--before" aria-hidden="true">GORILLA</span>
                         <span class="glitch-layer glitch-layer--after" aria-hidden="true">GORILLA</span>
                     </span>
                 </h1>
-                <p class="hero__subtitle">Elite Brazilian Jiu Jitsu in Raasepori, Finland</p>
+                <p class="hero__subtitle" data-i18n="hero.subtitle">Elite Brazilian Jiu Jitsu in Raasepori, Finland</p>
                 <div class="hero__cta-group">
                     <a href="#contact" class="btn btn--primary" id="hero-cta">
-                        <span>START YOUR JOURNEY</span>
+                        <span data-i18n="hero.cta1">START YOUR JOURNEY</span>
                         <span class="btn-ripple"></span>
                     </a>
-                    <a href="#about" class="btn btn--ghost" id="hero-learn-more">LEARN MORE</a>
+                    <a href="#about" class="btn btn--ghost" id="hero-learn-more" data-i18n="hero.cta2">LEARN MORE</a>
                 </div>
             </div>
 
@@ -195,7 +206,7 @@
             <div class="hero__scroll-mouse">
                 <div class="hero__scroll-wheel"></div>
             </div>
-            <span>SCROLL</span>
+            <span data-i18n="hero.scroll">SCROLL</span>
         </div>
     </section>
 
@@ -205,24 +216,25 @@
     <section id="about" class="section about">
         <div class="container">
             <div class="section__header" data-animate="fade-up">
-                <span class="section__tag">OUR STORY</span>
-                <h2 class="section__title">About <span class="gold">Gorilla Jiu Jitsu</span></h2>
+                <span class="section__tag" data-i18n="about.tag">OUR STORY</span>
+                <h2 class="section__title" data-i18n-html="about.title">About <span class="gold">Gorilla Jiu
+                        Jitsu</span></h2>
                 <div class="section__divider"></div>
             </div>
 
             <div class="about__grid">
                 <div class="about__text" data-animate="fade-right">
-                    <p class="about__lead">
+                    <p class="about__lead" data-i18n="about.p1">
                         Born in the heart of Raasepori, Gorilla Jiu Jitsu is more than a gym — it's a brotherhood forged
                         on the mats. We believe Brazilian Jiu Jitsu is the ultimate vehicle for building discipline,
                         resilience, and an unbreakable mindset.
                     </p>
-                    <p>
+                    <p data-i18n="about.p2">
                         Our academy welcomes everyone — from complete beginners to seasoned competitors. Whether you're
                         chasing podium finishes or simply seeking a new way to challenge body and mind, the Gorilla
                         family has a place for you.
                     </p>
-                    <p>
+                    <p data-i18n="about.p3">
                         Step into our world-class training facility, feel the energy of a team that pushes each other to
                         greatness, and discover what you're truly capable of.
                     </p>
@@ -232,20 +244,20 @@
                     <div class="stat-card">
                         <span class="stat-card__number" data-count="500">0</span><span
                             class="stat-card__suffix">+</span>
-                        <span class="stat-card__label">Students Trained</span>
+                        <span class="stat-card__label" data-i18n="about.stat1">Students Trained</span>
                     </div>
                     <div class="stat-card">
                         <span class="stat-card__number" data-count="17">0</span>
-                        <span class="stat-card__label">Years of Experience</span>
+                        <span class="stat-card__label" data-i18n="about.stat2">Years of Experience</span>
                     </div>
                     <div class="stat-card">
                         <span class="stat-card__number" data-count="120">0</span><span
                             class="stat-card__suffix">+</span>
-                        <span class="stat-card__label">Competition Medals</span>
+                        <span class="stat-card__label" data-i18n="about.stat3">Competition Medals</span>
                     </div>
                     <div class="stat-card">
                         <span class="stat-card__number" data-count="4">0</span>
-                        <span class="stat-card__label">Black Belt Instructors</span>
+                        <span class="stat-card__label" data-i18n="about.stat4">Black Belt Instructors</span>
                     </div>
                 </div>
             </div>
@@ -258,8 +270,9 @@
     <section id="gallery" class="section gallery">
         <div class="container">
             <div class="section__header" data-animate="fade-up">
-                <span class="section__tag">OUR ACADEMY</span>
-                <h2 class="section__title">Life on the <span class="gold">Mats</span></h2>
+                <span class="section__tag" data-i18n="gallery.tag">OUR ACADEMY</span>
+                <h2 class="section__title" data-i18n-html="gallery.title">Life on the <span class="gold">Mats</span>
+                </h2>
                 <div class="section__divider"></div>
             </div>
         </div>
@@ -316,45 +329,48 @@
     <section id="techniques" class="section techniques">
         <div class="container">
             <div class="section__header" data-animate="fade-up">
-                <span class="section__tag">DISCIPLINES</span>
-                <h2 class="section__title">What We <span class="gold">Teach</span></h2>
+                <span class="section__tag" data-i18n="techniques.tag">DISCIPLINES</span>
+                <h2 class="section__title" data-i18n-html="techniques.title">What We <span class="gold">Teach</span>
+                </h2>
                 <div class="section__divider"></div>
             </div>
 
             <div class="techniques__grid">
                 <article class="tech-card" data-animate="fade-up" data-delay="0" data-tilt>
                     <div class="tech-card__icon">🥋</div>
-                    <h3 class="tech-card__title">Gi Jiu Jitsu</h3>
-                    <p class="tech-card__desc">Traditional BJJ with the kimono. Master grips, sweeps, and submissions
+                    <h3 class="tech-card__title" data-i18n="tech1.title">Gi Jiu Jitsu</h3>
+                    <p class="tech-card__desc" data-i18n="tech1.desc">Traditional BJJ with the kimono. Master grips,
+                        sweeps, and submissions
                         using the classic art form that started it all.</p>
                     <div class="tech-card__glow"></div>
                 </article>
 
                 <article class="tech-card" data-animate="fade-up" data-delay="1" data-tilt>
                     <div class="tech-card__icon">💪</div>
-                    <h3 class="tech-card__title">No-Gi Grappling</h3>
-                    <p class="tech-card__desc">Fast-paced submission wrestling without the gi. Develop explosive
+                    <h3 class="tech-card__title" data-i18n="tech2.title">No-Gi Grappling</h3>
+                    <p class="tech-card__desc" data-i18n="tech2.desc">Fast-paced submission wrestling without the gi.
+                        Develop explosive
                         takedowns, scrambles, and modern leg-lock systems.</p>
                     <div class="tech-card__glow"></div>
                 </article>
 
                 <article class="tech-card" data-animate="fade-up" data-delay="2" data-tilt>
                     <div class="tech-card__icon">🏆</div>
-                    <h3 class="tech-card__title">Competition Training</h3>
-                    <p class="tech-card__desc">Sharpen your game for the podium. Intense drilling, positional sparring,
+                    <h3 class="tech-card__title" data-i18n="tech3.title">Competition Training</h3>
+                    <p class="tech-card__desc" data-i18n="tech3.desc">Sharpen your game for the podium. Intense
+                        drilling, positional sparring,
                         and strategy sessions guided by experienced competitors.</p>
                     <div class="tech-card__glow"></div>
                 </article>
 
                 <article class="tech-card" data-animate="fade-up" data-delay="3" data-tilt>
                     <div class="tech-card__icon">🧒</div>
-                    <h3 class="tech-card__title">Kids Program</h3>
-                    <p class="tech-card__desc">Building confidence, discipline, and coordination in young grapplers aged
+                    <h3 class="tech-card__title" data-i18n="tech4.title">Kids Program</h3>
+                    <p class="tech-card__desc" data-i18n="tech4.desc">Building confidence, discipline, and coordination
+                        in young grapplers aged
                         5–15. A safe, fun, and empowering environment.</p>
                     <div class="tech-card__glow"></div>
                 </article>
-
-
             </div>
         </div>
     </section>
@@ -365,37 +381,41 @@
     <section id="why-us" class="section why-us">
         <div class="container">
             <div class="section__header" data-animate="fade-up">
-                <span class="section__tag">THE GORILLA DIFFERENCE</span>
-                <h2 class="section__title">Why Train <span class="gold">With Us</span></h2>
+                <span class="section__tag" data-i18n="whyUs.tag">THE GORILLA DIFFERENCE</span>
+                <h2 class="section__title" data-i18n-html="whyUs.title">Why Train <span class="gold">With Us</span></h2>
                 <div class="section__divider"></div>
             </div>
 
             <div class="why-us__grid">
                 <div class="why-card" data-animate="fade-up" data-delay="0">
                     <div class="why-card__number">01</div>
-                    <h3 class="why-card__title">World-Class Coaching</h3>
-                    <p class="why-card__desc">Our instructors have trained and competed at the highest level, bringing
+                    <h3 class="why-card__title" data-i18n="why1.title">World-Class Coaching</h3>
+                    <p class="why-card__desc" data-i18n="why1.desc">Our instructors have trained and competed at the
+                        highest level, bringing
                         international-grade technique to Raasepori.</p>
                 </div>
 
                 <div class="why-card" data-animate="fade-up" data-delay="1">
                     <div class="why-card__number">02</div>
-                    <h3 class="why-card__title">Family Atmosphere</h3>
-                    <p class="why-card__desc">We're a tight-knit community where egos are left at the door. Expect
+                    <h3 class="why-card__title" data-i18n="why2.title">Family Atmosphere</h3>
+                    <p class="why-card__desc" data-i18n="why2.desc">We're a tight-knit community where egos are left at
+                        the door. Expect
                         handshakes, respect, and lifelong friendships.</p>
                 </div>
 
                 <div class="why-card" data-animate="fade-up" data-delay="2">
                     <div class="why-card__number">03</div>
-                    <h3 class="why-card__title">Brand-New Facility</h3>
-                    <p class="why-card__desc">Train in our brand-new gym with quality mats, full changing rooms,
+                    <h3 class="why-card__title" data-i18n="why3.title">Brand-New Facility</h3>
+                    <p class="why-card__desc" data-i18n="why3.desc">Train in our brand-new gym with quality mats, full
+                        changing rooms,
                         showers, and free parking right at the door.</p>
                 </div>
 
                 <div class="why-card" data-animate="fade-up" data-delay="3">
                     <div class="why-card__number">04</div>
-                    <h3 class="why-card__title">Proven Results</h3>
-                    <p class="why-card__desc">85+ competition medals and a growing roster of champions. If you want to
+                    <h3 class="why-card__title" data-i18n="why4.title">Proven Results</h3>
+                    <p class="why-card__desc" data-i18n="why4.desc">85+ competition medals and a growing roster of
+                        champions. If you want to
                         compete, we'll get you podium-ready.</p>
                 </div>
             </div>
@@ -408,8 +428,9 @@
     <section id="schedule" class="section schedule">
         <div class="container">
             <div class="section__header" data-animate="fade-up">
-                <span class="section__tag">CLASSES</span>
-                <h2 class="section__title">Weekly <span class="gold">Schedule</span></h2>
+                <span class="section__tag" data-i18n="schedule.tag">CLASSES</span>
+                <h2 class="section__title" data-i18n-html="schedule.title">Weekly <span class="gold">Schedule</span>
+                </h2>
                 <div class="section__divider"></div>
             </div>
 
@@ -417,13 +438,13 @@
                 <table class="schedule__table" id="schedule-table">
                     <thead>
                         <tr>
-                            <th>Time</th>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                            <th>Saturday</th>
+                            <th data-i18n="schedule.th.time">Time</th>
+                            <th data-i18n="schedule.th.mon">Monday</th>
+                            <th data-i18n="schedule.th.tue">Tuesday</th>
+                            <th data-i18n="schedule.th.wed">Wednesday</th>
+                            <th data-i18n="schedule.th.thu">Thursday</th>
+                            <th data-i18n="schedule.th.fri">Friday</th>
+                            <th data-i18n="schedule.th.sat">Saturday</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -434,22 +455,27 @@
                             <td>—</td>
                             <td>—</td>
                             <td>—</td>
-                            <td><span class="schedule__class schedule__class--nogi">No-Gi</span></td>
+                            <td><span class="schedule__class schedule__class--nogi" data-i18n="cls.nogi">No-Gi</span>
+                            </td>
                         </tr>
                         <tr>
                             <td class="schedule__time">17:00</td>
-                            <td><span class="schedule__class schedule__class--kids">Kids BJJ (8–16)</span></td>
+                            <td><span class="schedule__class schedule__class--kids" data-i18n="cls.kidsbjj">Kids BJJ
+                                    (8–15)</span></td>
                             <td>—</td>
-                            <td><span class="schedule__class schedule__class--kids">Kids No-Gi (8–15)</span></td>
+                            <td><span class="schedule__class schedule__class--kids" data-i18n="cls.kidsnogi">Kids No-Gi
+                                    (8–15)</span></td>
                             <td>—</td>
                             <td>—</td>
                             <td>—</td>
                         </tr>
                         <tr>
                             <td class="schedule__time">18:00</td>
-                            <td><span class="schedule__class schedule__class--nogi">No-Gi</span></td>
-                            <td><span class="schedule__class schedule__class--gi">BJJ</span></td>
-                            <td><span class="schedule__class schedule__class--comp">Competition Training</span></td>
+                            <td><span class="schedule__class schedule__class--nogi" data-i18n="cls.nogi">No-Gi</span>
+                            </td>
+                            <td><span class="schedule__class schedule__class--gi" data-i18n="cls.bjj">BJJ</span></td>
+                            <td><span class="schedule__class schedule__class--comp" data-i18n="cls.comp">Competition
+                                    Training</span></td>
                             <td>—</td>
                             <td>—</td>
                             <td>—</td>
@@ -459,7 +485,7 @@
                             <td>—</td>
                             <td>—</td>
                             <td>—</td>
-                            <td><span class="schedule__class schedule__class--gi">BJJ</span></td>
+                            <td><span class="schedule__class schedule__class--gi" data-i18n="cls.bjj">BJJ</span></td>
                             <td>—</td>
                             <td>—</td>
                         </tr>
@@ -468,10 +494,14 @@
             </div>
 
             <div class="schedule__legend" data-animate="fade-up">
-                <span class="schedule__legend-item"><span class="dot dot--gi"></span> BJJ</span>
-                <span class="schedule__legend-item"><span class="dot dot--nogi"></span> No-Gi</span>
-                <span class="schedule__legend-item"><span class="dot dot--comp"></span> Competition</span>
-                <span class="schedule__legend-item"><span class="dot dot--kids"></span> Kids</span>
+                <span class="schedule__legend-item"><span class="dot dot--gi"></span> <span
+                        data-i18n="legend.gi">BJJ</span></span>
+                <span class="schedule__legend-item"><span class="dot dot--nogi"></span> <span
+                        data-i18n="legend.nogi">No-Gi</span></span>
+                <span class="schedule__legend-item"><span class="dot dot--comp"></span> <span
+                        data-i18n="legend.comp">Competition</span></span>
+                <span class="schedule__legend-item"><span class="dot dot--kids"></span> <span
+                        data-i18n="legend.kids">Kids</span></span>
             </div>
         </div>
     </section>
@@ -482,8 +512,9 @@
     <section id="testimonials" class="section testimonials">
         <div class="container">
             <div class="section__header" data-animate="fade-up">
-                <span class="section__tag">WHAT THEY SAY</span>
-                <h2 class="section__title">From Our <span class="gold">Family</span></h2>
+                <span class="section__tag" data-i18n="testimonials.tag">WHAT THEY SAY</span>
+                <h2 class="section__title" data-i18n-html="testimonials.title">From Our <span class="gold">Family</span>
+                </h2>
                 <div class="section__divider"></div>
             </div>
 
@@ -499,10 +530,11 @@
     <section id="contact" class="section contact">
         <div class="container">
             <div class="section__header" data-animate="fade-up">
-                <span class="section__tag">GET STARTED</span>
-                <h2 class="section__title">Ready to <span class="gold">Train?</span></h2>
+                <span class="section__tag" data-i18n="contact.tag">GET STARTED</span>
+                <h2 class="section__title" data-i18n-html="contact.title">Ready to <span class="gold">Train?</span></h2>
                 <div class="section__divider"></div>
-                <p class="section__subtitle">Book your free trial class today. No experience needed — just bring
+                <p class="section__subtitle" data-i18n="contact.subtitle">Book your free trial class today. No
+                    experience needed — just bring
                     yourself and a willingness to learn.</p>
             </div>
 
@@ -511,56 +543,55 @@
                     data-animate="fade-right">
                     <div class="form-group">
                         <input type="text" id="form-name" name="name" required placeholder=" " autocomplete="name" />
-                        <label for="form-name">Full Name</label>
+                        <label for="form-name" data-i18n="form.name">Full Name</label>
                         <span class="form-focus-bar"></span>
                     </div>
                     <div class="form-group">
                         <input type="email" id="form-email" name="email" required placeholder=" "
                             autocomplete="email" />
-                        <label for="form-email">Email Address</label>
+                        <label for="form-email" data-i18n="form.email">Email Address</label>
                         <span class="form-focus-bar"></span>
                     </div>
                     <div class="form-group">
                         <input type="tel" id="form-phone" name="phone" placeholder=" " autocomplete="tel" />
-                        <label for="form-phone">Phone (optional)</label>
+                        <label for="form-phone" data-i18n="form.phone">Phone (optional)</label>
                         <span class="form-focus-bar"></span>
                     </div>
                     <div class="form-group">
                         <select id="form-interest" name="interest" required>
                             <option value="" disabled selected></option>
-                            <option value="adult-bjj">Adult BJJ</option>
-                            <option value="adult-nogi">Adult No-Gi</option>
-                            <option value="kids">Kids Program</option>
-                            <option value="competition">Competition Team</option>
-                            <option value="trial">Free Trial Class</option>
+                            <option value="adult-bjj" data-i18n="interest.adultBjj">Adult BJJ</option>
+                            <option value="adult-nogi" data-i18n="interest.adultNogi">Adult No-Gi</option>
+                            <option value="kids" data-i18n="interest.kids">Kids Program</option>
+                            <option value="competition" data-i18n="interest.comp">Competition Team</option>
+                            <option value="trial" data-i18n="interest.trial">Free Trial Class</option>
                         </select>
-                        <label for="form-interest">I'm Interested In</label>
+                        <label for="form-interest" data-i18n="form.interest">I'm Interested In</label>
                         <span class="form-focus-bar"></span>
                     </div>
                     <div class="form-group form-group--full">
                         <textarea id="form-message" name="message" rows="4" placeholder=" "></textarea>
-                        <label for="form-message">Message (optional)</label>
+                        <label for="form-message" data-i18n="form.message">Message (optional)</label>
                         <span class="form-focus-bar"></span>
                     </div>
                     <button type="submit" class="btn btn--primary btn--full" id="form-submit">
-                        <span>SEND MESSAGE</span>
+                        <span data-i18n="form.submit">SEND MESSAGE</span>
                         <span class="btn-ripple"></span>
                     </button>
                 </form>
 
                 <div class="contact__info" data-animate="fade-left">
                     <div class="contact__info-card">
-                        <h3 class="contact__info-title">📍 Location</h3>
+                        <h3 class="contact__info-title" data-i18n="contact.location">📍 Location</h3>
                         <p>Metallduksgatan 34<br />10600 Raseborg</p>
                     </div>
                     <div class="contact__info-card">
-                        <h3 class="contact__info-title">🕐 Hours</h3>
-                        <p>Mon &amp; Wed: 17:00 – 20:30<br />Tue: 18:00 – 20:00<br />Thu: 18:30 – 20:30<br />Sat: 12:00
-                            – 14:30<br />Fri/Sun: Closed
-                        </p>
+                        <h3 class="contact__info-title" data-i18n="contact.hours">🕐 Hours</h3>
+                        <p data-i18n-html="contact.hoursText">Mon &amp; Wed: 17:00 – 20:30<br />Tue: 18:00 –
+                            20:00<br />Thu: 18:30 – 20:30<br />Sat: 12:00 – 14:30<br />Fri/Sun: Closed</p>
                     </div>
                     <div class="contact__info-card">
-                        <h3 class="contact__info-title">📞 Contact</h3>
+                        <h3 class="contact__info-title" data-i18n="contact.contactTitle">📞 Contact</h3>
                         <p>040 5012801</p>
                     </div>
                     <div class="contact__socials">
@@ -602,11 +633,18 @@
             </div>
 
             <div class="footer__bottom">
-                <span class="footer__copy">© 2026 Gorilla Jiu Jitsu. All rights reserved.</span>
+                <span class="footer__copy" data-i18n="footer.copy">© 2026 Gorilla Jiu Jitsu. All rights reserved.</span>
+                <div class="lang-switcher lang-switcher--footer">
+                    <button class="lang-btn active" data-lang="en" aria-label="English">🇬🇧</button>
+                    <button class="lang-btn" data-lang="fi" aria-label="Suomi">🇫🇮</button>
+                    <button class="lang-btn" data-lang="sv" aria-label="Svenska">🇸🇪</button>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- i18n must run before main.js -->
+    <script src="i18n.js" defer></script>
     <!-- Main JS -->
     <script src="main.js" defer></script>
 
