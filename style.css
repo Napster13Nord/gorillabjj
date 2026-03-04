@@ -1728,9 +1728,9 @@ a:hover {
   padding: .25rem .45rem;
 }
 
-/* Hide navbar lang-switcher on mobile/tablet — use footer instead */
-@media (max-width: 900px) {
-  #lang-switcher {
-    display: none;
+/* Reduce nav link size on small screens */
+@media (max-width: 600px) {
+  .mobile-menu__link {
+    font-size: 1.4rem;
   }
 }
