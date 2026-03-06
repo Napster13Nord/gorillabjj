@@ -70,6 +70,8 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 img,
@@ -732,6 +734,11 @@ a:hover {
   align-items: start;
 }
 
+.about__text,
+.about__stats {
+  min-width: 0;
+}
+
 .about__lead,
 .about__text p {
   font-size: 1.1rem;
@@ -753,6 +760,7 @@ a:hover {
   padding: 1.5rem;
   text-align: center;
   transition: transform var(--transition), border-color var(--transition);
+  min-width: 0;
 }
 
 .stat-card:hover {
@@ -802,6 +810,7 @@ a:hover {
   overflow: hidden;
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
   cursor: default;
+  min-width: 0;
 }
 
 .tech-card:hover {
@@ -859,6 +868,7 @@ a:hover {
   border-radius: var(--radius-md);
   padding: 2rem;
   transition: transform var(--transition), border-color var(--transition);
+  min-width: 0;
 }
 
 .why-card:hover {
