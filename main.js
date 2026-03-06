@@ -4,6 +4,39 @@
    smoke effect, carousel, counters, interactions
    ═══════════════════════════════════════════════════ */
 
+/* ─── DYNAMIC SCRIPT LOADING FOR PAGESPEED ─── */
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+    });
+}
+
+function loadHeavyLibs() {
+    if (window._libsLoaded) return;
+    window._libsLoaded = true;
+
+    Promise.all([
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'),
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
+    ]).then(() => {
+        return Promise.all([
+            loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'),
+            loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js'),
+            loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js')
+        ]);
+    }).catch(err => console.error("Error loading heavy scripts:", err));
+}
+
+// Load heavy libraries on first user interaction or after a 2.5s fallback delay
+['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => {
+    window.addEventListener(evt, loadHeavyLibs, { once: true, passive: true });
+});
+setTimeout(loadHeavyLibs, 2500);
+
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
@@ -255,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Wait for Three.js to load then init
-    function waitForThree(callback, retries = 30) {
+    function waitForThree(callback, retries = 100) {
         if (typeof THREE !== 'undefined' && typeof THREE.GLTFLoader !== 'undefined') {
             callback();
         } else if (retries > 0) {
@@ -421,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Wait for GSAP to load
-    function waitForGSAP(callback, retries = 20) {
+    function waitForGSAP(callback, retries = 100) {
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             callback();
         } else if (retries > 0) {
@@ -697,6 +730,21 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         });
     }
+
+    /* ─── LAZY LOAD ELFSIGHT GOOGLE REVIEWS ────── */
+    const elfsightWidget = document.getElementById('elfsight-widget');
+    if (elfsightWidget && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                loadScript('https://elfsightcdn.com/platform.js');
+                obs.disconnect();
+            }
+        }, { rootMargin: '400px' });
+        obs.observe(elfsightWidget);
+    } else if (elfsightWidget) {
+        loadScript('https://elfsightcdn.com/platform.js');
+    }
+
     /* ─── DEPTHDECK COVERFLOW CAROUSEL ─────────────── */
     (function initDepthCarousel() {
         const cards = document.querySelectorAll('.depth-carousel__card');

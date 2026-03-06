@@ -83,16 +83,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
-    <!-- ═══ Three.js + GLTFLoader (low priority — loaded after paint) ═══ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer fetchpriority="low"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" defer
-        fetchpriority="low"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer
-        fetchpriority="low"></script>
 
-    <!-- ═══ GSAP + ScrollTrigger ═══ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
     <!-- ═══ Stylesheet ═══ -->
     <link rel="stylesheet" href="style.css" />
@@ -122,8 +113,8 @@
     <header id="navbar" class="navbar">
         <div class="navbar__container">
             <a href="#hero" class="navbar__logo" aria-label="Gorilla Jiu Jitsu Home">
-                <img src="Logo-transparent.png" alt="Gorilla Jiu Jitsu Logo" class="navbar__logo-img" loading="eager"
-                    fetchpriority="high">
+                <img src="Logo-transparent.png" alt="Gorilla Jiu Jitsu Logo" class="navbar__logo-img" width="200"
+                    height="50" loading="eager" fetchpriority="high">
             </a>
 
             <nav class="navbar__links" id="nav-links" aria-label="Main navigation">
@@ -276,27 +267,27 @@
             <div class="depth-carousel__stage" id="carousel-stage">
                 <div class="depth-carousel__card" data-index="0">
                     <img src="Gallery (1).webp" alt="Gorilla Jiu Jitsu training session on the mats" draggable="false"
-                        loading="lazy" decoding="async">
+                        width="1920" height="1080" loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="1">
-                    <img src="Gallery (2).webp" alt="Gorilla Jiu Jitsu sparring practice" draggable="false"
-                        loading="lazy" decoding="async">
+                    <img src="Gallery (2).webp" alt="Gorilla Jiu Jitsu sparring practice" draggable="false" width="1920"
+                        height="1080" loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="2">
                     <img src="Gallery (3).webp" alt="Gorilla Jiu Jitsu BJJ team Raasepori" draggable="false"
-                        loading="lazy" decoding="async">
+                        width="1920" height="1080" loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="3">
                     <img src="Gallery (4).webp" alt="Gorilla Jiu Jitsu competition training" draggable="false"
-                        loading="lazy" decoding="async">
+                        width="1920" height="1080" loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="4">
-                    <img src="Gallery (5).webp" alt="Gorilla Jiu Jitsu academy Raseborg" draggable="false"
-                        loading="lazy" decoding="async">
+                    <img src="Gallery (5).webp" alt="Gorilla Jiu Jitsu academy Raseborg" draggable="false" width="1920"
+                        height="1080" loading="lazy" decoding="async">
                 </div>
                 <div class="depth-carousel__card" data-index="5">
                     <img src="Gallery (6).webp" alt="Gorilla Jiu Jitsu gym facility Finland" draggable="false"
-                        loading="lazy" decoding="async">
+                        width="1920" height="1080" loading="lazy" decoding="async">
                 </div>
             </div>
 
@@ -513,9 +504,9 @@
                 <div class="section__divider"></div>
             </div>
 
-            <!-- Elfsight Google Reviews -->
-            <script src="https://elfsightcdn.com/platform.js" async></script>
-            <div class="elfsight-app-d02d8c41-1090-4844-a8f1-62ba571a7d6b" data-elfsight-app-lazy></div>
+            <!-- Elfsight Google Reviews (loaded lazily in main.js) -->
+            <div class="elfsight-app-d02d8c41-1090-4844-a8f1-62ba571a7d6b" id="elfsight-widget" data-elfsight-app-lazy>
+            </div>
         </div>
     </section>
 
@@ -623,8 +614,8 @@
     <footer class="footer">
         <div class="container footer__inner">
             <div class="footer__brand">
-                <img src="Logo-transparent.png" alt="Gorilla Jiu Jitsu Logo" class="footer__logo-img" loading="lazy"
-                    decoding="async">
+                <img src="Logo-transparent.png" alt="Gorilla Jiu Jitsu Logo" class="footer__logo-img" width="200"
+                    height="50" loading="lazy" decoding="async">
             </div>
 
             <div class="footer__bottom">
