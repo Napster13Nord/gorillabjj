@@ -200,12 +200,23 @@ document.addEventListener('DOMContentLoaded', () => {
             targetRotX = ((e.clientY / window.innerHeight) - 0.5) * 2 * MAX_ROT_X;
         });
 
+        // ── Intersection Observer to Pause Animation Off-screen ──
+        // Prevents WebGL context loss (sad face crash) on mobile by saving GPU memory
+        let isVisible = true;
+        const observer = new IntersectionObserver((entries) => {
+            isVisible = entries[0].isIntersecting;
+        }, { threshold: 0, rootMargin: '200px' });
+        observer.observe(container);
+
         // ── Animation Loop ──
         const clock = new THREE.Clock();
         let baseY = 0.6; // Moved up slightly from 0.3
 
         function animate() {
             requestAnimationFrame(animate);
+
+            // Skip rendering & logic when off-screen to save battery/GPU context
+            if (!isVisible) return;
 
             const delta = clock.getDelta();
             const elapsed = clock.getElapsedTime();
