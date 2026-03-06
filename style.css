@@ -1681,6 +1681,10 @@ a:hover {
     font-size: clamp(3rem, 16vw, 5rem);
   }
 
+  .about__stats {
+    grid-template-columns: 1fr;
+  }
+
   .testimonial-card {
     padding: 2rem 1.2rem;
   }
