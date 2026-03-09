@@ -29,16 +29,16 @@ const GJJ_I18N = {
     why4: { title: 'Proven Results', desc: '85+ competition medals and a growing roster of champions. If you want to compete, we\'ll get you podium-ready.' },
     schedule: {
       tag: 'CLASSES', title: 'Weekly <span class="gold">Schedule</span>',
-      th: { time: 'Time', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' }
+      th: { time: 'Time', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' }
     },
-    cls: { kidsbjj: 'Kids BJJ (8–15)', kidsnogi: 'Kids No-Gi (8–15)', nogi: 'No-Gi', comp: 'Competition Training', bjj: 'BJJ' },
+    cls: { kidsbjj: 'Kids BJJ (8–15)', kidsnogi: 'Kids No-Gi (8–15)', kidstiny: 'Kids BJJ (3–7)', nogi: 'No-Gi', comp: 'Competition Training', bjj: 'BJJ' },
     legend: { gi: 'BJJ', nogi: 'No-Gi', comp: 'Competition', kids: 'Kids' },
     testimonials: { tag: 'WHAT THEY SAY', title: 'From Our <span class="gold">Family</span>' },
     contact: {
       tag: 'GET STARTED', title: 'Ready to <span class="gold">Train?</span>',
       subtitle: 'Book your free trial class today. No experience needed — just bring yourself and a willingness to learn.',
       location: '📍 Location', hours: '🕐 Hours',
-      hoursText: 'Mon &amp; Wed: 17:00 – 20:30<br />Tue: 18:00 – 20:00<br />Thu: 18:30 – 20:30<br />Sat: 12:00 – 14:30<br />Fri/Sun: Closed',
+      hoursText: 'Mon &amp; Wed: 17:00 – 20:30<br />Tue: 18:00 – 20:00<br />Thu: 17:00 – 20:30<br />Sat: 12:00 – 14:30<br />Sun: 13:00 – 14:30<br />Fri: Closed',
       contactTitle: '📞 Contact'
     },
     form: { name: 'Full Name', email: 'Email Address', phone: 'Phone (optional)', interest: 'I\'m Interested In', message: 'Message (optional)', submit: 'SEND MESSAGE' },
@@ -71,16 +71,16 @@ const GJJ_I18N = {
     why4: { title: 'Todistettuja Tuloksia', desc: '85+ kilpailumitalia ja kasvava joukko mestareita. Jos haluat kilpailla, teemme sinusta podiumvalmiin.' },
     schedule: {
       tag: 'TUNNIT', title: 'Viikko<span class="gold">aikataulu</span>',
-      th: { time: 'Aika', mon: 'Maanantai', tue: 'Tiistai', wed: 'Keskiviikko', thu: 'Torstai', fri: 'Perjantai', sat: 'Lauantai' }
+      th: { time: 'Aika', mon: 'Maanantai', tue: 'Tiistai', wed: 'Keskiviikko', thu: 'Torstai', fri: 'Perjantai', sat: 'Lauantai', sun: 'Sunnuntai' }
     },
-    cls: { kidsbjj: 'Juniorit BJJ (8–15)', kidsnogi: 'Juniorit No-Gi (8–15)', nogi: 'No-Gi', comp: 'Kilpailuharjoittelu', bjj: 'BJJ' },
+    cls: { kidsbjj: 'Juniorit BJJ (8–15)', kidsnogi: 'Juniorit No-Gi (8–15)', kidstiny: 'Juniorit BJJ (3–7)', nogi: 'No-Gi', comp: 'Kilpailuharjoittelu', bjj: 'BJJ' },
     legend: { gi: 'BJJ', nogi: 'No-Gi', comp: 'Kilpailu', kids: 'Juniorit' },
     testimonials: { tag: 'MITÄ HE SANOVAT', title: '<span class="gold">Perheemme</span> Tarinoita' },
     contact: {
       tag: 'ALOITA', title: 'Valmis <span class="gold">Harjoittelemaan?</span>',
       subtitle: 'Varaa ilmainen kokeilutuntisi tänään. Kokemusta ei tarvita — tuo vain itsesi ja halu oppia.',
       location: '📍 Sijainti', hours: '🕐 Aukioloajat',
-      hoursText: 'Ma &amp; Ke: 17:00 – 20:30<br />Ti: 18:00 – 20:00<br />To: 18:30 – 20:30<br />La: 12:00 – 14:30<br />Pe/Su: Suljettu',
+      hoursText: 'Ma &amp; Ke: 17:00 – 20:30<br />Ti: 18:00 – 20:00<br />To: 17:00 – 20:30<br />La: 12:00 – 14:30<br />Su: 13:00 – 14:30<br />Pe: Suljettu',
       contactTitle: '📞 Puhelin'
     },
     form: { name: 'Koko Nimi', email: 'Sähköpostiosoite', phone: 'Puhelin (valinnainen)', interest: 'Olen Kiinnostunut', message: 'Viesti (valinnainen)', submit: 'LÄHETÄ VIESTI' },
@@ -113,16 +113,16 @@ const GJJ_I18N = {
     why4: { title: 'Bevisade Resultat', desc: '85+ tävlingsmedaljer och ett växande roster av mästare. Om du vill tävla, gör vi dig redo för pallen.' },
     schedule: {
       tag: 'KLASSER', title: 'Vecko<span class="gold">Schema</span>',
-      th: { time: 'Tid', mon: 'Måndag', tue: 'Tisdag', wed: 'Onsdag', thu: 'Torsdag', fri: 'Fredag', sat: 'Lördag' }
+      th: { time: 'Tid', mon: 'Måndag', tue: 'Tisdag', wed: 'Onsdag', thu: 'Torsdag', fri: 'Fredag', sat: 'Lördag', sun: 'Söndag' }
     },
-    cls: { kidsbjj: 'Barn BJJ (8–15)', kidsnogi: 'Barn No-Gi (8–15)', nogi: 'No-Gi', comp: 'Tävlingsträning', bjj: 'BJJ' },
+    cls: { kidsbjj: 'Barn BJJ (8–15)', kidsnogi: 'Barn No-Gi (8–15)', kidstiny: 'Barn BJJ (3–7)', nogi: 'No-Gi', comp: 'Tävlingsträning', bjj: 'BJJ' },
     legend: { gi: 'BJJ', nogi: 'No-Gi', comp: 'Tävling', kids: 'Barn' },
     testimonials: { tag: 'VAD DE SÄGER', title: 'Från Vår <span class="gold">Familj</span>' },
     contact: {
       tag: 'KOM IGÅNG', title: 'Redo att <span class="gold">Träna?</span>',
       subtitle: 'Boka din gratis provlektion idag. Ingen erfarenhet behövs — ta bara med dig själv och en vilja att lära.',
       location: '📍 Plats', hours: '🕐 Öppettider',
-      hoursText: 'Mån &amp; Ons: 17:00 – 20:30<br />Tis: 18:00 – 20:00<br />Tor: 18:30 – 20:30<br />Lör: 12:00 – 14:30<br />Fre/Sön: Stängt',
+      hoursText: 'Mån &amp; Ons: 17:00 – 20:30<br />Tis: 18:00 – 20:00<br />Tor: 17:00 – 20:30<br />Lör: 12:00 – 14:30<br />Sön: 13:00 – 14:30<br />Fre: Stängt',
       contactTitle: '📞 Kontakt'
     },
     form: { name: 'Fullständigt Namn', email: 'E-postadress', phone: 'Telefon (valfritt)', interest: 'Jag är Intresserad av', message: 'Meddelande (valfritt)', submit: 'SKICKA MEDDELANDE' },

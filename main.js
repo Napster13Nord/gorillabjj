@@ -35,7 +35,7 @@ function loadHeavyLibs() {
 ['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => {
     window.addEventListener(evt, loadHeavyLibs, { once: true, passive: true });
 });
-setTimeout(loadHeavyLibs, 2500);
+setTimeout(loadHeavyLibs, 100);
 
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
