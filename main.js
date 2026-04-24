@@ -46,12 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ─── LOADER ──────────────────────────────── */
     const loader = document.getElementById('loader');
     window.addEventListener('load', () => {
-        setTimeout(() => {
-            loader.classList.add('hidden');
+        if (loader) {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                animateHero();
+                // ← GLB only loads AFTER first paint (biggest LCP fix)
+                waitForThree(init3DGorilla);
+            }, 800);
+        } else {
             animateHero();
-            // ← GLB only loads AFTER first paint (biggest LCP fix)
             waitForThree(init3DGorilla);
-        }, 800);
+        }
     });
 
     /* ─── THREE.JS 3D GORILLA MODEL ──────────── */
@@ -301,9 +306,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ─── SMOKE / FOG CANVAS EFFECT ──────────── */
     const smokeCanvas = document.getElementById('smoke-canvas');
-    const smokeCtx = smokeCanvas.getContext('2d');
+    let smokeCtx = null;
+    if (smokeCanvas) {
+        smokeCtx = smokeCanvas.getContext('2d');
+    }
 
     function initSmoke() {
+        if (!smokeCanvas) return;
         smokeCanvas.width = window.innerWidth;
         smokeCanvas.height = window.innerHeight;
     }
@@ -335,6 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (this.life >= this.maxLife) this.reset();
         }
         draw() {
+            if (!smokeCtx) return;
             smokeCtx.save();
             smokeCtx.globalAlpha = this.currentOpacity;
             const gradient = smokeCtx.createRadialGradient(
@@ -359,13 +369,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animateSmoke() {
+        if (!smokeCanvas || !smokeCtx) return;
         requestAnimationFrame(animateSmoke);
         smokeCtx.clearRect(0, 0, smokeCanvas.width, smokeCanvas.height);
         smokeParticles.forEach(p => { p.update(); p.draw(); });
     }
 
     // Skip smoke entirely on mobile — saves meaningful CPU
-    if (!isMobile) {
+    if (!isMobile && smokeCanvas) {
         initSmoke();
         animateSmoke();
         window.addEventListener('resize', initSmoke);
