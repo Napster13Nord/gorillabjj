@@ -325,6 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.reset();
         }
         reset() {
+            if (!smokeCanvas) return;
             this.x = Math.random() * smokeCanvas.width;
             this.y = smokeCanvas.height + Math.random() * 100;
             this.size = Math.random() * 200 + 80;
@@ -335,6 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.maxLife = Math.random() * 400 + 200;
         }
         update() {
+            if (!smokeCanvas) return;
             this.x += this.speedX;
             this.y += this.speedY;
             this.life++;
@@ -362,10 +364,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    for (let i = 0; i < SMOKE_COUNT; i++) {
-        const p = new SmokeParticle();
-        p.life = Math.random() * p.maxLife; // stagger
-        smokeParticles.push(p);
+    if (smokeCanvas) {
+        for (let i = 0; i < SMOKE_COUNT; i++) {
+            const p = new SmokeParticle();
+            p.life = Math.random() * p.maxLife; // stagger
+            smokeParticles.push(p);
+        }
     }
 
     function animateSmoke() {
