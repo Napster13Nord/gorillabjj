@@ -6,7 +6,7 @@ const GJJ_I18N = {
 
   /* ─── ENGLISH ─────────────────────────────────── */
   en: {
-    nav: { about: 'About', techniques: 'What We Teach', whyUs: 'Why Train With Us', schedule: 'Schedule', contact: 'Contact', join: 'JOIN NOW', testimonials: 'Testimonials' },
+    nav: { about: 'About', techniques: 'What We Teach', whyUs: 'Why Train With Us', schedule: 'Schedule', contact: 'Contact', join: 'JOIN NOW', testimonials: 'Testimonials', courseDetails: 'Course Details', secureSpot: 'Secure Spot', secureSpotCTA: 'SECURE YOUR SPOT' },
     hero: { line1: 'UNLEASH', line2: 'YOUR INNER', subtitle: 'Elite Brazilian Jiu Jitsu in Raasepori, Finland', cta1: 'START YOUR JOURNEY', cta2: 'LEARN MORE', scroll: 'SCROLL' },
     about: {
       tag: 'OUR STORY',
@@ -43,12 +43,22 @@ const GJJ_I18N = {
     },
     form: { name: 'Full Name', email: 'Email Address', phone: 'Phone (optional)', interest: 'I\'m Interested In', message: 'Message (optional)', submit: 'SEND MESSAGE' },
     interest: { adultBjj: 'Adult BJJ', adultNogi: 'Adult No-Gi', kids: 'Kids Program', comp: 'Competition Team', trial: 'Free Trial Class' },
-    footer: { copy: '© 2026 Gorilla Jiu Jitsu. All rights reserved.' }
+    footer: { copy: '© 2026 Gorilla Jiu Jitsu. All rights reserved.' },
+    beginners: {
+      heroL1: 'Adult Beginners', heroL3: 'BJJ Course', subtitle: '8 Weeks • May 18 – July 13 • No prior experience needed.', learnMore: 'COURSE DETAILS',
+      expectTag: 'WHAT TO EXPECT', expectTitle: '8-Week <span class="gold">Beginners Program</span>',
+      p1: 'Welcome to your first step into Brazilian Jiu Jitsu. This course is designed exclusively for complete beginners to learn the fundamentals in a safe, structured, and welcoming environment.',
+      p2: 'Over the 8 weeks, you will learn the basic positions, escapes, and submissions, building a solid foundation for both sport BJJ and self-defense.',
+      stat1: 'NO EXPERIENCE NEEDED', stat2: 'FOCUS ON FUNDAMENTALS', stat3: 'BUILD FITNESS', stat4: 'ONLY 70€',
+      checkoutTag: 'SECURE YOUR SPOT', checkoutTitle: 'Ready to <span class="gold">Train?</span>',
+      checkoutSubtitle: 'The course costs 70€ and runs from May 18 to July 13. Training days are Mondays and Thursdays at 17:30. Spots are highly limited!',
+      onlyPrice: 'ONLY 70€', stripeText: 'Payment processed securely via Stripe. After payment, you will receive an email with further instructions.', secureSpotNow: 'SECURE YOUR SPOT NOW'
+    }
   },
 
   /* ─── FINNISH ──────────────────────────────────── */
   fi: {
-    nav: { about: 'Tietoa', techniques: 'Mitä Opetamme', whyUs: 'Miksi Harjoitella', schedule: 'Aikataulu', contact: 'Yhteystiedot', join: 'LIITY NYT', testimonials: 'Arvostelut' },
+    nav: { about: 'Tietoa', techniques: 'Mitä Opetamme', whyUs: 'Miksi Harjoitella', schedule: 'Aikataulu', contact: 'Yhteystiedot', join: 'LIITY NYT', testimonials: 'Arvostelut', courseDetails: 'Kurssin Tiedot', secureSpot: 'Varmista Paikkasi', secureSpotCTA: 'VARMISTA PAIKKASI' },
     hero: { line1: 'VAPAUTA', line2: 'SISÄINEN', subtitle: 'Huipputason Brazilian Jiu Jitsu Raaseporissa, Suomi', cta1: 'ALOITA MATKASI', cta2: 'LUE LISÄÄ', scroll: 'VIERITÄ' },
     about: {
       tag: 'TARINAMME',
@@ -85,12 +95,22 @@ const GJJ_I18N = {
     },
     form: { name: 'Koko Nimi', email: 'Sähköpostiosoite', phone: 'Puhelin (valinnainen)', interest: 'Olen Kiinnostunut', message: 'Viesti (valinnainen)', submit: 'LÄHETÄ VIESTI' },
     interest: { adultBjj: 'Aikuisten BJJ', adultNogi: 'Aikuisten No-Gi', kids: 'Juniorit', comp: 'Kilpailujoukkue', trial: 'Ilmainen Kokeilutunti' },
-    footer: { copy: '© 2026 Gorilla Jiu Jitsu. Kaikki oikeudet pidätetään.' }
+    footer: { copy: '© 2026 Gorilla Jiu Jitsu. Kaikki oikeudet pidätetään.' },
+    beginners: {
+      heroL1: 'Aikuisten Peruskurssi', heroL3: 'BJJ Kurssi', subtitle: '8 Viikkoa • 18. Toukokuuta – 13. Heinäkuuta • Ei aiempaa kokemusta.', learnMore: 'KURSSIN TIEDOT',
+      expectTag: 'MITÄ ODOTTAA', expectTitle: '8-Viikon <span class="gold">Peruskurssi</span>',
+      p1: 'Tervetuloa ensimmäiseen askeleeseesi Brasilialaiseen Jiu Jitsuun. Tämä kurssi on suunniteltu yksinomaan täysin aloittelijoille, jotta opit perusteet turvallisessa, jäsennellyssä ja vieraanvaraisessa ympäristössä.',
+      p2: '8 viikon aikana opit peruspositiot, pakenemiset ja alistukset, rakentaen vahvan perustan sekä urheilu-BJJ:lle että itsepuolustukselle.',
+      stat1: 'EI AIEMPAA KOKEMUSTA', stat2: 'KESKITTYMINEN PERUSTEISIIN', stat3: 'KOHOTA KUNTOA', stat4: 'VAIN 70€',
+      checkoutTag: 'VARMISTA PAIKKASI', checkoutTitle: 'Valmis <span class="gold">Harjoittelemaan?</span>',
+      checkoutSubtitle: 'Kurssi maksaa 70€ ja kestää 18. toukokuuta - 13. heinäkuuta. Treenipäivät ovat maanantaisin ja torstaisin klo 17:30. Paikkoja on hyvin rajoitetusti!',
+      onlyPrice: 'VAIN 70€', stripeText: 'Maksu käsitellään turvallisesti Stripen kautta. Maksun jälkeen saat sähköpostin, jossa on lisäohjeita.', secureSpotNow: 'VARMISTA PAIKKASI NYT'
+    }
   },
 
   /* ─── SWEDISH ──────────────────────────────────── */
   sv: {
-    nav: { about: 'Om oss', techniques: 'Vad Vi Lär', whyUs: 'Varför Träna', schedule: 'Schema', contact: 'Kontakt', join: 'GÅ MED NU', testimonials: 'Omdömen' },
+    nav: { about: 'Om oss', techniques: 'Vad Vi Lär', whyUs: 'Varför Träna', schedule: 'Schema', contact: 'Kontakt', join: 'GÅ MED NU', testimonials: 'Omdömen', courseDetails: 'Kursdetaljer', secureSpot: 'Säkra Din Plats', secureSpotCTA: 'SÄKRA DIN PLATS' },
     hero: { line1: 'SLÄPP LÖS', line2: 'DIN INRE', subtitle: 'Elit Brazilian Jiu Jitsu i Raseborg, Finland', cta1: 'BÖRJA DIN RESA', cta2: 'LÄS MER', scroll: 'SCROLLA' },
     about: {
       tag: 'VÅR HISTORIA',
@@ -127,7 +147,17 @@ const GJJ_I18N = {
     },
     form: { name: 'Fullständigt Namn', email: 'E-postadress', phone: 'Telefon (valfritt)', interest: 'Jag är Intresserad av', message: 'Meddelande (valfritt)', submit: 'SKICKA MEDDELANDE' },
     interest: { adultBjj: 'Vuxen BJJ', adultNogi: 'Vuxen No-Gi', kids: 'Barnprogram', comp: 'Tävlingslag', trial: 'Gratis Provlektion' },
-    footer: { copy: '© 2026 Gorilla Jiu Jitsu. Alla rättigheter förbehållna.' }
+    footer: { copy: '© 2026 Gorilla Jiu Jitsu. Alla rättigheter förbehållna.' },
+    beginners: {
+      heroL1: 'Vuxnas Nybörjarkurs', heroL3: 'BJJ Kurs', subtitle: '8 Veckor • 18 Maj – 13 Juli • Ingen tidigare erfarenhet krävs.', learnMore: 'KURSDETALJER',
+      expectTag: 'VAD DU KAN FÖRVÄNTA DIG', expectTitle: '8-Veckors <span class="gold">Nybörjarkurs</span>',
+      p1: 'Välkommen till ditt första steg in i Brasiliansk Jiu Jitsu. Denna kurs är utformad exklusivt för nybörjare för att lära sig grunderna i en säker, strukturerad och välkomnande miljö.',
+      p2: 'Under 8 veckor kommer du att lära dig grundläggande positioner, rymningar och submissions, vilket bygger en stark grund för både sport-BJJ och självförsvar.',
+      stat1: 'INGEN ERFARENHET KRÄVS', stat2: 'FOKUS PÅ GRUNDERNA', stat3: 'BYGG KONDITION', stat4: 'ENDAST 70€',
+      checkoutTag: 'SÄKRA DIN PLATS', checkoutTitle: 'Redo att <span class="gold">Träna?</span>',
+      checkoutSubtitle: 'Kursen kostar 70€ och pågår från 18 maj till 13 juli. Träningsdagar är måndagar och torsdagar kl. 17:30. Platserna är mycket begränsade!',
+      onlyPrice: 'ENDAST 70€', stripeText: 'Betalning behandlas säkert via Stripe. Efter betalning får du ett e-postmeddelande med ytterligare instruktioner.', secureSpotNow: 'SÄKRA DIN PLATS NU'
+    }
   }
 };
 

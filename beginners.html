@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ═══ Primary SEO ═══ -->
+    <title>Adult Beginners Course — Gorilla BJJ in Raasepori</title>
+    <meta name="description"
+        content="8-Week Adult Beginners BJJ Course at Gorilla Jiu Jitsu. Learn to protect yourself, no experience needed. Starts May 18. Secure your spot!" />
+    <link rel="canonical" href="https://www.gorillajiujitsu.org/" />
+
+    <!-- ═══ Favicon ═══ -->
+    <link rel="icon" type="image/png" href="gorilla-logo.png" />
+    <link rel="apple-touch-icon" href="gorilla-logo.png" />
+
+    <!-- ═══ Open Graph / Facebook ═══ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.gorillajiujitsu.org/" />
+    <meta property="og:title" content="Gorilla BJJ — Brazilian Jiu Jitsu in Raasepori, Finland" />
+    <meta property="og:description"
+        content="Elite BJJ training for all levels. Gi, No-Gi, Kids & competition. Free trial class available." />
+    <meta property="og:image" content="https://www.gorillajiujitsu.org/gorilla-logo.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Gorilla Jiu Jitsu" />
+
+    <!-- ═══ Twitter Card ═══ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gorilla BJJ — Brazilian Jiu Jitsu in Raasepori, Finland" />
+    <meta name="twitter:description"
+        content="Elite BJJ training for all levels. Gi, No-Gi, Kids & competition. Free trial class available." />
+    <meta name="twitter:image" content="https://www.gorillajiujitsu.org/gorilla-logo.png" />
+
+    <!-- ═══ LocalBusiness Structured Data ═══ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": "Gorilla Jiu Jitsu",
+      "description": "Elite Brazilian Jiu Jitsu academy in Raasepori, Finland offering Gi, No-Gi, competition team, and kids BJJ classes.",
+      "url": "https://www.gorillajiujitsu.org/",
+      "telephone": "+358405012801",
+      "image": "https://www.gorillajiujitsu.org/gorilla-logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Metallduksgatan 34",
+        "addressLocality": "Raseborg",
+        "postalCode": "10600",
+        "addressCountry": "FI"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 60.0049,
+        "longitude": 23.4338
+      },
+      "openingHoursSpecification": [
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Wednesday"],"opens":"17:00","closes":"20:30"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Wednesday"],"opens":"18:00","closes":"20:30"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday"],"opens":"18:00","closes":"20:00"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Thursday"],"opens":"18:30","closes":"20:30"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"12:00","closes":"14:30"}
+      ],
+      "sameAs": [
+        "https://www.instagram.com/gorillajiujitsuraasepori/",
+        "https://www.facebook.com/Gorilla.Jiu.jitsu.Raasepori"
+      ]
+    }
+    </script>
+
+    <!-- ═══ Fonts — preconnect then async load ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" />
+    </noscript>
+
+    <!-- ═══ CDN preconnects ═══ -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
+
+
+    <!-- ═══ Stylesheet ═══ -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- ═══ Vercel Web Analytics ═══ -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════
+       LOADER
+  ═══════════════════════════════════════════ -->
+    <div id="loader" class="loader">
+        <div class="loader__inner">
+            <div class="loader__ring"></div>
+            <span class="loader__text">GORILLA JIU JITSU</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+    <header id="navbar" class="navbar">
+        <div class="navbar__container">
+            <a href="#hero" class="navbar__logo" aria-label="Gorilla Jiu Jitsu Home">
+                <img src="Logo-transparent.webp" alt="Gorilla Jiu Jitsu Logo" class="navbar__logo-img" width="200"
+                    height="50" loading="eager" fetchpriority="high">
+            </a>
+
+            <nav class="navbar__links" id="nav-links" aria-label="Main navigation">
+                <a href="#details" class="navbar__link" data-i18n="nav.courseDetails">Course Details</a>
+                <a href="#why-us" class="navbar__link" data-i18n="nav.whyUs">Why Train With Us</a>
+                <a href="#checkout" class="navbar__link" data-i18n="nav.secureSpot">Secure Spot</a>
+            </nav>
+
+            <a href="#checkout" class="navbar__cta" id="nav-cta" style="text-decoration: none; font-size: 0.8rem; padding: 0.5rem 1rem; white-space: nowrap;">
+                <span data-i18n="nav.secureSpotCTA">SECURE YOUR SPOT</span>
+                <span class="btn-ripple"></span>
+            </a>
+
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn active" data-lang="en" aria-label="English">🇬🇧</button>
+                <button class="lang-btn" data-lang="fi" aria-label="Suomi">🇫🇮</button>
+                <button class="lang-btn" data-lang="sv" aria-label="Svenska">🇸🇪</button>
+            </div>
+
+            <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-menu__links">
+            <a href="#details" class="mobile-menu__link" data-i18n="nav.courseDetails">Course Details</a>
+            <a href="#why-us" class="mobile-menu__link" data-i18n="nav.whyUs">Why Train With Us</a>
+            <a href="#testimonials" class="mobile-menu__link" data-i18n="nav.testimonials">Testimonials</a>
+            <a href="#checkout" class="mobile-menu__link" data-i18n="nav.secureSpot">Secure Spot</a>
+            <a href="#checkout" class="mobile-menu__cta" style="font-size: 1rem; padding: 0.7rem 1.5rem; white-space: nowrap;" data-i18n="nav.secureSpotCTA">SECURE YOUR SPOT</a>
+        </nav>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+    <section id="hero" class="hero">
+        <canvas id="smoke-canvas" class="hero__smoke"></canvas>
+
+        <div class="hero__grid">
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    <span class="hero__title-line hero__title-line--1" data-i18n="beginners.heroL1">Adult Beginners</span>
+                    <span class="hero__title-line hero__title-line--2" data-i18n="beginners.heroL2">Course</span>
+                    <span class="hero__title-line hero__title-line--3 glitch-wrap" id="glitch-wrap">
+                        <span class="glitch-text" data-i18n="beginners.heroL3">BJJ Course</span>
+                        <span class="glitch-layer glitch-layer--before" aria-hidden="true" data-i18n="beginners.heroL3">BJJ Course</span>
+                        <span class="glitch-layer glitch-layer--after" aria-hidden="true" data-i18n="beginners.heroL3">BJJ Course</span>
+                    </span>
+                </h1>
+                <p class="hero__subtitle" data-i18n="beginners.subtitle">8 Weeks • May 18 – July 13 • No prior experience needed.</p>
+                <div class="hero__cta-group">
+                    <a href="#checkout" class="btn btn--primary" id="hero-cta" style="font-size: 0.9rem; padding: 0.85rem 1.5rem; white-space: nowrap;">
+                        <span data-i18n="nav.secureSpotCTA">SECURE YOUR SPOT</span>
+                        <span class="btn-ripple"></span>
+                    </a>
+                    <a href="#details" class="btn btn--ghost" id="hero-learn-more" data-i18n="beginners.learnMore">COURSE DETAILS</a>
+                </div>
+            </div>
+
+            <div class="hero__3d-container" id="hero-3d-container">
+                <canvas id="orb-canvas" class="hero__orb-canvas"></canvas>
+                <canvas id="gorilla-canvas" class="hero__3d-canvas"></canvas>
+            </div>
+        </div>
+
+        <div class="hero__scroll-indicator">
+            <div class="hero__scroll-mouse">
+                <div class="hero__scroll-wheel"></div>
+            </div>
+            <span data-i18n="hero.scroll">SCROLL</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════════ -->
+    <section id="details" class="section about">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag" data-i18n="beginners.expectTag">WHAT TO EXPECT</span>
+                <h2 class="section__title" data-i18n-html="beginners.expectTitle">8-Week <span class="gold">Beginners Program</span></h2>
+                <div class="section__divider"></div>
+            </div>
+
+            <div class="about__grid">
+                <div class="about__text" data-animate="fade-right">
+                    <p class="about__lead" data-i18n="beginners.p1">
+                        Welcome to your first step into Brazilian Jiu Jitsu. This course is designed exclusively for complete beginners to learn the fundamentals in a safe, structured, and welcoming environment.
+                    </p>
+                    <p data-i18n="beginners.p2">Over the 8 weeks, you will learn the basic positions, escapes, and submissions, building a solid foundation for both sport BJJ and self-defense.</p>
+                </div>
+
+                <div class="about__stats" data-animate="fade-left">
+                    <div class="stat-card">
+                        <div class="stat-card__number">🥋</div>
+                        <span class="stat-card__label" data-i18n="beginners.stat1">NO EXPERIENCE NEEDED</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__number">🛡️</div>
+                        <span class="stat-card__label" data-i18n="beginners.stat2">FOCUS ON FUNDAMENTALS</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__number">💪</div>
+                        <span class="stat-card__label" data-i18n="beginners.stat3">BUILD FITNESS</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__number">💶</div>
+                        <span class="stat-card__label" data-i18n="beginners.stat4">ONLY 70€</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+       GALLERY — DepthDeck Coverflow Carousel
+  ═══════════════════════════════════════════ -->
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag" data-i18n="gallery.tag">OUR ACADEMY</span>
+                <h2 class="section__title" data-i18n-html="gallery.title">Life on the <span class="gold">Mats</span>
+                </h2>
+                <div class="section__divider"></div>
+            </div>
+        </div>
+
+        <div class="depth-carousel" id="depth-carousel">
+            <div class="depth-carousel__stage" id="carousel-stage">
+                <div class="depth-carousel__card" data-index="0">
+                    <img src="Gallery (1).webp" alt="Gorilla Jiu Jitsu training session on the mats" draggable="false"
+                        width="1920" height="1080" loading="lazy" decoding="async">
+                </div>
+                <div class="depth-carousel__card" data-index="1">
+                    <img src="Gallery (2).webp" alt="Gorilla Jiu Jitsu sparring practice" draggable="false" width="1920"
+                        height="1080" loading="lazy" decoding="async">
+                </div>
+                <div class="depth-carousel__card" data-index="2">
+                    <img src="Gallery (3).webp" alt="Gorilla Jiu Jitsu BJJ team Raasepori" draggable="false"
+                        width="1920" height="1080" loading="lazy" decoding="async">
+                </div>
+                <div class="depth-carousel__card" data-index="3">
+                    <img src="Gallery (4).webp" alt="Gorilla Jiu Jitsu competition training" draggable="false"
+                        width="1920" height="1080" loading="lazy" decoding="async">
+                </div>
+                <div class="depth-carousel__card" data-index="4">
+                    <img src="Gallery (5).webp" alt="Gorilla Jiu Jitsu academy Raseborg" draggable="false" width="1920"
+                        height="1080" loading="lazy" decoding="async">
+                </div>
+                <div class="depth-carousel__card" data-index="5">
+                    <img src="Gallery (6).webp" alt="Gorilla Jiu Jitsu gym facility Finland" draggable="false"
+                        width="1920" height="1080" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+            <div class="depth-carousel__controls">
+                <button class="depth-carousel__btn" id="carousel-prev" aria-label="Previous slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                </button>
+                <div class="depth-carousel__dots" id="carousel-dots"></div>
+                <button class="depth-carousel__btn" id="carousel-next" aria-label="Next slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+       WHY TRAIN WITH US
+  ═══════════════════════════════════════════ -->
+    <section id="why-us" class="section why-us">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag" data-i18n="whyUs.tag">THE GORILLA DIFFERENCE</span>
+                <h2 class="section__title" data-i18n-html="whyUs.title">Why Train <span class="gold">With Us</span></h2>
+                <div class="section__divider"></div>
+            </div>
+
+            <div class="why-us__grid">
+                <div class="why-card" data-animate="fade-up" data-delay="0">
+                    <div class="why-card__number">01</div>
+                    <h3 class="why-card__title" data-i18n="why1.title">World-Class Coaching</h3>
+                    <p class="why-card__desc" data-i18n="why1.desc">Our instructors have trained and competed at the
+                        highest level, bringing
+                        international-grade technique to Raasepori.</p>
+                </div>
+
+                <div class="why-card" data-animate="fade-up" data-delay="1">
+                    <div class="why-card__number">02</div>
+                    <h3 class="why-card__title" data-i18n="why2.title">Family Atmosphere</h3>
+                    <p class="why-card__desc" data-i18n="why2.desc">We're a tight-knit community where egos are left at
+                        the door. Expect
+                        handshakes, respect, and lifelong friendships.</p>
+                </div>
+
+                <div class="why-card" data-animate="fade-up" data-delay="2">
+                    <div class="why-card__number">03</div>
+                    <h3 class="why-card__title" data-i18n="why3.title">Brand-New Facility</h3>
+                    <p class="why-card__desc" data-i18n="why3.desc">Train in our brand-new gym with quality mats, full
+                        changing rooms,
+                        showers, and free parking right at the door.</p>
+                </div>
+
+                <div class="why-card" data-animate="fade-up" data-delay="3">
+                    <div class="why-card__number">04</div>
+                    <h3 class="why-card__title" data-i18n="why4.title">Proven Results</h3>
+                    <p class="why-card__desc" data-i18n="why4.desc">85+ competition medals and a growing roster of
+                        champions. If you want to
+                        compete, we'll get you podium-ready.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════════ -->
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag" data-i18n="testimonials.tag">WHAT THEY SAY</span>
+                <h2 class="section__title" data-i18n-html="testimonials.title">From Our <span class="gold">Family</span>
+                </h2>
+                <div class="section__divider"></div>
+            </div>
+
+            <!-- Elfsight Google Reviews (loaded lazily in main.js) -->
+            <div class="elfsight-app-d02d8c41-1090-4844-a8f1-62ba571a7d6b" id="elfsight-widget" data-elfsight-app-lazy>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+       CONTACT / CTA
+  ═══════════════════════════════════════════ -->
+    <section id="checkout" class="section contact">
+        <div class="container">
+            <div class="section__header" data-animate="fade-up">
+                <span class="section__tag" data-i18n="beginners.checkoutTag">SECURE YOUR SPOT</span>
+                <h2 class="section__title" data-i18n-html="beginners.checkoutTitle">Ready to <span class="gold">Train?</span></h2>
+                <div class="section__divider"></div>
+                <p class="section__subtitle" data-i18n="beginners.checkoutSubtitle">The course costs 70€ and runs from May 18 to July 13. Training days are Mondays and Thursdays at 17:30. Spots are highly limited!</p>
+            </div>
+
+            <div class="contact__grid" style="grid-template-columns: 1fr; max-width: 600px; margin: 0 auto;">
+                <div class="checkout-card" data-animate="fade-up" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); text-align: center; padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center;">
+                    <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; margin-bottom: 1rem; color: #fff; line-height: 1;" data-i18n="beginners.onlyPrice">ONLY 70€</h3>
+                    <p style="margin-bottom: 2rem; color: #a1a1aa; font-size: 1.05rem; max-width: 400px; margin-left: auto; margin-right: auto;" data-i18n="beginners.stripeText">Payment processed securely via Stripe. After payment, you will receive an email with further instructions.</p>
+                    <a href="https://buy.stripe.com/9B614n0PAgMvcMs6wbgrS02" target="_blank" class="btn btn--primary" style="font-size: 0.95rem; padding: 1.2rem 1rem; width: 100%; max-width: 350px; white-space: nowrap;">
+                        <span data-i18n="beginners.secureSpotNow">SECURE YOUR SPOT NOW</span>
+                        <span class="btn-ripple"></span>
+                    </a>
+                </div>
+
+                <div class="contact__info" data-animate="fade-left">
+                    <div class="contact__info-card">
+                        <h3 class="contact__info-title" data-i18n="contact.location">📍 Location</h3>
+                        <p>Metallduksgatan 34<br />10600 Raseborg</p>
+                    </div>
+                    <div class="contact__info-card">
+                        <h3 class="contact__info-title" data-i18n="contact.hours">🕐 Hours</h3>
+                        <p data-i18n-html="contact.hoursText">Mon &amp; Wed: 17:00 – 20:30<br />Tue: 18:00 –
+                            20:00<br />Thu: 18:30 – 20:30<br />Sat: 12:00 – 14:30<br />Fri/Sun: Closed</p>
+                    </div>
+                    <div class="contact__info-card">
+                        <h3 class="contact__info-title" data-i18n="contact.contactTitle">📞 Contact</h3>
+                        <p>040 5012801</p>
+                    </div>
+                    <div class="contact__socials">
+                        <a href="https://www.instagram.com/gorillajiujitsuraasepori/" target="_blank" rel="noopener"
+                            class="contact__social" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/Gorilla.Jiu.jitsu.Raasepori" target="_blank" rel="noopener"
+                            class="contact__social" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <a href="https://share.google/eeP7SoUhwFfnKLAlo" target="_blank" rel="noopener"
+                            class="contact__social" aria-label="Google My Business">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12 12-5.373 12-12S18.628 0 12 0zm6.369 17.154c-.46.652-1.105 1.165-1.856 1.478a5.07 5.07 0 01-2.093.435c-.792 0-1.529-.16-2.21-.478a5.15 5.15 0 01-1.727-1.318l1.59-1.363c.314.432.707.772 1.177 1.02.47.248.98.371 1.53.371.536 0 1.015-.128 1.437-.385.422-.256.633-.64.633-1.15 0-.396-.135-.727-.405-.992-.27-.265-.606-.472-1.007-.62a12.05 12.05 0 00-1.363-.427 6.524 6.524 0 01-1.633-.64 3.31 3.31 0 01-1.163-1.1c-.296-.465-.444-1.053-.444-1.764 0-.66.155-1.24.464-1.74.31-.5.737-.89 1.283-1.17a3.97 3.97 0 011.87-.42c.71 0 1.363.152 1.96.457.597.304 1.09.74 1.477 1.306l-1.577 1.272c-.228-.375-.529-.672-.902-.892-.373-.22-.79-.33-1.25-.33-.469 0-.867.123-1.194.37-.327.248-.49.587-.49 1.018 0 .34.116.621.348.844.232.223.53.405.893.546.363.141.76.276 1.19.405a6.73 6.73 0 011.668.689c.5.296.902.683 1.205 1.16.304.478.456 1.078.456 1.8 0 .723-.153 1.354-.46 1.893z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <img src="Logo-transparent.webp" alt="Gorilla Jiu Jitsu Logo" class="footer__logo-img" width="200"
+                    height="50" loading="lazy" decoding="async">
+            </div>
+
+            <div class="footer__bottom">
+                <span class="footer__copy" data-i18n="footer.copy">© 2026 Gorilla Jiu Jitsu. All rights reserved.</span>
+                <div class="lang-switcher lang-switcher--footer">
+                    <button class="lang-btn active" data-lang="en" aria-label="English">🇬🇧</button>
+                    <button class="lang-btn" data-lang="fi" aria-label="Suomi">🇫🇮</button>
+                    <button class="lang-btn" data-lang="sv" aria-label="Svenska">🇸🇪</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- i18n must run before main.js -->
+    <script src="i18n.js" defer></script>
+    <!-- Main JS -->
+    <script src="main.js" defer></script>
+
+    <!-- Hide Elfsight free branding badge -->
+    <script>
+        (function () {
+            function hideElfsightBranding() {
+                // The widget host element
+                var host = document.querySelector('.elfsight-app-d02d8c41-1090-4844-a8f1-62ba571a7d6b');
+                if (!host) return;
+
+                // Try shadow root first (newer Elfsight)
+                var root = host.shadowRoot;
+                if (root) {
+                    var footer = root.querySelector('[class*="widget-footer"], [class*="eapps-link"], a[href*="elfsight.com"]');
+                    if (footer) { footer.style.cssText = 'display:none!important'; }
+                }
+
+                // Also scan all iframes the widget may have injected
+                var iframes = document.querySelectorAll('iframe');
+                iframes.forEach(function (f) {
+                    try {
+                        var doc = f.contentDocument || f.contentWindow.document;
+                        var el = doc.querySelector('[class*="widget-footer"], [class*="eapps-link"], a[href*="elfsight.com"]');
+                        if (el) { el.style.cssText = 'display:none!important'; }
+                    } catch (e) { /* cross-origin — skip */ }
+                });
+
+                // Also try direct children of the widget div (plain DOM fallback)
+                var direct = host.querySelectorAll('[class*="widget-footer"], [class*="eapps-link"], a[href*="elfsight.com"]');
+                direct.forEach(function (el) { el.style.cssText = 'display:none!important'; });
+            }
+
+            // Poll until found, then keep watching
+            var attempts = 0;
+            var iv = setInterval(function () {
+                hideElfsightBranding();
+                attempts++;
+                if (attempts > 40) clearInterval(iv); // stop after 20 s
+            }, 500);
+
+            // Also re-run on any DOM mutation in case widget re-renders
+            var mo = new MutationObserver(hideElfsightBranding);
+            mo.observe(document.body, { childList: true, subtree: true });
+        })();
+    </script>
+</body>
+
+</html>
