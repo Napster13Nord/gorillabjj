@@ -52,7 +52,7 @@ const GJJ_I18N = {
       stat1: 'NO EXPERIENCE NEEDED', stat2: 'FOCUS ON FUNDAMENTALS', stat3: 'BUILD FITNESS', stat4: 'ONLY 70€',
       checkoutTag: 'SECURE YOUR SPOT', checkoutTitle: 'Ready to <span class="gold">Train?</span>',
       checkoutSubtitle: 'The course costs 70€ and runs from May 18 to July 13. Training days are Mondays and Thursdays at 17:30. Spots are highly limited!',
-      onlyPrice: 'ONLY 70€', stripeText: 'Payment processed securely via Stripe. After payment, you will receive an email with further instructions.', secureSpotNow: 'SECURE YOUR SPOT NOW'
+      onlyPrice: 'ONLY 70€', stripeText: 'Payment processed securely via Stripe.', secureSpotNow: 'SECURE YOUR SPOT NOW'
     }
   },
 
@@ -104,7 +104,7 @@ const GJJ_I18N = {
       stat1: 'EI AIEMPAA KOKEMUSTA', stat2: 'KESKITTYMINEN PERUSTEISIIN', stat3: 'KOHOTA KUNTOA', stat4: 'VAIN 70€',
       checkoutTag: 'VARMISTA PAIKKASI', checkoutTitle: 'Valmis <span class="gold">Harjoittelemaan?</span>',
       checkoutSubtitle: 'Kurssi maksaa 70€ ja kestää 18. toukokuuta - 13. heinäkuuta. Treenipäivät ovat maanantaisin ja torstaisin klo 17:30. Paikkoja on hyvin rajoitetusti!',
-      onlyPrice: 'VAIN 70€', stripeText: 'Maksu käsitellään turvallisesti Stripen kautta. Maksun jälkeen saat sähköpostin, jossa on lisäohjeita.', secureSpotNow: 'VARMISTA PAIKKASI NYT'
+      onlyPrice: 'VAIN 70€', stripeText: 'Maksu käsitellään turvallisesti Stripen kautta.', secureSpotNow: 'VARMISTA PAIKKASI NYT'
     }
   },
 
@@ -156,7 +156,7 @@ const GJJ_I18N = {
       stat1: 'INGEN ERFARENHET KRÄVS', stat2: 'FOKUS PÅ GRUNDERNA', stat3: 'BYGG KONDITION', stat4: 'ENDAST 70€',
       checkoutTag: 'SÄKRA DIN PLATS', checkoutTitle: 'Redo att <span class="gold">Träna?</span>',
       checkoutSubtitle: 'Kursen kostar 70€ och pågår från 18 maj till 13 juli. Träningsdagar är måndagar och torsdagar kl. 17:30. Platserna är mycket begränsade!',
-      onlyPrice: 'ENDAST 70€', stripeText: 'Betalning behandlas säkert via Stripe. Efter betalning får du ett e-postmeddelande med ytterligare instruktioner.', secureSpotNow: 'SÄKRA DIN PLATS NU'
+      onlyPrice: 'ENDAST 70€', stripeText: 'Betalning behandlas säkert via Stripe.', secureSpotNow: 'SÄKRA DIN PLATS NU'
     }
   }
 };
