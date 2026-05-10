@@ -53,6 +53,19 @@ const GJJ_I18N = {
       checkoutTag: 'SECURE YOUR SPOT', checkoutTitle: 'Ready to <span class="gold">Train?</span>',
       checkoutSubtitle: 'The course costs 70€ and runs from May 18 to July 13. Training days are Mondays and Thursdays at 17:30. Spots are highly limited!',
       onlyPrice: 'ONLY 70€', stripeText: 'Payment processed securely via Stripe.', secureSpotNow: 'SECURE YOUR SPOT NOW'
+    },
+    thankyou: {
+      badge: 'PAYMENT CONFIRMED',
+      title: 'Welcome to Gorilla Jiu Jitsu 🦍',
+      subtitle: 'Your place in the Adult Beginners Course is confirmed.',
+      startLabel: 'Start', startValue: 'May 18',
+      scheduleLabel: 'Schedule', scheduleValue: 'Mon & Thu, 17:30 – 18:30',
+      bringLabel: 'What to bring', bringValue: 'Gym clothes, a towel (if you want to shower), and a water bottle.',
+      facilitiesLabel: 'Facilities', facilitiesValue: 'We have male and female changing rooms with showers.',
+      note: 'No experience needed. See you on the mats. 🤙',
+      emailNotice: 'A confirmation email is on its way. If you don\'t see it, check your spam folder.',
+      ctaInstagram: 'FOLLOW US ON INSTAGRAM',
+      ctaDirections: '📍 GET DIRECTIONS'
     }
   },
 
@@ -105,6 +118,19 @@ const GJJ_I18N = {
       checkoutTag: 'VARMISTA PAIKKASI', checkoutTitle: 'Valmis <span class="gold">Harjoittelemaan?</span>',
       checkoutSubtitle: 'Kurssi maksaa 70€ ja kestää 18. toukokuuta - 13. heinäkuuta. Treenipäivät ovat maanantaisin ja torstaisin klo 17:30. Paikkoja on hyvin rajoitetusti!',
       onlyPrice: 'VAIN 70€', stripeText: 'Maksu käsitellään turvallisesti Stripen kautta.', secureSpotNow: 'VARMISTA PAIKKASI NYT'
+    },
+    thankyou: {
+      badge: 'MAKSU VAHVISTETTU',
+      title: 'Tervetuloa Gorilla Jiu Jitsuun 🦍',
+      subtitle: 'Paikkasi Aikuisten Peruskurssilla on vahvistettu.',
+      startLabel: 'Alkaa', startValue: '18. toukokuuta',
+      scheduleLabel: 'Aikataulu', scheduleValue: 'Ma & To, 17:30 – 18:30',
+      bringLabel: 'Mitä mukaan', bringValue: 'Treenivaatteet, pyyhe (jos haluat käydä suihkussa) ja vesipullo.',
+      facilitiesLabel: 'Tilat', facilitiesValue: 'Käytössämme on miesten ja naisten pukuhuoneet suihkuineen.',
+      note: 'Aiempaa kokemusta ei tarvita. Nähdään matolla. 🤙',
+      emailNotice: 'Vahvistussähköposti on matkalla. Jos et löydä sitä, tarkista roskapostikansio.',
+      ctaInstagram: 'SEURAA MEITÄ INSTAGRAMISSA',
+      ctaDirections: '📍 REITTIOHJEET'
     }
   },
 
@@ -157,6 +183,19 @@ const GJJ_I18N = {
       checkoutTag: 'SÄKRA DIN PLATS', checkoutTitle: 'Redo att <span class="gold">Träna?</span>',
       checkoutSubtitle: 'Kursen kostar 70€ och pågår från 18 maj till 13 juli. Träningsdagar är måndagar och torsdagar kl. 17:30. Platserna är mycket begränsade!',
       onlyPrice: 'ENDAST 70€', stripeText: 'Betalning behandlas säkert via Stripe.', secureSpotNow: 'SÄKRA DIN PLATS NU'
+    },
+    thankyou: {
+      badge: 'BETALNING BEKRÄFTAD',
+      title: 'Välkommen till Gorilla Jiu Jitsu 🦍',
+      subtitle: 'Din plats i nybörjarkursen för vuxna är bekräftad.',
+      startLabel: 'Start', startValue: '18 maj',
+      scheduleLabel: 'Schema', scheduleValue: 'Mån & Tor, 17:30 – 18:30',
+      bringLabel: 'Ta med', bringValue: 'Träningskläder, en handduk (om du vill duscha) och en vattenflaska.',
+      facilitiesLabel: 'Utrymmen', facilitiesValue: 'Vi har omklädningsrum med dusch för både herrar och damer.',
+      note: 'Ingen erfarenhet krävs. Vi ses på mattorna. 🤙',
+      emailNotice: 'En bekräftelse har skickats till din e-post. Kolla skräpposten om du inte hittar den.',
+      ctaInstagram: 'FÖLJ OSS PÅ INSTAGRAM',
+      ctaDirections: '📍 HITTA HIT'
     }
   }
 };
