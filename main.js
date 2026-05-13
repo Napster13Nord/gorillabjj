@@ -787,7 +787,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="gr-card__stars">${starsHtml}</div>
-                ${r.text ? `<div class="gr-card__text">${r.text}</div>` : ''}
+                ${r.text ? `
+                    <div style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <div class="gr-card__text">${r.text}</div>
+                        ${r.text.length > 115 ? `<button class="gr-card__read-more" onclick="this.previousElementSibling.style.webkitLineClamp='unset'; this.style.display='none';">Read more</button>` : ''}
+                    </div>
+                ` : ''}
             </div>
         `).join('');
 

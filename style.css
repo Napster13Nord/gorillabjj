@@ -2070,6 +2070,23 @@ a:hover {
   flex-grow: 1;
 }
 
+.gr-card__read-more {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0;
+  margin-top: 0.4rem;
+  cursor: pointer;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.gr-card__read-more:hover {
+  text-decoration: underline;
+}
+
 .gr-widget__nav {
   position: absolute;
   top: 50%;
