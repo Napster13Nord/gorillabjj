@@ -44,6 +44,7 @@ const GJJ_I18N = {
     form: { name: 'Full Name', email: 'Email Address', phone: 'Phone (optional)', interest: 'I\'m Interested In', message: 'Message (optional)', submit: 'SEND MESSAGE' },
     interest: { adultBjj: 'Adult BJJ', adultNogi: 'Adult No-Gi', kids: 'Kids Program', comp: 'Competition Team', trial: 'Free Trial Class' },
     footer: { copy: '© 2026 Gorilla Jiu Jitsu. All rights reserved.' },
+    banner: { badge: '🥋 NEW COURSE', title: 'Adult Beginners <span class="gold">BJJ Course</span>', desc: '8 weeks of fundamentals — no experience needed. Limited spots available!', cta: 'LEARN MORE & SIGN UP' },
     beginners: {
       heroL1: 'Adult Beginners', heroL3: 'BJJ Course', subtitle: '8 Weeks • May 18 – July 13 • No prior experience needed.', learnMore: 'COURSE DETAILS',
       expectTag: 'WHAT TO EXPECT', expectTitle: '8-Week <span class="gold">Beginners Program</span>',
@@ -109,6 +110,7 @@ const GJJ_I18N = {
     form: { name: 'Koko Nimi', email: 'Sähköpostiosoite', phone: 'Puhelin (valinnainen)', interest: 'Olen Kiinnostunut', message: 'Viesti (valinnainen)', submit: 'LÄHETÄ VIESTI' },
     interest: { adultBjj: 'Aikuisten BJJ', adultNogi: 'Aikuisten No-Gi', kids: 'Juniorit', comp: 'Kilpailujoukkue', trial: 'Ilmainen Kokeilutunti' },
     footer: { copy: '© 2026 Gorilla Jiu Jitsu. Kaikki oikeudet pidätetään.' },
+    banner: { badge: '🥋 UUSI KURSSI', title: 'Aikuisten Peruskurssi <span class="gold">BJJ</span>', desc: '8 viikkoa perusteita — ei aiempaa kokemusta tarvita. Paikkoja rajoitetusti!', cta: 'LUE LISÄÄ & ILMOITTAUDU' },
     beginners: {
       heroL1: 'Aikuisten Peruskurssi', heroL3: 'BJJ Kurssi', subtitle: '8 Viikkoa • 18. Toukokuuta – 13. Heinäkuuta • Ei aiempaa kokemusta.', learnMore: 'KURSSIN TIEDOT',
       expectTag: 'MITÄ ODOTTAA', expectTitle: '8-Viikon <span class="gold">Peruskurssi</span>',
@@ -174,6 +176,7 @@ const GJJ_I18N = {
     form: { name: 'Fullständigt Namn', email: 'E-postadress', phone: 'Telefon (valfritt)', interest: 'Jag är Intresserad av', message: 'Meddelande (valfritt)', submit: 'SKICKA MEDDELANDE' },
     interest: { adultBjj: 'Vuxen BJJ', adultNogi: 'Vuxen No-Gi', kids: 'Barnprogram', comp: 'Tävlingslag', trial: 'Gratis Provlektion' },
     footer: { copy: '© 2026 Gorilla Jiu Jitsu. Alla rättigheter förbehållna.' },
+    banner: { badge: '🥋 NY KURS', title: 'Nybörjarkurs för Vuxna <span class="gold">BJJ</span>', desc: '8 veckor av grunderna — ingen erfarenhet krävs. Begränsade platser!', cta: 'LÄS MER & ANMÄL DIG' },
     beginners: {
       heroL1: 'Vuxnas Nybörjarkurs', heroL3: 'BJJ Kurs', subtitle: '8 Veckor • 18 Maj – 13 Juli • Ingen tidigare erfarenhet krävs.', learnMore: 'KURSDETALJER',
       expectTag: 'VAD DU KAN FÖRVÄNTA DIG', expectTitle: '8-Veckors <span class="gold">Nybörjarkurs</span>',
