@@ -78,10 +78,8 @@
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '1004245798802856');
         fbq('init', '176450533248273');
-        fbq('trackSingle', '1004245798802856', 'PageView');
-        fbq('trackSingle', '176450533248273', 'PageView');
-        fbq('trackSingle', '1004245798802856', 'Purchase', {value: 70.00, currency: 'EUR', content_name: 'Adult Beginners BJJ Course'});
-        fbq('trackSingle', '176450533248273', 'Purchase', {value: 70.00, currency: 'EUR', content_name: 'Adult Beginners BJJ Course'});
+        fbq('track', 'PageView');
+        fbq('track', 'Purchase', {value: 70.00, currency: 'EUR', content_name: 'Adult Beginners BJJ Course'});
     </script>
     <noscript>
         <img height="1" width="1" style="display:none"
