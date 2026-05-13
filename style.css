@@ -1889,6 +1889,239 @@ a:hover {
   }
 }
 
+/* ─── GOOGLE REVIEWS WIDGET ────────────────────── */
+.gr-widget {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.gr-widget__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.gr-widget__header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gr-widget__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  color: var(--text);
+}
+
+.gr-widget__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gr-widget__stars {
+  display: flex;
+  gap: 2px;
+}
+
+.gr-widget__summary {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.gr-widget__summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.btn--google {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn--google:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.gr-widget__carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gr-widget__carousel {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+}
+
+.gr-widget__carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.gr-card {
+  flex: 0 0 calc(33.333% - 0.8rem);
+  min-width: 280px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+.gr-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.gr-card__avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.gr-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gr-card__g-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.gr-card__meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.gr-card__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.gr-card__date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.gr-card__stars {
+  margin-bottom: 0.8rem;
+  display: flex;
+  gap: 2px;
+}
+
+.gr-card__text {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.gr-widget__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: all 0.2s ease;
+}
+
+.gr-widget__nav:hover {
+  background: var(--gold);
+  color: #000;
+  border-color: var(--gold);
+}
+
+.gr-widget__nav--prev {
+  left: -20px;
+}
+
+.gr-widget__nav--next {
+  right: -20px;
+}
+
+@media (max-width: 1024px) {
+  .gr-card {
+    flex: 0 0 calc(50% - 0.6rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .gr-card {
+    flex: 0 0 85%;
+  }
+  .gr-widget__nav {
+    display: none; /* Hide arrows on mobile, users can swipe */
+  }
+  .gr-widget__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* ─── WHATSAPP FLOATING BUTTON ─────────────────── */
 .whatsapp-float {
   position: fixed;
