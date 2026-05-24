@@ -38,7 +38,7 @@ const GJJ_I18N = {
       tag: 'GET STARTED', title: 'Ready to <span class="gold">Train?</span>',
       subtitle: 'Book your free trial class today. No experience needed — just bring yourself and a willingness to learn.',
       location: '📍 Location', hours: '🕐 Hours',
-      hoursText: 'Mon &amp; Wed: 17:00 – 20:30<br />Tue: 18:00 – 20:00<br />Thu: 17:00 – 20:30<br />Sat: 12:00 – 14:30<br />Sun: 13:00 – 14:30<br />Fri: Closed',
+      hoursText: 'Mon &amp; Wed: 17:00 – 20:30<br />Tue: 17:00 – 20:00<br />Thu: 18:30 – 20:30<br />Sat: 12:00 – 14:30<br />Fri &amp; Sun: Closed',
       contactTitle: '📞 Contact'
     },
     form: { name: 'Full Name', email: 'Email Address', phone: 'Phone (optional)', interest: 'I\'m Interested In', message: 'Message (optional)', submit: 'SEND MESSAGE' },
@@ -104,7 +104,7 @@ const GJJ_I18N = {
       tag: 'ALOITA', title: 'Valmis <span class="gold">Harjoittelemaan?</span>',
       subtitle: 'Varaa ilmainen kokeilutuntisi tänään. Kokemusta ei tarvita — tuo vain itsesi ja halu oppia.',
       location: '📍 Sijainti', hours: '🕐 Aukioloajat',
-      hoursText: 'Ma &amp; Ke: 17:00 – 20:30<br />Ti: 18:00 – 20:00<br />To: 17:00 – 20:30<br />La: 12:00 – 14:30<br />Su: 13:00 – 14:30<br />Pe: Suljettu',
+      hoursText: 'Ma &amp; Ke: 17:00 – 20:30<br />Ti: 17:00 – 20:00<br />To: 18:30 – 20:30<br />La: 12:00 – 14:30<br />Pe &amp; Su: Suljettu',
       contactTitle: '📞 Puhelin'
     },
     form: { name: 'Koko Nimi', email: 'Sähköpostiosoite', phone: 'Puhelin (valinnainen)', interest: 'Olen Kiinnostunut', message: 'Viesti (valinnainen)', submit: 'LÄHETÄ VIESTI' },
@@ -170,7 +170,7 @@ const GJJ_I18N = {
       tag: 'KOM IGÅNG', title: 'Redo att <span class="gold">Träna?</span>',
       subtitle: 'Boka din gratis provlektion idag. Ingen erfarenhet behövs — ta bara med dig själv och en vilja att lära.',
       location: '📍 Plats', hours: '🕐 Öppettider',
-      hoursText: 'Mån &amp; Ons: 17:00 – 20:30<br />Tis: 18:00 – 20:00<br />Tor: 17:00 – 20:30<br />Lör: 12:00 – 14:30<br />Sön: 13:00 – 14:30<br />Fre: Stängt',
+      hoursText: 'Mån &amp; Ons: 17:00 – 20:30<br />Tis: 17:00 – 20:00<br />Tor: 18:30 – 20:30<br />Lör: 12:00 – 14:30<br />Fre &amp; Sön: Stängt',
       contactTitle: '📞 Kontakt'
     },
     form: { name: 'Fullständigt Namn', email: 'E-postadress', phone: 'Telefon (valfritt)', interest: 'Jag är Intresserad av', message: 'Meddelande (valfritt)', submit: 'SKICKA MEDDELANDE' },
