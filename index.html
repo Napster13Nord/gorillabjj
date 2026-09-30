@@ -3,12 +3,28 @@
 
 <head>
     <!-- ═══ Google tag (gtag.js) ═══ -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5B80Y7X8W0"></script>
+    <!-- Tracking events queue at once. The tracker libraries load on the first
+         interaction, or 3s after page load — so they don't slow the first screen. -->
     <script>
+        window.lazyScript = function (src) {
+            var done = false, evts = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
+            function run() {
+                if (done) return;
+                done = true;
+                evts.forEach(function (e) { window.removeEventListener(e, run); });
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = src;
+                document.head.appendChild(s);
+            }
+            evts.forEach(function (e) { window.addEventListener(e, run, { passive: true }); });
+            window.addEventListener('load', function () { setTimeout(run, 3000); });
+        };
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-5B80Y7X8W0');
+        lazyScript('https://www.googletagmanager.com/gtag/js?id=G-5B80Y7X8W0');
     </script>
     <!-- ═══ End Google tag ═══ -->
     <meta charset="UTF-8" />
@@ -21,8 +37,8 @@
     <link rel="canonical" href="https://www.gorillajiujitsu.org/" />
 
     <!-- ═══ Favicon ═══ -->
-    <link rel="icon" type="image/png" href="gorilla-logo.png" />
-    <link rel="apple-touch-icon" href="gorilla-logo.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
     <!-- ═══ Open Graph / Facebook ═══ -->
     <meta property="og:type" content="website" />
@@ -108,9 +124,9 @@
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        n.queue=[];
+        // Events queue at once; fbevents.js loads later (see lazyScript above)
+        f.lazyScript(v)}(window,document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '1004245798802856');
         fbq('init', '176450533248273');
@@ -204,7 +220,7 @@
 
             <div class="hero__3d-container" id="hero-3d-container">
                 <canvas id="orb-canvas" class="hero__orb-canvas"></canvas>
-                <img id="gorilla-poster" class="hero__3d-poster" src="gorilla-static.webp" alt="" width="700" height="700" fetchpriority="high" decoding="async">
+                <img id="gorilla-poster" class="hero__3d-poster" src="gorilla-static.webp" srcset="gorilla-static-520.webp 520w, gorilla-static.webp 700w" sizes="(max-width: 768px) 260px, 460px" alt="" width="700" height="700" fetchpriority="high" decoding="async">
                 <canvas id="gorilla-canvas" class="hero__3d-canvas"></canvas>
             </div>
         </div>
