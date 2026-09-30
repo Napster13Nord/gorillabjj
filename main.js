@@ -56,18 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
 
     /* ─── LOADER ──────────────────────────────── */
-    const loader = document.getElementById('loader');
-    // Reveal the hero as soon as GSAP is ready (max ~1.2s).
-    // Do not wait for window 'load' — that waits for every tracker too.
-    let _heroTries = 0;
-    (function revealHeroWhenReady() {
-        if (typeof gsap === 'undefined' && _heroTries++ < 8) {
-            setTimeout(revealHeroWhenReady, 150);
-            return;
-        }
-        if (loader) loader.classList.add('hidden');
-        animateHero();
-    })();
+    // Hero entrance animation is pure CSS (style.css), so it starts at first paint.
     // 3D model only loads after first paint and first interaction
     window.addEventListener('load', () => waitForThree(init3DGorilla));
 
@@ -317,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Note: waitForThree(init3DGorilla) is now called inside the loader callback above
+    // Note: waitForThree(init3DGorilla) is called from the window load handler above
     // so the GLB only loads AFTER first paint
 
     /* ─── SMOKE / FOG CANVAS EFFECT ──────────── */
@@ -408,26 +397,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 smokeVisible = entries[0].isIntersecting;
             }).observe(smokeCanvas);
         });
-    }
-
-    /* ─── HERO ANIMATIONS ───────────────────────── */
-    function animateHero() {
-        if (typeof gsap === 'undefined') {
-            // Fallback: just show everything
-            document.querySelectorAll('.hero__title-line, .hero__subtitle, .hero__cta-group').forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-            });
-            return;
-        }
-
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-        tl.to('.hero__title-line--1', { opacity: 1, y: 0, duration: 0.8 }, 0.2)
-            .to('.hero__title-line--2', { opacity: 1, y: 0, duration: 0.8 }, 0.5)
-            .to('.hero__title-line--3', { opacity: 1, y: 0, duration: 1, ease: 'power4.out' }, 0.8)
-            .to('.hero__subtitle', { opacity: 1, y: 0, duration: 0.7 }, 1.2)
-            .to('.hero__cta-group', { opacity: 1, y: 0, duration: 0.7 }, 1.5);
     }
 
     /* ─── GSAP SCROLL ANIMATIONS ────────────────── */

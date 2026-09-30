@@ -107,66 +107,6 @@ a:hover {
   color: var(--gold);
 }
 
-/* ─── LOADER ───────────────────────────────────── */
-.loader {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity .6s ease, visibility .6s ease;
-}
-
-.loader.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.loader__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.loader__ring {
-  width: 56px;
-  height: 56px;
-  border: 3px solid var(--border);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.loader__text {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  letter-spacing: .25em;
-  color: var(--gold);
-  animation: pulse-text 1.4s ease-in-out infinite;
-}
-
-@keyframes pulse-text {
-
-  0%,
-  100% {
-    opacity: .4;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
 /* ─── NAVBAR ───────────────────────────────────── */
 .navbar {
   position: fixed;
@@ -517,6 +457,26 @@ a:hover {
   text-transform: uppercase;
   max-width: 100%;
 }
+
+/* Hero entrance — pure CSS so it starts at first paint (no JS/GSAP wait) */
+@keyframes hero-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero__title-line,
+.hero__subtitle,
+.hero__cta-group {
+  animation: hero-in .8s cubic-bezier(.215, .61, .355, 1) forwards;
+}
+
+.hero__title-line--1 { animation-delay: .1s; }
+.hero__title-line--2 { animation-delay: .3s; }
+.hero__title-line--3 { animation-duration: 1s; animation-timing-function: cubic-bezier(.165, .84, .44, 1); animation-delay: .5s; }
+.hero__subtitle { animation-duration: .7s; animation-delay: .8s; }
+.hero__cta-group { animation-duration: .7s; animation-delay: 1s; }
 
 .hero__title-line--1 {
   font-size: clamp(2rem, min(6vw, 9vh), 5.5rem);
