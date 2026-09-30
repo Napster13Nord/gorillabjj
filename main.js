@@ -952,50 +952,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     /* ─── GOLDEN ORB WEBGL (Premium Effect) ──────── */
-    const BJJ_ICONS = {
-        // Tied belt with a black rank bar on one tail
-        belt: `<svg viewBox="0 0 48 48"><g fill="#E8B83A" stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round">
-            <rect x="2" y="15" width="44" height="9" rx="2"/>
-            <path d="M20 23 L12 43 L18.5 45 L24.5 27 Z"/>
-            <path d="M28 23 L36 43 L29.5 45 L23.5 27 Z"/>
-            <rect x="17.5" y="11.5" width="13" height="16" rx="3.5"/></g>
-            <path d="M31.2 35.5 L34.4 34.3 L35.6 37.3 L32.4 38.6 Z" fill="#141414"/>
-            <path d="M20 17 L28 22 M28 17 L20 22" stroke="#6B4A06" stroke-width="1.2"/></svg>`,
-        // Gi (kimono) jacket with crossed lapels and belt
-        gi: `<svg viewBox="0 0 48 48"><path d="M17 5 L24 11 L31 5 L41 10 L47 25 L40 28 L37 21 L37 45 L11 45 L11 21 L8 28 L1 25 L7 10 Z"
-            fill="#E8B83A" stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round"/>
-            <path d="M17 5 L29 31 M31 5 L21 23" fill="none" stroke="#6B4A06" stroke-width="3" stroke-linecap="round"/>
-            <path d="M17 5 L29 31 M31 5 L21 23" fill="none" stroke="#F6D77A" stroke-width="1.2" stroke-linecap="round"/>
-            <rect x="11" y="30" width="26" height="4.5" fill="#141414"/></svg>`,
-        // Roll of finger tape with a strip unrolling
-        tape: `<svg viewBox="0 0 48 48"><g stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round">
-            <path d="M18 31 L46 31 L43.5 33.5 L46 36 L43.5 38.5 L46 41 L18 41 Z" fill="#F3F0E6"/>
-            <circle cx="18" cy="22" r="17" fill="#F3F0E6"/>
-            <circle cx="18" cy="22" r="8" fill="#E8B83A"/>
-            <circle cx="18" cy="22" r="5" fill="#141414"/></g>
-            <path d="M18 7.5 A14.5 14.5 0 0 1 32.5 22" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
-            <path d="M24 36 L40 36" stroke="#C9C3B0" stroke-width="1"/></svg>`,
-        // Mouthguard seen from above
-        mouthguard: `<svg viewBox="0 0 48 48"><path d="M5 31 C5 13 15 6 24 6 C33 6 43 13 43 31 L43 39 C43 42 38.5 43 36.5 40.5 L34.5 31 C34.5 21 30 16.5 24 16.5 C18 16.5 13.5 21 13.5 31 L11.5 40.5 C9.5 43 5 42 5 39 Z"
-            fill="#F3F0E6" stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round"/>
-            <path d="M9.3 36 C9 20 16 11 24 11 C32 11 39 20 38.7 36" fill="none" stroke="#C9A43A" stroke-width="1.6" stroke-dasharray="3 2.2"/></svg>`,
-        // Medal on a ribbon
-        medal: `<svg viewBox="0 0 48 48"><g stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round">
-            <path d="M13 3 L21 3 L28 21 L20 23 Z" fill="#141414"/>
-            <path d="M35 3 L27 3 L20 21 L28 23 Z" fill="#141414"/>
-            <circle cx="24" cy="32" r="13" fill="#E8B83A"/>
-            <circle cx="24" cy="32" r="8.5" fill="#F6D77A"/></g>
-            <path d="M24 26.5 L25.7 30 L29.5 30.4 L26.6 33 L27.5 36.8 L24 34.8 L20.5 36.8 L21.4 33 L18.5 30.4 L22.3 30 Z" fill="#6B4A06"/></svg>`,
-        // Trophy cup
-        trophy: `<svg viewBox="0 0 48 48"><g stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round">
-            <path d="M12 9 H5 C5 19 9 22 14 22 M36 9 H43 C43 19 39 22 34 22" fill="none" stroke="#E8B83A" stroke-width="3.5"/>
-            <path d="M12 5 H36 V13 C36 23 30.5 28 24 28 C17.5 28 12 23 12 13 Z" fill="#E8B83A"/>
-            <rect x="21" y="28" width="6" height="6" fill="#E8B83A"/>
-            <rect x="15" y="34" width="18" height="5" rx="1" fill="#E8B83A"/>
-            <rect x="12" y="39" width="24" height="6" rx="1" fill="#141414"/></g>
-            <path d="M17 9 V14 C17 18 19 21 21 22" fill="none" stroke="#F6D77A" stroke-width="1.6" stroke-linecap="round"/></svg>`
-    };
-
     onFirstInteraction(function initGoldenOrb() {
         const canvas = document.getElementById('orb-canvas');
         const container = document.querySelector('.hero__3d-container');
@@ -1028,7 +984,6 @@ document.addEventListener('DOMContentLoaded', () => {
             uniform float hoverIntensity;
             uniform float pulseSpeed;
             uniform float glowIntensity;
-            uniform float ringCount;
 
             varying vec2 vUv;
 
@@ -1062,9 +1017,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return dot(vec4(31.316), n);
             }
 
-            float ring(float len, float r, float w) {
-                return smoothstep(w, 0.0, abs(len - r));
-            }
+
 
             vec4 mainImage(vec2 fragCoord) {
                 vec2 center = iResolution.xy * 0.5;
@@ -1092,21 +1045,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 float noiseTex = n1 * 0.65 + n2 * 0.35;
                 float surfaceMask = smoothstep(coreRadius + 0.05, coreRadius - 0.05, len);
 
-                float rings = 0.0;
-                // Slightly Narrrowed rings for precision
-                float r1 = ring(len, 0.36, 0.010) * 1.0;
-                float r2 = (ringCount >= 2.0) ? ring(len, 0.50, 0.008) * 0.8 : 0.0;
-                float r3 = (ringCount >= 3.0) ? ring(len, 0.64, 0.007) * 0.6 : 0.0;
-
-                float s1 = pow(max(0.0, sin(ang - t * 2.5)), 8.0);
-                float s2 = pow(max(0.0, sin(ang * 1.0 + t * 1.8 + 2.1)), 8.0);
-                float s3 = pow(max(0.0, sin(ang * 1.0 - t * 0.9 + 4.5)), 8.0);
-
-                rings += r1 * (0.3 + s1 * 0.7);
-                rings += r2 * (0.3 + s2 * 0.7);
-                rings += r3 * (0.3 + s3 * 0.7);
-
-
                 float rays = 0.0;
                 for (float i = 0.0; i < 6.0; i++) {
                     float rayAng = i * TAU / 6.0 + t * 0.15;
@@ -1118,7 +1056,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 vec3 col = vec3(0.0);
                 col += goldDeep * halo * 2.5; 
                 col += mix(goldMid, goldWhite, noiseTex * surfaceMask + (1.0 - surfaceMask) * 0.3) * core * 2.5;
-                col += goldBright * rings * 3.5;
                 col += goldMid * rays * 1.5;
 
                 col *= glowIntensity;
@@ -1172,7 +1109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const uHoverInt = gl.getUniformLocation(prog, 'hoverIntensity');
         const uPulse = gl.getUniformLocation(prog, 'pulseSpeed');
         const uGlow = gl.getUniformLocation(prog, 'glowIntensity');
-        const uRing = gl.getUniformLocation(prog, 'ringCount');
 
         let targetHover = 0;
         let currentHover = 0;
@@ -1200,56 +1136,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         resize();
 
-        // ── BJJ icons orbiting on the rings (they replace the old spark dots) ──
-        // r = ring radius in shader uv units; speed in rad/s (same direction as the old sparks)
-        // Same three orbits as the old spark dots; icons fly in front of the gorilla
-        const ORBIT_ICONS = [
-            { icon: 'belt',       r: 0.36, speed: 1.8,  offset: 0.00 },
-            { icon: 'medal',      r: 0.36, speed: 1.8,  offset: Math.PI },
-            { icon: 'gi',         r: 0.50, speed: -1.2, offset: 1.05 },
-            { icon: 'mouthguard', r: 0.50, speed: -1.2, offset: 3.80 },
-            { icon: 'tape',       r: 0.64, speed: 0.7,  offset: 0.52 },
-            { icon: 'trophy',     r: 0.64, speed: 0.7,  offset: 3.66 }
-        ];
-        const orbitLayer = document.createElement('div');
-        orbitLayer.className = 'hero__orbit-icons';
-        orbitLayer.setAttribute('aria-hidden', 'true');
-        const orbitEls = ORBIT_ICONS.map(o => {
-            const el = document.createElement('span');
-            el.className = 'hero__orbit-icon';
-            el.innerHTML = BJJ_ICONS[o.icon];
-            // Catch one and it pops
-            el.addEventListener('click', () => {
-                el.classList.remove('is-popped');
-                void el.offsetWidth; // restart the animation
-                el.classList.add('is-popped');
-            });
-            orbitLayer.appendChild(el);
-            return el;
-        });
-        container.appendChild(orbitLayer);
-
-        let orbitRadiusPx = 0, orbitIconPx = 0;
-        function sizeOrbitIcons() {
-            // Same maths as the shader: uv = (px - center) / (min(w,h) * 1.12) * 2
-            const base = Math.min(container.clientWidth, container.clientHeight);
-            orbitRadiusPx = base * 1.12 / 2;
-            orbitIconPx = Math.round(Math.max(24, Math.min(46, base * 0.085)));
-            orbitEls.forEach(el => { el.style.width = el.style.height = orbitIconPx + 'px'; });
-        }
-        sizeOrbitIcons();
-        window.addEventListener('resize', sizeOrbitIcons);
-
-        function moveOrbitIcons(sec) {
-            const half = orbitIconPx / 2;
-            ORBIT_ICONS.forEach((o, i) => {
-                const a = sec * o.speed + o.offset;
-                const x = Math.cos(a) * o.r * orbitRadiusPx - half;
-                const y = -Math.sin(a) * o.r * orbitRadiusPx - half; // screen y points down
-                orbitEls[i].style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
-            });
-        }
-
         // On mobile: render orb at ~30fps instead of 60fps to save GPU/battery
         const ORB_FRAME_SKIP = isMobile ? 2 : 1;
         let _orbFrame = 0;
@@ -1266,7 +1152,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (_orbFrame % ORB_FRAME_SKIP !== 0) return; // skip frames on mobile
 
             currentHover += (targetHover - currentHover) * 0.08;
-            moveOrbitIcons(t * 0.001);
 
             gl.clear(gl.COLOR_BUFFER_BIT);
             gl.useProgram(prog);
@@ -1277,8 +1162,6 @@ document.addEventListener('DOMContentLoaded', () => {
             gl.uniform1f(uHoverInt, 0.3);
             gl.uniform1f(uPulse, 1.0);
             gl.uniform1f(uGlow, 2.2);
-            // Reduce ring count on mobile for simpler shader
-            gl.uniform1f(uRing, isMobile ? 1.0 : 3.0);
 
             gl.bindBuffer(gl.ARRAY_BUFFER, posBuf); gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
             gl.bindBuffer(gl.ARRAY_BUFFER, uvBuf); gl.enableVertexAttribArray(aUv); gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 0, 0);

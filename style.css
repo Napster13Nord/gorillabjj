@@ -344,55 +344,6 @@ a:hover {
   z-index: 2;
 }
 
-/* BJJ icons orbiting the golden orb (positioned by main.js) */
-.hero__orbit-icons {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  z-index: 3; /* in front of the gorilla */
-  pointer-events: none;
-  animation: orbit-icons-in 1s ease forwards;
-  opacity: 0;
-}
-
-.hero__orbit-icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  will-change: transform;
-  filter: drop-shadow(0 0 6px rgba(240, 196, 74, 0.75));
-  pointer-events: auto; /* try to catch them */
-  cursor: pointer;
-}
-
-.hero__orbit-icon svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  transition: transform .2s ease;
-}
-
-.hero__orbit-icon:hover svg {
-  transform: scale(1.3);
-}
-
-.hero__orbit-icon.is-popped svg {
-  animation: orbit-icon-pop .45s ease;
-}
-
-@keyframes orbit-icon-pop {
-  0% { transform: scale(1.3); }
-  40% { transform: scale(1.8) rotate(-12deg); }
-  100% { transform: scale(1); }
-}
-
-@keyframes orbit-icons-in {
-  to { opacity: 1; }
-}
-
 /* Static gorilla shown until the 3D model has loaded */
 .hero__3d-poster {
   position: absolute;
