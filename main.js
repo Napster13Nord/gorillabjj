@@ -974,7 +974,26 @@ document.addEventListener('DOMContentLoaded', () => {
             <circle cx="18" cy="22" r="8" fill="#E8B83A"/>
             <circle cx="18" cy="22" r="5" fill="#141414"/></g>
             <path d="M18 7.5 A14.5 14.5 0 0 1 32.5 22" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
-            <path d="M24 36 L40 36" stroke="#C9C3B0" stroke-width="1"/></svg>`
+            <path d="M24 36 L40 36" stroke="#C9C3B0" stroke-width="1"/></svg>`,
+        // Mouthguard seen from above
+        mouthguard: `<svg viewBox="0 0 48 48"><path d="M5 31 C5 13 15 6 24 6 C33 6 43 13 43 31 L43 39 C43 42 38.5 43 36.5 40.5 L34.5 31 C34.5 21 30 16.5 24 16.5 C18 16.5 13.5 21 13.5 31 L11.5 40.5 C9.5 43 5 42 5 39 Z"
+            fill="#F3F0E6" stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M9.3 36 C9 20 16 11 24 11 C32 11 39 20 38.7 36" fill="none" stroke="#C9A43A" stroke-width="1.6" stroke-dasharray="3 2.2"/></svg>`,
+        // Medal on a ribbon
+        medal: `<svg viewBox="0 0 48 48"><g stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round">
+            <path d="M13 3 L21 3 L28 21 L20 23 Z" fill="#141414"/>
+            <path d="M35 3 L27 3 L20 21 L28 23 Z" fill="#141414"/>
+            <circle cx="24" cy="32" r="13" fill="#E8B83A"/>
+            <circle cx="24" cy="32" r="8.5" fill="#F6D77A"/></g>
+            <path d="M24 26.5 L25.7 30 L29.5 30.4 L26.6 33 L27.5 36.8 L24 34.8 L20.5 36.8 L21.4 33 L18.5 30.4 L22.3 30 Z" fill="#6B4A06"/></svg>`,
+        // Trophy cup
+        trophy: `<svg viewBox="0 0 48 48"><g stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round">
+            <path d="M12 9 H5 C5 19 9 22 14 22 M36 9 H43 C43 19 39 22 34 22" fill="none" stroke="#E8B83A" stroke-width="3.5"/>
+            <path d="M12 5 H36 V13 C36 23 30.5 28 24 28 C17.5 28 12 23 12 13 Z" fill="#E8B83A"/>
+            <rect x="21" y="28" width="6" height="6" fill="#E8B83A"/>
+            <rect x="15" y="34" width="18" height="5" rx="1" fill="#E8B83A"/>
+            <rect x="12" y="39" width="24" height="6" rx="1" fill="#141414"/></g>
+            <path d="M17 9 V14 C17 18 19 21 21 22" fill="none" stroke="#F6D77A" stroke-width="1.6" stroke-linecap="round"/></svg>`
     };
 
     onFirstInteraction(function initGoldenOrb() {
@@ -1077,7 +1096,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Slightly Narrrowed rings for precision
                 float r1 = ring(len, 0.36, 0.010) * 1.0;
                 float r2 = (ringCount >= 2.0) ? ring(len, 0.50, 0.008) * 0.8 : 0.0;
-                float r3 = ring(len, 0.72, 0.007) * 0.6; // icon orbit — always drawn
+                float r3 = (ringCount >= 3.0) ? ring(len, 0.64, 0.007) * 0.6 : 0.0;
 
                 float s1 = pow(max(0.0, sin(ang - t * 2.5)), 8.0);
                 float s2 = pow(max(0.0, sin(ang * 1.0 + t * 1.8 + 2.1)), 8.0);
@@ -1183,11 +1202,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // ── BJJ icons orbiting on the rings (they replace the old spark dots) ──
         // r = ring radius in shader uv units; speed in rad/s (same direction as the old sparks)
-        // All icons ride the outer ring (r3 in the shader) so the gorilla head never hides them
-        const ORBIT_RING = 0.72;
-        const ORBIT_ICONS = ['belt', 'gi', 'tape', 'belt', 'gi', 'tape'].map((icon, i, all) => (
-            { icon, r: ORBIT_RING, speed: 0.3, offset: i * Math.PI * 2 / all.length }
-        ));
+        // Same three orbits as the old spark dots; icons fly in front of the gorilla
+        const ORBIT_ICONS = [
+            { icon: 'belt',       r: 0.36, speed: 1.8,  offset: 0.00 },
+            { icon: 'medal',      r: 0.36, speed: 1.8,  offset: Math.PI },
+            { icon: 'gi',         r: 0.50, speed: -1.2, offset: 1.05 },
+            { icon: 'mouthguard', r: 0.50, speed: -1.2, offset: 3.80 },
+            { icon: 'tape',       r: 0.64, speed: 0.7,  offset: 0.52 },
+            { icon: 'trophy',     r: 0.64, speed: 0.7,  offset: 3.66 }
+        ];
         const orbitLayer = document.createElement('div');
         orbitLayer.className = 'hero__orbit-icons';
         orbitLayer.setAttribute('aria-hidden', 'true');
@@ -1195,10 +1218,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const el = document.createElement('span');
             el.className = 'hero__orbit-icon';
             el.innerHTML = BJJ_ICONS[o.icon];
+            // Catch one and it pops
+            el.addEventListener('click', () => {
+                el.classList.remove('is-popped');
+                void el.offsetWidth; // restart the animation
+                el.classList.add('is-popped');
+            });
             orbitLayer.appendChild(el);
             return el;
         });
-        canvas.after(orbitLayer);
+        container.appendChild(orbitLayer);
 
         let orbitRadiusPx = 0, orbitIconPx = 0;
         function sizeOrbitIcons() {
