@@ -404,6 +404,25 @@ a:hover {
   z-index: 2;
 }
 
+/* Static gorilla shown until the 3D model has loaded */
+.hero__3d-poster {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: auto;
+  max-width: 90%;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.hero__3d-poster.is-hidden {
+  opacity: 0;
+}
+
 .hero__orb-canvas {
   position: absolute;
   top: 50%;

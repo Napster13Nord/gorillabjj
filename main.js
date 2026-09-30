@@ -15,27 +15,39 @@ function loadScript(src) {
     });
 }
 
-function loadHeavyLibs() {
-    if (window._libsLoaded) return;
-    window._libsLoaded = true;
+function loadGsap() {
+    if (window._gsapLoaded) return;
+    window._gsapLoaded = true;
 
-    Promise.all([
-        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'),
-        loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
-    ]).then(() => {
-        return Promise.all([
-            loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'),
-            loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js'),
-            loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js')
-        ]);
-    }).catch(err => console.error("Error loading heavy scripts:", err));
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js')
+        .then(() => loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'))
+        .catch(err => console.error("Error loading GSAP:", err));
 }
 
-// Load heavy libraries on first user interaction or after a 2.5s fallback delay
-['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => {
-    window.addEventListener(evt, loadHeavyLibs, { once: true, passive: true });
-});
-setTimeout(loadHeavyLibs, 100);
+// Run callback once, on the first real user interaction.
+// WebGL (3D gorilla + golden orb) is the heaviest part of the page,
+// so it waits until the visitor moves, scrolls, touches or types.
+const INTERACTION_EVENTS = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
+function onFirstInteraction(callback) {
+    let done = false;
+    const run = () => {
+        if (done) return;
+        done = true;
+        INTERACTION_EVENTS.forEach(evt => window.removeEventListener(evt, run));
+        callback();
+    };
+    INTERACTION_EVENTS.forEach(evt => window.addEventListener(evt, run, { passive: true }));
+}
+
+function loadThree() {
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
+        .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js'))
+        .then(() => window.dispatchEvent(new Event('three-ready')))
+        .catch(err => console.error("Error loading Three.js:", err));
+}
+
+setTimeout(loadGsap, 100);
+onFirstInteraction(loadThree);
 
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -137,9 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const gltfLoader = new THREE.GLTFLoader();
         gltfLoader.load(
-            'c30d42aa9f8d4e23b8a0ee3ec41807c0.glb',
+            'gorilla-3d.glb',
             (gltf) => {
                 gorillaModel = gltf.scene;
+
+                // Hand over from the static poster image to the live 3D model
+                const poster = document.getElementById('gorilla-poster');
+                if (poster) poster.classList.add('is-hidden');
 
                 // Auto-scale and center the model
                 const box = new THREE.Box3().setFromObject(gorillaModel);
@@ -293,11 +309,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Wait for Three.js to load then init
-    function waitForThree(callback, retries = 100) {
+    function waitForThree(callback) {
         if (typeof THREE !== 'undefined' && typeof THREE.GLTFLoader !== 'undefined') {
             callback();
-        } else if (retries > 0) {
-            setTimeout(() => waitForThree(callback, retries - 1), 150);
+        } else {
+            window.addEventListener('three-ready', callback, { once: true });
         }
     }
 
@@ -959,7 +975,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     /* ─── GOLDEN ORB WEBGL (Premium Effect) ──────── */
-    (function initGoldenOrb() {
+    onFirstInteraction(function initGoldenOrb() {
         const canvas = document.getElementById('orb-canvas');
         const container = document.querySelector('.hero__3d-container');
         if (!canvas || !container) return;
@@ -1183,8 +1199,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const ORB_FRAME_SKIP = isMobile ? 2 : 1;
         let _orbFrame = 0;
 
+        let orbVisible = true;
+        new IntersectionObserver((entries) => {
+            orbVisible = entries[0].isIntersecting;
+        }, { rootMargin: '200px' }).observe(container);
+
         function render(t) {
             requestAnimationFrame(render);
+            if (!orbVisible) return; // paused while hero is off-screen
             _orbFrame++;
             if (_orbFrame % ORB_FRAME_SKIP !== 0) return; // skip frames on mobile
 
@@ -1207,7 +1229,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gl.drawArrays(gl.TRIANGLES, 0, 3);
         }
         requestAnimationFrame(render);
-    })();
+    });
 
     /* ─── GLITCH TEXT EFFECT (JS-driven) ────────────── */
     (function initGlitch() {
