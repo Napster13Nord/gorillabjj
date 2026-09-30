@@ -952,6 +952,31 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     /* ─── GOLDEN ORB WEBGL (Premium Effect) ──────── */
+    const BJJ_ICONS = {
+        // Tied belt with a black rank bar on one tail
+        belt: `<svg viewBox="0 0 48 48"><g fill="#E8B83A" stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round">
+            <rect x="2" y="15" width="44" height="9" rx="2"/>
+            <path d="M20 23 L12 43 L18.5 45 L24.5 27 Z"/>
+            <path d="M28 23 L36 43 L29.5 45 L23.5 27 Z"/>
+            <rect x="17.5" y="11.5" width="13" height="16" rx="3.5"/></g>
+            <path d="M31.2 35.5 L34.4 34.3 L35.6 37.3 L32.4 38.6 Z" fill="#141414"/>
+            <path d="M20 17 L28 22 M28 17 L20 22" stroke="#6B4A06" stroke-width="1.2"/></svg>`,
+        // Gi (kimono) jacket with crossed lapels and belt
+        gi: `<svg viewBox="0 0 48 48"><path d="M17 5 L24 11 L31 5 L41 10 L47 25 L40 28 L37 21 L37 45 L11 45 L11 21 L8 28 L1 25 L7 10 Z"
+            fill="#E8B83A" stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M17 5 L29 31 M31 5 L21 23" fill="none" stroke="#6B4A06" stroke-width="3" stroke-linecap="round"/>
+            <path d="M17 5 L29 31 M31 5 L21 23" fill="none" stroke="#F6D77A" stroke-width="1.2" stroke-linecap="round"/>
+            <rect x="11" y="30" width="26" height="4.5" fill="#141414"/></svg>`,
+        // Roll of finger tape with a strip unrolling
+        tape: `<svg viewBox="0 0 48 48"><g stroke="#6B4A06" stroke-width="1.4" stroke-linejoin="round">
+            <path d="M18 31 L46 31 L43.5 33.5 L46 36 L43.5 38.5 L46 41 L18 41 Z" fill="#F3F0E6"/>
+            <circle cx="18" cy="22" r="17" fill="#F3F0E6"/>
+            <circle cx="18" cy="22" r="8" fill="#E8B83A"/>
+            <circle cx="18" cy="22" r="5" fill="#141414"/></g>
+            <path d="M18 7.5 A14.5 14.5 0 0 1 32.5 22" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
+            <path d="M24 36 L40 36" stroke="#C9C3B0" stroke-width="1"/></svg>`
+    };
+
     onFirstInteraction(function initGoldenOrb() {
         const canvas = document.getElementById('orb-canvas');
         const container = document.querySelector('.hero__3d-container');
@@ -1022,13 +1047,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return smoothstep(w, 0.0, abs(len - r));
             }
 
-            float orbitalSpark(vec2 uv, float radius, float speed, float offset, float size) {
-                float t = iTime * speed + offset;
-                vec2 pos = vec2(cos(t), sin(t)) * radius;
-                float d = length(uv - pos);
-                return smoothstep(size, 0.0, d);
-            }
-
             vec4 mainImage(vec2 fragCoord) {
                 vec2 center = iResolution.xy * 0.5;
                 float size = min(iResolution.x, iResolution.y) * 1.12;
@@ -1059,7 +1077,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Slightly Narrrowed rings for precision
                 float r1 = ring(len, 0.36, 0.010) * 1.0;
                 float r2 = (ringCount >= 2.0) ? ring(len, 0.50, 0.008) * 0.8 : 0.0;
-                float r3 = (ringCount >= 3.0) ? ring(len, 0.64, 0.007) * 0.6 : 0.0;
+                float r3 = ring(len, 0.72, 0.007) * 0.6; // icon orbit — always drawn
 
                 float s1 = pow(max(0.0, sin(ang - t * 2.5)), 8.0);
                 float s2 = pow(max(0.0, sin(ang * 1.0 + t * 1.8 + 2.1)), 8.0);
@@ -1069,14 +1087,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 rings += r2 * (0.3 + s2 * 0.7);
                 rings += r3 * (0.3 + s3 * 0.7);
 
-                float sparks = 0.0;
-                sparks += orbitalSpark(uv, 0.36, 1.8,  0.00, 0.02) * 2.0;
-                sparks += orbitalSpark(uv, 0.36, 1.8,  PI,   0.018) * 1.5;
-                sparks += orbitalSpark(uv, 0.50, -1.2, 1.05, 0.018) * 1.6;
-                sparks += orbitalSpark(uv, 0.50, -1.2, 3.80, 0.015) * 1.2;
-                sparks += orbitalSpark(uv, 0.64,  0.7, 0.52, 0.016) * 1.1;
-                sparks += orbitalSpark(uv, 0.64,  0.7, 2.61, 0.013) * 0.9;
-                sparks += orbitalSpark(uv, 0.64,  0.7, 4.71, 0.012) * 0.7;
 
                 float rays = 0.0;
                 for (float i = 0.0; i < 6.0; i++) {
@@ -1090,7 +1100,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 col += goldDeep * halo * 2.5; 
                 col += mix(goldMid, goldWhite, noiseTex * surfaceMask + (1.0 - surfaceMask) * 0.3) * core * 2.5;
                 col += goldBright * rings * 3.5;
-                col += goldWhite * sparks * 3.5;
                 col += goldMid * rays * 1.5;
 
                 col *= glowIntensity;
@@ -1172,6 +1181,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         resize();
 
+        // ── BJJ icons orbiting on the rings (they replace the old spark dots) ──
+        // r = ring radius in shader uv units; speed in rad/s (same direction as the old sparks)
+        // All icons ride the outer ring (r3 in the shader) so the gorilla head never hides them
+        const ORBIT_RING = 0.72;
+        const ORBIT_ICONS = ['belt', 'gi', 'tape', 'belt', 'gi', 'tape'].map((icon, i, all) => (
+            { icon, r: ORBIT_RING, speed: 0.3, offset: i * Math.PI * 2 / all.length }
+        ));
+        const orbitLayer = document.createElement('div');
+        orbitLayer.className = 'hero__orbit-icons';
+        orbitLayer.setAttribute('aria-hidden', 'true');
+        const orbitEls = ORBIT_ICONS.map(o => {
+            const el = document.createElement('span');
+            el.className = 'hero__orbit-icon';
+            el.innerHTML = BJJ_ICONS[o.icon];
+            orbitLayer.appendChild(el);
+            return el;
+        });
+        canvas.after(orbitLayer);
+
+        let orbitRadiusPx = 0, orbitIconPx = 0;
+        function sizeOrbitIcons() {
+            // Same maths as the shader: uv = (px - center) / (min(w,h) * 1.12) * 2
+            const base = Math.min(container.clientWidth, container.clientHeight);
+            orbitRadiusPx = base * 1.12 / 2;
+            orbitIconPx = Math.round(Math.max(24, Math.min(46, base * 0.085)));
+            orbitEls.forEach(el => { el.style.width = el.style.height = orbitIconPx + 'px'; });
+        }
+        sizeOrbitIcons();
+        window.addEventListener('resize', sizeOrbitIcons);
+
+        function moveOrbitIcons(sec) {
+            const half = orbitIconPx / 2;
+            ORBIT_ICONS.forEach((o, i) => {
+                const a = sec * o.speed + o.offset;
+                const x = Math.cos(a) * o.r * orbitRadiusPx - half;
+                const y = -Math.sin(a) * o.r * orbitRadiusPx - half; // screen y points down
+                orbitEls[i].style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+            });
+        }
+
         // On mobile: render orb at ~30fps instead of 60fps to save GPU/battery
         const ORB_FRAME_SKIP = isMobile ? 2 : 1;
         let _orbFrame = 0;
@@ -1188,6 +1237,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (_orbFrame % ORB_FRAME_SKIP !== 0) return; // skip frames on mobile
 
             currentHover += (targetHover - currentHover) * 0.08;
+            moveOrbitIcons(t * 0.001);
 
             gl.clear(gl.COLOR_BUFFER_BIT);
             gl.useProgram(prog);
