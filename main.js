@@ -57,19 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ─── LOADER ──────────────────────────────── */
     const loader = document.getElementById('loader');
-    window.addEventListener('load', () => {
-        if (loader) {
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                animateHero();
-                // ← GLB only loads AFTER first paint (biggest LCP fix)
-                waitForThree(init3DGorilla);
-            }, 800);
-        } else {
-            animateHero();
-            waitForThree(init3DGorilla);
+    // Reveal the hero as soon as GSAP is ready (max ~1.2s).
+    // Do not wait for window 'load' — that waits for every tracker too.
+    let _heroTries = 0;
+    (function revealHeroWhenReady() {
+        if (typeof gsap === 'undefined' && _heroTries++ < 8) {
+            setTimeout(revealHeroWhenReady, 150);
+            return;
         }
-    });
+        if (loader) loader.classList.add('hidden');
+        animateHero();
+    })();
+    // 3D model only loads after first paint and first interaction
+    window.addEventListener('load', () => waitForThree(init3DGorilla));
 
     /* ─── THREE.JS 3D GORILLA MODEL ──────────── */
     function init3DGorilla() {
@@ -388,18 +388,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    let smokeVisible = true;
     function animateSmoke() {
         if (!smokeCanvas || !smokeCtx) return;
         requestAnimationFrame(animateSmoke);
+        if (!smokeVisible) return; // paused while hero is off-screen
         smokeCtx.clearRect(0, 0, smokeCanvas.width, smokeCanvas.height);
         smokeParticles.forEach(p => { p.update(); p.draw(); });
     }
 
     // Skip smoke entirely on mobile — saves meaningful CPU
+    // Starts on first interaction, like the other hero effects
     if (!isMobile && smokeCanvas) {
-        initSmoke();
-        animateSmoke();
-        window.addEventListener('resize', initSmoke);
+        onFirstInteraction(() => {
+            initSmoke();
+            animateSmoke();
+            window.addEventListener('resize', initSmoke);
+            new IntersectionObserver((entries) => {
+                smokeVisible = entries[0].isIntersecting;
+            }).observe(smokeCanvas);
+        });
     }
 
     /* ─── HERO ANIMATIONS ───────────────────────── */
