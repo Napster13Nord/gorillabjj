@@ -41,7 +41,7 @@ const GJJ_I18N = {
       hoursText: 'Mon &amp; Wed: 17:00 – 20:30<br />Tue: 17:00 – 20:00<br />Thu: 18:30 – 20:30<br />Sat: 12:00 – 14:30<br />Fri &amp; Sun: Closed',
       contactTitle: '📞 Contact'
     },
-    form: { name: 'Full Name', email: 'Email Address', phone: 'Phone (optional)', interest: 'I\'m Interested In', message: 'Message (optional)', submit: 'SEND MESSAGE' },
+    form: { name: 'Full Name', email: 'Email Address', phone: 'Phone (optional)', interest: 'I\'m Interested In', message: 'Message', submit: 'SEND MESSAGE' },
     interest: { adultBjj: 'Adult BJJ', adultNogi: 'Adult No-Gi', kids: 'Kids Program', comp: 'Competition Team', trial: 'Free Trial Class' },
     footer: { copy: '© 2026 Gorilla Jiu Jitsu. All rights reserved.' },
     banner: { badge: '🥋 NEW COURSE', title: 'Adult Beginners <span class="gold">BJJ Course</span>', desc: '6 weeks of fundamentals — no experience needed. Limited spots available!', cta: 'LEARN MORE & SIGN UP' },
@@ -107,7 +107,7 @@ const GJJ_I18N = {
       hoursText: 'Ma &amp; Ke: 17:00 – 20:30<br />Ti: 17:00 – 20:00<br />To: 18:30 – 20:30<br />La: 12:00 – 14:30<br />Pe &amp; Su: Suljettu',
       contactTitle: '📞 Puhelin'
     },
-    form: { name: 'Koko Nimi', email: 'Sähköpostiosoite', phone: 'Puhelin (valinnainen)', interest: 'Olen Kiinnostunut', message: 'Viesti (valinnainen)', submit: 'LÄHETÄ VIESTI' },
+    form: { name: 'Koko Nimi', email: 'Sähköpostiosoite', phone: 'Puhelin (valinnainen)', interest: 'Olen Kiinnostunut', message: 'Viesti', submit: 'LÄHETÄ VIESTI' },
     interest: { adultBjj: 'Aikuisten BJJ', adultNogi: 'Aikuisten No-Gi', kids: 'Juniorit', comp: 'Kilpailujoukkue', trial: 'Ilmainen Kokeilutunti' },
     footer: { copy: '© 2026 Gorilla Jiu Jitsu. Kaikki oikeudet pidätetään.' },
     banner: { badge: '🥋 UUSI KURSSI', title: 'Aikuisten Peruskurssi <span class="gold">BJJ</span>', desc: '6 viikkoa perusteita — ei aiempaa kokemusta tarvita. Paikkoja rajoitetusti!', cta: 'LUE LISÄÄ & ILMOITTAUDU' },
@@ -173,7 +173,7 @@ const GJJ_I18N = {
       hoursText: 'Mån &amp; Ons: 17:00 – 20:30<br />Tis: 17:00 – 20:00<br />Tor: 18:30 – 20:30<br />Lör: 12:00 – 14:30<br />Fre &amp; Sön: Stängt',
       contactTitle: '📞 Kontakt'
     },
-    form: { name: 'Fullständigt Namn', email: 'E-postadress', phone: 'Telefon (valfritt)', interest: 'Jag är Intresserad av', message: 'Meddelande (valfritt)', submit: 'SKICKA MEDDELANDE' },
+    form: { name: 'Fullständigt Namn', email: 'E-postadress', phone: 'Telefon (valfritt)', interest: 'Jag är Intresserad av', message: 'Meddelande', submit: 'SKICKA MEDDELANDE' },
     interest: { adultBjj: 'Vuxen BJJ', adultNogi: 'Vuxen No-Gi', kids: 'Barnprogram', comp: 'Tävlingslag', trial: 'Gratis Provlektion' },
     footer: { copy: '© 2026 Gorilla Jiu Jitsu. Alla rättigheter förbehållna.' },
     banner: { badge: '🥋 NY KURS', title: 'Nybörjarkurs för Vuxna <span class="gold">BJJ</span>', desc: '6 veckor av grunderna — ingen erfarenhet krävs. Begränsade platser!', cta: 'LÄS MER & ANMÄL DIG' },
