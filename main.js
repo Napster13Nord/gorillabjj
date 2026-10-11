@@ -714,6 +714,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.querySelector('span:first-child').textContent = '✓ MESSAGE SENT';
                     submitBtn.style.background = 'linear-gradient(135deg, #27ae60, #1e8449)';
                     contactForm.reset();
+                } else if (response.status === 403) {
+                    // Formspree has reCAPTCHA on, which blocks AJAX submits.
+                    // Fall back to a normal form post: Formspree shows its
+                    // captcha page and then delivers the message.
+                    HTMLFormElement.prototype.submit.call(contactForm);
+                    return;
                 } else {
                     throw new Error('Formspree returned error');
                 }
